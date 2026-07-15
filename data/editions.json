@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "publisher": "XDBS — Xen Daily Bread Studio",
+  "current": "editions/2026/07/daily-bread-2026-07-14.html",
+  "updated_at": "2026-07-15T00:00:00Z",
+  "editions": [
+    {
+      "date": "2026-07-14",
+      "title": "Home is the mission. Recovery is the work.",
+      "path": "editions/2026/07/daily-bread-2026-07-14.html",
+      "mode": "recovery",
+      "location": "Danbury, Connecticut",
+      "status": "published",
+      "format": "xps-html"
+    }
+  ]
+}
