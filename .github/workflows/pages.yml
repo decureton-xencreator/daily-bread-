@@ -8,7 +8,13 @@ on:
       - "archive/**"
       - "editions/**"
       - "assets/**"
+      - "app/**"
       - "data/**"
+      - "schemas/**"
+      - "releases/**"
+      - "manifest.webmanifest"
+      - "service-worker.js"
+      - "scripts/**"
       - ".nojekyll"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
