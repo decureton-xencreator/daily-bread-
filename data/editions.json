@@ -1,8 +1,65 @@
 {
-  "schema_version":"2.0","publisher":"XDBS — Xen Daily Bread Studio","current":"index.html","updated_at":"2026-07-17T23:00:00-04:00",
-  "editions":[
-    {"date":"2026-07-17","title":"Make the system visible.","summary":"XDBS 2.0 launch edition — execution, Academy continuity and repository proof.","path":"editions/2026/07/daily-bread-2026-07-17.html","mode":"execution","tags":["XDBS 2.0","launch","Academy","mission control"],"status":"published","version":"2.0.0"},
-    {"date":"2026-07-14","title":"Home is the mission. Recovery is the work.","summary":"Recovery-first orientation and measured return.","path":"editions/2026/07/daily-bread-2026-07-14.html","mode":"recovery","tags":["home","recovery"],"status":"published","version":"1.0"},
-    {"date":"2026-07-13","title":"Land softly. Re-enter deliberately.","summary":"Travel transition and re-entry posture.","path":"editions/2026/07/daily-bread-2026-07-13.html","mode":"travel","tags":["travel","re-entry"],"status":"published","version":"1.0"}
+  "schema_version": "2.1",
+  "publisher": "XDBS — Xen Daily Bread Studio",
+  "current": "index.html",
+  "updated_at": "2026-07-18T12:00:00-04:00",
+  "editions": [
+    {
+      "date": "2026-07-18",
+      "title": "Orient the day. Move with purpose.",
+      "summary": "A privacy-safe living edition connecting executive orientation, Academy continuity, mission execution, world signal, and system truth.",
+      "path": "editions/2026/07/daily-bread-2026-07-18-v2.html",
+      "mode": "adaptive",
+      "tags": [
+        "XDBS 2.1",
+        "living publication",
+        "Academy",
+        "mission control",
+        "Warden"
+      ],
+      "status": "published",
+      "version": "2.1.0"
+    },
+    {
+      "date": "2026-07-17",
+      "title": "Make the system visible.",
+      "summary": "XDBS 2.0 launch edition — execution, Academy continuity and repository proof.",
+      "path": "editions/2026/07/daily-bread-2026-07-17.html",
+      "mode": "execution",
+      "tags": [
+        "XDBS 2.0",
+        "launch",
+        "Academy",
+        "mission control"
+      ],
+      "status": "published",
+      "version": "2.0.0"
+    },
+    {
+      "date": "2026-07-14",
+      "title": "Home is the mission. Recovery is the work.",
+      "summary": "Recovery-first orientation and measured return.",
+      "path": "editions/2026/07/daily-bread-2026-07-14.html",
+      "mode": "recovery",
+      "tags": [
+        "home",
+        "recovery"
+      ],
+      "status": "published",
+      "version": "1.0"
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Land softly. Re-enter deliberately.",
+      "summary": "Travel transition and re-entry posture.",
+      "path": "editions/2026/07/daily-bread-2026-07-13.html",
+      "mode": "travel",
+      "tags": [
+        "travel",
+        "re-entry"
+      ],
+      "status": "published",
+      "version": "1.0"
+    }
   ]
 }
