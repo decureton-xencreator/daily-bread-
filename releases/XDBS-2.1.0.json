@@ -1,0 +1,28 @@
+{
+  "version": "2.1.0",
+  "date": "2026-07-18",
+  "edition": "editions/2026/07/daily-bread-2026-07-18-v2.html",
+  "status": "repository-backed",
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "verified": false
+  },
+  "capabilities": [
+    "living-publication",
+    "academy-command",
+    "mission-control",
+    "world-clocks",
+    "archive",
+    "local-personalization",
+    "command-palette",
+    "pwa",
+    "provenance",
+    "warden-diagnostics"
+  ],
+  "truth_notes": [
+    "No live data is asserted without a verified source.",
+    "Personal context is local-only by default.",
+    "Production deployment requires successful URL verification."
+  ],
+  "continuation": "Run publisher, validate manifests and links, verify Pages deployment, then generate the next dated edition."
+}
