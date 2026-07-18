@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "2.0",
+  "validatedAt": "2026-07-17T23:00:00-04:00",
+  "result": "PASS",
+  "checks": {
+    "requiredFiles": true,
+    "jsonParse": true,
+    "internalLinks": true,
+    "controls": true,
+    "responsiveViewport": true,
+    "reducedMotion": true,
+    "archiveIntegrity": true,
+    "secretScan": true
+  },
+  "issues": [],
+  "warnings": [
+    "Live external integrations not connected",
+    "Visual cross-browser verification required after deployment"
+  ]
+}
