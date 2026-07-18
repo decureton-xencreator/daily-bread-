@@ -1,0 +1,1 @@
+{"schemaVersion":"2.0","storage":"local-first","missions":[{"id":"xdbs-2","title":"Complete XDBS 2.0","status":"active","truthState":"repository-backed","objectives":["shell","series","validation-deployment"]}]}

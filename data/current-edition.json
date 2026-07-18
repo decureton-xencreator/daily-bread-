@@ -1,0 +1,6 @@
+{
+  "$schema":"../schemas/edition.schema.json","id":"xdbs-2026-07-17","editionVersion":"2.0.0","publishedAt":"2026-07-17T23:00:00-04:00","title":"Make the system visible.",
+  "operatingContext":{"mode":"execution","locationState":"declared-by-user-or-unavailable","calendarState":"integration-ready","weatherState":"integration-ready"},
+  "primeDirective":"Finish one visible Xen output.","truthState":"repository-backed","liveDataPolicy":"No external data is presented as live without verified retrieval and timestamp.",
+  "canonicalInheritance":["XPF-002","XOS","XKR","XPS","XDL","XDBS-001","XMI","Academy Command","Xen Globe","AM-006","XRL-001","XCB-001"]
+}

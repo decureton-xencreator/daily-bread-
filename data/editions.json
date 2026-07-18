@@ -1,30 +1,8 @@
 {
-  "schema_version": "1.1",
-  "publisher": "XDBS — Xen Daily Bread Studio",
-  "current": "https://decureton-xencreator.github.io/xei-genesis-preview/daily-bread/editions/2026/07/daily-bread-2026-07-16.html",
-  "updated_at": "2026-07-16T08:06:00-04:00",
-  "editions": [
-    {
-      "date": "2026-07-16",
-      "title": "Own the morning. Protect the mission.",
-      "path": "https://decureton-xencreator.github.io/xei-genesis-preview/daily-bread/editions/2026/07/daily-bread-2026-07-16.html",
-      "source_repository": "decureton-xencreator/xei-genesis-preview",
-      "source_path": "daily-bread/editions/2026/07/daily-bread-2026-07-16.html",
-      "source_blob_sha": "3b0ac82758ab1762c3924f95c6d4c5f9df0cb653",
-      "mode": "recovery-first execution",
-      "location": "Danbury, Connecticut (estimated)",
-      "calendar_anchor": "Dr Laura Blakely — 9:00 AM EDT",
-      "status": "published",
-      "format": "xps-diamond-html"
-    },
-    {
-      "date": "2026-07-14",
-      "title": "Home is the mission. Recovery is the work.",
-      "path": "editions/2026/07/daily-bread-2026-07-14.html",
-      "mode": "recovery",
-      "location": "Danbury, Connecticut",
-      "status": "published",
-      "format": "xps-html"
-    }
+  "schema_version":"2.0","publisher":"XDBS — Xen Daily Bread Studio","current":"index.html","updated_at":"2026-07-17T23:00:00-04:00",
+  "editions":[
+    {"date":"2026-07-17","title":"Make the system visible.","summary":"XDBS 2.0 launch edition — execution, Academy continuity and repository proof.","path":"editions/2026/07/daily-bread-2026-07-17.html","mode":"execution","tags":["XDBS 2.0","launch","Academy","mission control"],"status":"published","version":"2.0.0"},
+    {"date":"2026-07-14","title":"Home is the mission. Recovery is the work.","summary":"Recovery-first orientation and measured return.","path":"editions/2026/07/daily-bread-2026-07-14.html","mode":"recovery","tags":["home","recovery"],"status":"published","version":"1.0"},
+    {"date":"2026-07-13","title":"Land softly. Re-enter deliberately.","summary":"Travel transition and re-entry posture.","path":"editions/2026/07/daily-bread-2026-07-13.html","mode":"travel","tags":["travel","re-entry"],"status":"published","version":"1.0"}
   ]
 }
