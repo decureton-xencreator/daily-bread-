@@ -1,0 +1,1 @@
+{"name":"Xen Daily Bread","short_name":"Daily Bread","description":"Private-by-default executive operating environment","start_url":"./","scope":"./","display":"standalone","background_color":"#05080f","theme_color":"#05080f","icons":[{"src":"assets/icons/xen-mark.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
