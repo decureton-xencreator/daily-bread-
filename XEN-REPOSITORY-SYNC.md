@@ -42,3 +42,8 @@ Daily Bread may consume Academy proof/progress signals, never raw private home m
 ## XSMDE 1.0.0 completion — 2026-07-19
 
 Daily Bread inherits Academy progress/status interfaces only; private spatial evidence remains project-scoped and excluded by default.
+
+
+## XSMDE public product deployment — 2026-07-19
+
+Daily Bread may now consume Academy mission/progress summaries only through an explicit product dependency; raw spatial evidence remains excluded by default.
