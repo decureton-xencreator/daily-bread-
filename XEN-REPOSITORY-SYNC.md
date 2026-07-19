@@ -22,9 +22,13 @@ This repository is the Xen Daily Bread runtime and publication implementation. I
 
 - `decureton-xencreator/xen-operating-system` — canonical source of truth
 - `decureton-xencreator/daily-bread-` — Daily Bread implementation
-- `decureton-xencreator/xei-genesis-preview` — public Xenesis preview
+- `decureton-xencreator/xei-Xenesis-preview` — public Xenesis preview
 - `decureton-xencreator/xenengine-site` — public Xen Engine website
 
 ## Sync state
 
 Registered and synchronized with the active Xen repository network as of 2026-07-18.
+
+## XSMDE-002 propagation — 2026-07-19
+
+Daily Bread inherits only applicable Academy mission, safety, progress, Voice Learning, Dashboard, and Resume Anywhere signals; it does not claim spatial reconstruction.
