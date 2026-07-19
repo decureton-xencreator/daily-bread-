@@ -32,3 +32,8 @@ Registered and synchronized with the active Xen repository network as of 2026-07
 ## XSMDE-002 propagation — 2026-07-19
 
 Daily Bread inherits only applicable Academy mission, safety, progress, Voice Learning, Dashboard, and Resume Anywhere signals; it does not claim spatial reconstruction.
+
+
+## XSMDE-003 propagation — 2026-07-19
+
+Daily Bread may consume Academy proof/progress signals, never raw private home media by default.
