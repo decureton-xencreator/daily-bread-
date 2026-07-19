@@ -50,3 +50,11 @@ Daily Bread may now consume Academy mission/progress summaries only through an e
 Daily Bread inherits the active Xen Governance Warden lifecycle and truth gates from the canonical activation receipt at `Governance/Warden/WARDEN-ACTIVATION-2026-07-19.md`.
 
 Warden enforcement applies to synchronization, dependency inheritance, release-state truth, resumable mission continuity, and evidence-backed completion. This record does not claim a continuously hosted Warden service inside Daily Bread unless separate runtime evidence exists.
+
+## XAA-001 Academy synchronization — 2026-07-19
+
+Daily Bread inherits the Xen Academy Dashboard snapshot contract from canonical `Foundation/XAA/XAA-001.md` and `Foundation/XAA/XAA-MANIFEST.json`.
+
+The Daily Bread Academy section shall surface, when verified state exists: active courses, current mission or lesson, progress, score or mastery, XP, streak, neglected-course alerts, and recommended next actions. It is a derivative presentation surface and shall not fabricate course state, persistence, XP, or certification.
+
+AM-002 authorizes routine snapshot synchronization without repeated confirmation. XGW-001 applies truth, privacy, evidence, and continuity gates to every Academy summary.
