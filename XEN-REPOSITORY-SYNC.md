@@ -37,3 +37,8 @@ Daily Bread inherits only applicable Academy mission, safety, progress, Voice Le
 ## XSMDE-003 propagation — 2026-07-19
 
 Daily Bread may consume Academy proof/progress signals, never raw private home media by default.
+
+
+## XSMDE 1.0.0 completion — 2026-07-19
+
+Daily Bread inherits Academy progress/status interfaces only; private spatial evidence remains project-scoped and excluded by default.
