@@ -1,32 +1,21 @@
 {
   "$schema": "../schemas/edition.schema.json",
-  "id": "xdbs-2026-07-18",
-  "editionVersion": "2.1.0",
-  "publishedAt": "2026-07-18T12:00:00-04:00",
-  "title": "Orient the day. Move with purpose.",
-  "archivePath": "editions/2026/07/daily-bread-2026-07-18-v2.html",
+  "id": "xdbs-2026-07-20",
+  "editionVersion": "2.2.0",
+  "publishedAt": "2026-07-20T04:58:00-04:00",
+  "title": "Turn signal into command.",
+  "archivePath": "editions/2026/07/daily-bread-2026-07-20.html",
   "operatingContext": {
-    "mode": "adaptive",
-    "locationState": "local-only-or-declared",
-    "calendarState": "integration-ready",
-    "weatherState": "integration-ready"
+    "mode": "evidence",
+    "locationState": "public-regional-weather-only",
+    "calendarState": "unavailable-not-connected",
+    "weatherState": "live-retrieval-2026-07-20T04:58:00-04:00",
+    "marketsState": "indicative-retrieval-2026-07-20T08:44:00Z"
   },
-  "primeDirective": "Orient clearly. Choose one clean move. Finish it before expanding the field.",
-  "truthState": "repository-backed",
-  "liveDataPolicy": "No external data is presented as live without verified retrieval, provenance, and timestamp.",
-  "privacyPolicy": "Sensitive personal context remains local and is not hardcoded into public source.",
-  "canonicalInheritance": [
-    "XPF-002",
-    "XOS",
-    "XKR",
-    "XPS",
-    "XDL",
-    "XDBS-001",
-    "XMI",
-    "Academy Command",
-    "Xen Globe",
-    "AM-006",
-    "XRL-001",
-    "XCB-001"
-  ]
+  "primeDirective": "Resume. Execute. Verify.",
+  "academyDirective": "Complete the twelve-minute Typing minimum, then close one repository evidence loop.",
+  "truthState": "repository-backed-with-timestamped-live-sources",
+  "liveDataPolicy": "Every current claim carries a source and freshness timestamp; unavailable integrations are not simulated.",
+  "privacyPolicy": "Sensitive personal context, scores, itinerary, calendar, biometrics and notes remain outside public source.",
+  "canonicalInheritance": ["XPF-002","XOS","XKR","XPS","XDL","XDBS-001","XMI","Academy Command","Xen Globe","AM-002-v1.3","XRR-001","MWI-001","XSMEO","XCA","XNI","XHIL","Project Phoenix","XSoT"]
 }

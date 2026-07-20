@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "2.2",
+  "version": "2.2.0",
+  "date": "2026-07-20",
+  "edition": "editions/2026/07/daily-bread-2026-07-20.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-blocked",
+  "releaseGates": {"passed": 8, "total": 9, "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification outstanding"},
+  "freshSources": [
+    "https://www.nhc.noaa.gov/gtwo.php",
+    "https://www.centcom.mil/MEDIA/PUBLIC-RELEASES/",
+    "https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/",
+    "https://www.imf.org/en/publications/weo/issues/2026/07/08/world-economic-outlook-update-july-2026",
+    "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-summary.htm",
+    "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/spain-argentina-final-report-highlights"
+  ],
+  "privacy": "No sensitive personal context, itinerary, scores, calendar, biometrics, credentials or notes are published.",
+  "deployment": {"target": "https://decureton-xencreator.github.io/daily-bread-/", "verified": false, "blocker": "GitHub Pages site not enabled; workflow integration cannot create it without repository-administration permission."},
+  "continuation": "Enable GitHub Pages with GitHub Actions, rerun Publish XDBS Daily Bread, verify root and dated URL, then record deployment evidence."
+}

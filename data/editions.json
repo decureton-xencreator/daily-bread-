@@ -1,9 +1,19 @@
 {
-  "schema_version": "2.1",
+  "schema_version": "2.2",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-18T12:00:00-04:00",
+  "updated_at": "2026-07-20T04:58:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-20",
+      "title": "Turn signal into command.",
+      "summary": "Fresh world, weather, market and sports intelligence translated into an Academy prime directive, one evidence mission and a recovery posture.",
+      "path": "editions/2026/07/daily-bread-2026-07-20.html",
+      "mode": "evidence",
+      "tags": ["XDBS 2.2", "Academy Command", "Hormuz", "World Cup", "Warden", "Mission Control"],
+      "status": "published",
+      "version": "2.2.0"
+    },
     {
       "date": "2026-07-18",
       "title": "Orient the day. Move with purpose.",
