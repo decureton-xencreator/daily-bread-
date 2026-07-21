@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.0 — 2026-07-21
+
+- Published the permanent July 21 living edition with fresh storm, U.S.–Iran, market, Arizona-primary, cybersecurity and New York baseball intelligence.
+- Kept Academy Command as the prime directive and advanced the one-loop evidence mission.
+- Inherited Xenesis fail-closed protocol enforcement and Xen Evolution Watch into Daily Bread governance.
+- Updated the current alias, archive, source manifest, release trail, provenance drawer, diagnostics and PWA cache.
+- Preserved calendar, biometrics, itinerary, Academy scores and local notes outside public source.
+- Re-ran Warden structural, privacy, archive and link validation before publication.
+
 ## 2.2.0 — 2026-07-20
 
 - Published a permanent July 20 living edition with fresh, linked weather, world, market and World Cup intelligence.

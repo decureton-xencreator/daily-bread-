@@ -1,9 +1,19 @@
 {
-  "schema_version": "2.2",
+  "schema_version": "2.3",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-20T04:58:00-04:00",
+  "updated_at": "2026-07-21T05:01:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-21",
+      "title": "Hold the line. Close the loop.",
+      "summary": "Fresh storm, geopolitical, market, technology and New York sports intelligence translated into Academy continuity and one evidence-closing mission.",
+      "path": "editions/2026/07/daily-bread-2026-07-21.html",
+      "mode": "evidence",
+      "tags": ["XDBS 2.3", "Academy Command", "U.S.–Iran", "Storms", "Cybersecurity", "Warden", "Mission Control"],
+      "status": "published",
+      "version": "2.3.0"
+    },
     {
       "date": "2026-07-20",
       "title": "Turn signal into command.",

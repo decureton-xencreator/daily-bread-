@@ -3,7 +3,7 @@ import json,re
 from html.parser import HTMLParser
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];issues=[];warnings=[]
-required=['index.html','archive/index.html','data/editions.json','data/current-edition.json','data/academy.json','data/missions.json','data/sources.json','data/releases.json','data/preferences.schema.json','schemas/edition.schema.json','manifest.webmanifest','service-worker.js','assets/css/xdbs.css','app/app.js','app/state.js','app/data.js','app/commands.js','releases/XDBS-2.0.0.json','.github/workflows/pages.yml','.nojekyll']
+required=['index.html','archive/index.html','data/editions.json','data/current-edition.json','data/academy.json','data/missions.json','data/sources.json','data/releases.json','data/preferences.schema.json','schemas/edition.schema.json','manifest.webmanifest','service-worker.js','assets/css/xdbs.css','app/app.js','app/state.js','app/data.js','app/commands.js','releases/XDBS-2.3.0.json','.github/workflows/pages.yml','.nojekyll']
 for p in required:
  if not (ROOT/p).is_file():issues.append(f'missing:{p}')
 for p in ROOT.rglob('*.json'):
@@ -33,13 +33,16 @@ for series in ['SERIES 02','SERIES 03','SERIES 04','SERIES 05','SERIES 11','SERI
 manifest=json.loads((ROOT/'data/editions.json').read_text())
 for e in manifest['editions']:
  if not (ROOT/e['path']).is_file():issues.append(f'archive-missing:{e["path"]}')
+current=json.loads((ROOT/'data/current-edition.json').read_text())
+if not (ROOT/current['archivePath']).is_file():issues.append(f'current-alias-missing:{current["archivePath"]}')
+if not manifest['editions'] or manifest['editions'][0]['path']!=current['archivePath']:issues.append('current-alias-manifest-drift')
 secret_pattern=re.compile(r'(ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|sk-[A-Za-z0-9]{20,})')
 for p in ROOT.rglob('*'):
  if p.is_file() and '.git' not in p.parts:
   try:
    if secret_pattern.search(p.read_text(errors='ignore')):issues.append(f'possible-secret:{p.relative_to(ROOT)}')
   except:pass
-report={'schemaVersion':'2.2','validatedAt':'2026-07-20T04:58:00-04:00','result':'PASS' if not issues else 'FAIL','checks':{'requiredFiles':not any(x.startswith('missing:') for x in issues),'jsonParse':not any(x.startswith('invalid-json') for x in issues),'internalLinks':not any(x.startswith('broken-link') for x in issues),'controls':not any(x.startswith('empty-button') for x in issues),'responsiveViewport':not any(x.startswith('viewport') for x in issues),'reducedMotion':'reduced-motion:missing' not in issues,'archiveIntegrity':not any(x.startswith('archive-missing') for x in issues),'secretScan':not any(x.startswith('possible-secret') for x in issues)},'issues':issues,'warnings':['Calendar, route, biometric and personalized sports integrations are not connected','GitHub Pages requires repository-administration enablement','Visual cross-browser verification required after deployment']}
+report={'schemaVersion':'2.3','validatedAt':'2026-07-21T05:01:00-04:00','result':'PASS' if not issues else 'FAIL','checks':{'requiredFiles':not any(x.startswith('missing:') for x in issues),'jsonParse':not any(x.startswith('invalid-json') for x in issues),'internalLinks':not any(x.startswith('broken-link') for x in issues),'controls':not any(x.startswith('empty-button') for x in issues),'responsiveViewport':not any(x.startswith('viewport') for x in issues),'reducedMotion':'reduced-motion:missing' not in issues,'archiveIntegrity':not any(x.startswith(('archive-missing','current-alias')) for x in issues),'secretScan':not any(x.startswith('possible-secret') for x in issues)},'issues':issues,'warnings':['Calendar, route, biometric and personalized sports integrations are not connected','Production deployment requires public URL verification','Visual cross-browser verification required after deployment']}
 (ROOT/'reports').mkdir(exist_ok=True);(ROOT/'reports/validation-report.json').write_text(json.dumps(report,indent=2)+'\n')
 if issues:raise SystemExit('XDBS validation failed:\n'+'\n'.join(issues))
-print('XDBS 2.2 validation passed')
+print('XDBS 2.3 validation passed')
