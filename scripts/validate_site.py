@@ -3,7 +3,7 @@ import json,re
 from html.parser import HTMLParser
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];issues=[];warnings=[]
-required=['index.html','archive/index.html','data/editions.json','data/current-edition.json','data/academy.json','data/missions.json','data/sources.json','data/releases.json','data/preferences.schema.json','schemas/edition.schema.json','manifest.webmanifest','service-worker.js','assets/css/xdbs.css','app/app.js','app/state.js','app/data.js','app/commands.js','releases/XDBS-2.3.0.json','.github/workflows/pages.yml','.nojekyll']
+required=['index.html','archive/index.html','data/editions.json','data/current-edition.json','data/academy.json','data/missions.json','data/sources.json','data/releases.json','data/preferences.schema.json','schemas/edition.schema.json','manifest.webmanifest','service-worker.js','assets/css/xdbs.css','app/app.js','app/state.js','app/academy.js','app/data.js','app/commands.js','releases/XDBS-2.3.0.json','.github/workflows/pages.yml','.nojekyll']
 for p in required:
  if not (ROOT/p).is_file():issues.append(f'missing:{p}')
 for p in ROOT.rglob('*.json'):
