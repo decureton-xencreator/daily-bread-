@@ -27,9 +27,16 @@
   },
   "remainingGaps": [
     "GitHub Pages deployment verification",
-    "durable private Academy progress synchronization",
     "connected calendar, travel route, and biometric services",
-    "automated live-source freshness monitoring",
-    "visual cross-browser and device acceptance against deployed target"
-  ]
+    "visual cross-browser and device acceptance against deployed target",
+    "cross-device/private-account Academy synchronization"
+  ],
+  "runtimeContinuation": {
+    "date": "2026-07-21",
+    "academyLocalPersistence": "implemented",
+    "academyCrossDeviceSynchronization": "pending",
+    "sourceFreshnessMonitoring": "implemented",
+    "workflow": ".github/workflows/source-freshness.yml",
+    "report": "reports/runtime-gap-closure-2026-07-21.md"
+  }
 }

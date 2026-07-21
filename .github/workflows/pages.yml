@@ -37,7 +37,11 @@ jobs:
         with:
           python-version: "3.12"
       - name: Validate publication structure
-        run: python scripts/validate_site.py
+        run: |
+          python scripts/validate_site.py
+          python scripts/validate_xdbs_v3_sync.py
+          python scripts/validate_source_freshness.py --max-age-hours 36
+          node scripts/validate_academy_runtime.mjs
 
   deploy:
     needs: validate

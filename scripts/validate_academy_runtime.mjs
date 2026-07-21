@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {hydrateAcademy,resumeCourse,completeLesson} from '../app/academy.js';
+const course={id:'typing',progress:18,xp:420,score:78,streak:0,lesson:'Accuracy before speed',mission:'Frictionless input'};
+let state=hydrateAcademy({},[course]);
+assert.equal(state.academy.typing.progress,18);
+state=resumeCourse(state,course,new Date('2026-07-21T12:00:00Z'));
+assert.equal(state.academy.typing.sessions,1);
+assert.equal(state.academy.typing.status,'Active locally');
+assert.equal(state.academy.typing.lastResumedAt,'2026-07-21T12:00:00.000Z');
+state=completeLesson(state,course,new Date('2026-07-21T12:10:00Z'));
+assert.equal(state.academy.typing.progress,23);
+assert.equal(state.academy.typing.xp,470);
+assert.equal(state.academy.typing.completedLessons,1);
+state=completeLesson(state,course,new Date('2026-07-22T12:10:00Z'));
+assert.equal(state.academy.typing.streak,2);
+const restored=hydrateAcademy(JSON.parse(JSON.stringify(state)),[course]);
+assert.equal(restored.academy.typing.completedLessons,2);
+console.log('Academy persistence runtime: PASS (9 assertions)');
