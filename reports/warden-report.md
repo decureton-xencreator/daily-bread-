@@ -27,3 +27,7 @@
 ## Exact continuation
 
 Enable Pages with **GitHub Actions** in repository settings, rerun workflow `29817324127`, verify the root and July 21 archive URL, then change deployment truth state to verified only if both respond with XDBS 2.3.0.
+
+## XDBS v3 synchronization checkpoint — 2026-07-21
+
+Canonical architecture v3.0 is now explicitly bound to implementation release 2.3.0 by `releases/XDBS-3.0.0-sync.json` and `scripts/validate_xdbs_v3_sync.py`. Repository synchronization controls are complete; deployment remains blocked and unverified.

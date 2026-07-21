@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "3.0-sync",
+  "id": "XDBS-SWS-2026-07-21",
+  "status": "repository-synchronized",
+  "truthState": "REPOSITORY_COMPLETE_EXTERNAL_PENDING",
+  "canonicalArchitectureVersion": "3.0",
+  "implementationRelease": "2.3.0",
+  "auditBranch": "agent/daily-bread-sync-2026-07-21",
+  "inputCommits": {
+    "canonical": "ae1327b7129bfb43a0b997664434032dbb021f26",
+    "derivative": "9ec8fd1eadad2ef973125a26b6d2902efc794a31"
+  },
+  "auditReports": {
+    "canonical": "Reports/SWS-DAILY-BREAD-WARDEN-GAP-AUDIT-2026-07-21.md",
+    "derivative": "reports/warden-gap-audit-2026-07-21.md"
+  },
+  "validation": {
+    "command": "python scripts/validate_xdbs_v3_sync.py",
+    "checks": 16,
+    "fixturePositive": "PASS",
+    "fixtureNegativeTruthGate": "PASS (rejected deployment overstatement)"
+  },
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "verified": false,
+    "blocker": "GitHub Pages site activation and successful workflow/public endpoint verification remain required."
+  },
+  "remainingGaps": [
+    "GitHub Pages deployment verification",
+    "durable private Academy progress synchronization",
+    "connected calendar, travel route, and biometric services",
+    "automated live-source freshness monitoring",
+    "visual cross-browser and device acceptance against deployed target"
+  ]
+}
