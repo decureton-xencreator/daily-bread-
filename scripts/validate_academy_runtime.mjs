@@ -5,6 +5,8 @@ let state=hydrateAcademy({},[course]);
 assert.equal(state.academy.typing.progress,18);
 state=resumeCourse(state,course,new Date('2026-07-21T12:00:00Z'));
 assert.equal(state.academy.typing.sessions,1);
+assert.equal(state.academy.typing.status,'Active locally');
+assert.equal(state.academy.typing.lastResumedAt,'2026-07-21T12:00:00.000Z');
 state=completeLesson(state,course,new Date('2026-07-21T12:10:00Z'));
 assert.equal(state.academy.typing.progress,23);
 assert.equal(state.academy.typing.xp,470);
