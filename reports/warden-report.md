@@ -4,7 +4,7 @@
 
 **Release gates:** 8 / 9 passed
 
-**Deployment:** UNVERIFIED — public root and dated archive must both return this release after push.
+**Deployment:** BLOCKED — workflow `29817324127` failed because the Pages site does not exist and the workflow integration cannot create it.
 
 ## Capability truth states
 
@@ -14,7 +14,7 @@
 - Academy scores, XP, streak and course activity: **Demonstration data / local synchronization model**.
 - Entertainment and XMI recommendations: **Demonstration data**.
 - Calendar, private travel routes, health biometrics, personalized sports feed and AI-agent execution: **Not connected / unavailable**.
-- GitHub Pages workflow: **Repository-backed**; production truth state remains unverified until both URLs return XDBS 2.3.0.
+- GitHub Pages workflow: **Repository-backed / failed**; `actions/configure-pages` returned `Resource not accessible by integration` while attempting to create the missing Pages site.
 
 ## Findings
 
@@ -26,4 +26,4 @@
 
 ## Exact continuation
 
-Commit and push the July 21 transaction, inspect `Publish XDBS Daily Bread`, verify the root and July 21 archive URL, then change deployment truth state to verified only if both respond with XDBS 2.3.0.
+Enable Pages with **GitHub Actions** in repository settings, rerun workflow `29817324127`, verify the root and July 21 archive URL, then change deployment truth state to verified only if both respond with XDBS 2.3.0.

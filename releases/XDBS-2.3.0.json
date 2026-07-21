@@ -4,7 +4,7 @@
   "date": "2026-07-21",
   "edition": "editions/2026/07/daily-bread-2026-07-21.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-unverified",
+  "status": "repository-published-deployment-blocked",
   "releaseGates": {"passed": 8, "total": 9, "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification outstanding"},
   "freshSources": [
     "https://www.cbsnews.com/",
@@ -16,6 +16,6 @@
     "https://techcrunch.com/2026/"
   ],
   "privacy": "No sensitive personal context, itinerary, scores, calendar, biometrics, credentials or notes are published.",
-  "deployment": {"target": "https://decureton-xencreator.github.io/daily-bread-/", "verified": false, "blocker": "Public root and dated archive not yet verified for this release."},
-  "continuation": "Push main, inspect Publish XDBS Daily Bread, verify root and dated URL, then record deployment evidence."
+  "deployment": {"target": "https://decureton-xencreator.github.io/daily-bread-/", "verified": false, "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/29817324127", "blocker": "GitHub Pages site does not exist. actions/configure-pages failed with Resource not accessible by integration; repository-level Pages activation is required."},
+  "continuation": "Enable Pages with GitHub Actions in repository settings, rerun workflow 29817324127, then verify the root and July 21 dated URL."
 }
