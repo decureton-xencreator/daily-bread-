@@ -1,0 +1,37 @@
+{
+  "schema": "xen/alpha-one-daily-bread-profile/v1",
+  "pilotId": "REPLACE_WITH_PILOT_ID",
+  "product": "Xen Daily Bread",
+  "serviceVersion": "2.4.0",
+  "serviceEndpoint": "https://decureton-xencreator.github.io/daily-bread-/",
+  "tenantId": "REPLACE_WITH_TENANT_ID",
+  "dataRegion": "REPLACE_WITH_DATA_REGION",
+  "identityProviderId": "REPLACE_WITH_IDENTITY_PROVIDER_ID",
+  "rootAuthority": "Darren Cureton",
+  "pilotUsers": ["REPLACE_WITH_APPROVED_PILOT_USER_ID"],
+  "experience": {
+    "cadence": "daily",
+    "deliveryWindow": "REPLACE_WITH_LOCAL_DELIVERY_WINDOW",
+    "timezone": "America/New_York",
+    "modules": ["executive-brief", "academy", "mission-control", "archive"]
+  },
+  "commercial": {
+    "model": "founder-pilot",
+    "currency": "USD",
+    "pilotPrice": 0,
+    "durationDays": 30
+  },
+  "successMetrics": [
+    {"id": "daily-open-rate", "name": "Daily open rate", "target": 0.7, "unit": "ratio"},
+    {"id": "weekly-active-days", "name": "Weekly active days", "target": 4, "unit": "days"},
+    {"id": "useful-rating", "name": "Average usefulness rating", "target": 4, "unit": "score_of_5"}
+  ],
+  "telemetry": {"mode": "privacy-minimized", "retentionDays": 30, "rawPersonalContent": false},
+  "secretRefs": ["ALPHA_ONE_IDENTITY_CREDENTIAL"],
+  "approvals": {
+    "privacy": "REPLACE_WITH_EVIDENCE_ID",
+    "commercial": "REPLACE_WITH_EVIDENCE_ID",
+    "production": "REPLACE_WITH_EVIDENCE_ID",
+    "acceptanceOwner": "REPLACE_WITH_EVIDENCE_ID"
+  }
+}
