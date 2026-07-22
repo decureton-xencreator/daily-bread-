@@ -43,6 +43,7 @@ jobs:
           python scripts/validate_source_freshness.py --max-age-hours 36
           node scripts/validate_academy_runtime.mjs
           node --test tests/saturday-mirror.test.mjs
+          node --test tests/alpha-one-*.test.mjs
 
   deploy:
     needs: validate
@@ -52,13 +53,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Build immutable publication artifact
+        shell: bash
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '_site' ./ _site/
+          mkdir -p _site/.well-known
+          printf '{"schema":"xen/alpha-one-release-marker/v1","commit":"%s","endpoint":"https://decureton-xencreator.github.io/daily-bread-/","state":"DEPLOYED"}\n' "${{ github.sha }}" > _site/.well-known/xen-alpha-one-release.json
       - name: Configure or enable GitHub Pages
         uses: actions/configure-pages@v5
         with:
           enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
