@@ -49,7 +49,13 @@ def main() -> int:
     require(sync.get("truthState") == "REPOSITORY_COMPLETE_EXTERNAL_PENDING", "sync-truth-state", issues)
     require(len(sync.get("inputCommits", {})) == 2, "input-commit-lineage", issues)
     normalized_warden = warden.replace("**", "")
-    require("Deployment: BLOCKED" in normalized_warden, "warden-deployment-boundary", issues)
+    deployment_blocked = "Deployment: BLOCKED" in normalized_warden
+    deployment_verified = (
+        "Deployment: VERIFIED" in normalized_warden
+        and "workflow run" in normalized_warden
+        and "HTTP 200" in normalized_warden
+    )
+    require(deployment_blocked or deployment_verified, "warden-deployment-boundary", issues)
 
     report = {"schemaVersion": "3.0-sync", "result": "PASS" if not issues else "FAIL", "checks": 16, "issues": issues}
     print(json.dumps(report, indent=2))

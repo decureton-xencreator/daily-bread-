@@ -4,8 +4,8 @@
   "date": "2026-07-22",
   "edition": "editions/2026/07/daily-bread-2026-07-22.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-blocked",
-  "releaseGates": {"passed": 8, "total": 9, "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification outstanding"},
+  "status": "deployed-verified",
+  "releaseGates": {"passed": 9, "total": 9, "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit + deployment verification"},
   "freshSources": [
     "https://www.theguardian.com/world/live/2026/jul/22/middle-east-us-iran-war-trump-houthis-strait-of-hormuz-nuclear-pickaxe-mountain-latest-news-updates",
     "https://www.theguardian.com/world/2026/jul/21/houthis-threaten-attack-tankers-saudi-arabian-ports-red-sea-shipping",
@@ -16,6 +16,13 @@
     "https://techcrunch.com/2026/"
   ],
   "privacy": "No sensitive personal context, itinerary, scores, calendar, biometrics, credentials or notes are published.",
-  "deployment": {"target": "https://decureton-xencreator.github.io/daily-bread-/", "verified": false, "blocker": "Pages state must be rechecked after the July 22 release workflow."},
-  "continuation": "Push main, inspect the release workflow, then verify the root and July 22 dated URL."
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-22.html",
+    "verified": true,
+    "verifiedAt": "2026-07-22T09:20:00Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/29907425807",
+    "evidence": "Workflow completed successfully; root and dated edition returned HTTP 200 with July 22 release content."
+  },
+  "continuation": "Generate the July 23 edition from release 2.4.0 while preserving local-only Academy metrics and fail-closed source truth states."
 }

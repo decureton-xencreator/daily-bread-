@@ -2,9 +2,9 @@
 
 **Evaluated:** 2026-07-22 05:00 EDT
 
-**Release gates:** 8 / 9 passed
+**Release gates:** 9 / 9 passed
 
-**Deployment:** BLOCKED — Pages activation remains externally pending; July 22 workflow and public endpoints must be checked after commit.
+**Deployment:** VERIFIED — workflow run `29907425807` completed successfully; the production root and immutable July 22 edition returned HTTP 200 with matching release content.
 
 ## Capability truth states
 
@@ -15,7 +15,9 @@
 - Entertainment and XMI recommendations: **Demonstration data**.
 - Calendar, private travel routes, health biometrics, personalized sports feed and AI-agent execution: **Not connected / unavailable**.
 - Alpha One manual client, activation gate and governed lifecycle: **Repository implemented**; live pilot and measured outcome pending.
-- GitHub Pages workflow: **Repository-backed**; July 22 deployment evidence pending.
+- GitHub Pages workflow: **Live**; [run 29907425807](https://github.com/decureton-xencreator/daily-bread-/actions/runs/29907425807) completed successfully.
+- Production root: **Live**; `https://decureton-xencreator.github.io/daily-bread-/` returned HTTP 200 with July 22 content.
+- Immutable edition: **Live**; `https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-22.html` returned HTTP 200 with July 22 content.
 
 ## Findings
 
@@ -27,7 +29,7 @@
 
 ## Exact continuation
 
-Commit the July 22 release, inspect its workflow, verify the root and dated archive, then change deployment truth state only if both return release 2.4.0.
+Generate the July 23 edition from release 2.4.0 while preserving local-only Academy metrics and fail-closed source truth states.
 
 ## XDBS v3 synchronization checkpoint — 2026-07-22
 

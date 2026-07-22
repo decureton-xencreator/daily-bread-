@@ -26,6 +26,6 @@ export const risks=[
 export const timeline=[['Now','Orient, hydrate and choose one governed evidence loop'],['Next','Academy minimum · Typing 12 minutes'],['Morning','Use the reliable movement window and focus block'],['Midday','Verify weather, costs, sources and commitments'],['Afternoon','Stay flexible; validate and record evidence'],['Evening','Choose one baseball or entertainment session'],['Wind-down','Capture continuation and release the day']];
 export const evolution=[
  {metric:'2.4.0',title:'Current edition',body:'Fresh July 22 intelligence, Academy prime directive and repository-backed archive.',status:'Repository-backed'},
- {metric:'8/9',title:'Release gates passed',body:'Content, archive, manifests, provenance, accessibility structure, privacy, validation and commit are implemented.',status:'Calculated'},
+ {metric:'9/9',title:'Release gates passed',body:'Content, archive, manifests, provenance, accessibility structure, privacy, validation, commit and deployment verification are complete.',status:'Calculated'},
  {metric:'v3',title:'Synchronized architecture',body:'Fail-closed XDBS v3, Academy persistence, source freshness, Alpha One lifecycle and canonical stabilization are reflected.',status:'Repository-backed'},
  {metric:'0',title:'Invented live feeds',body:'Every live claim is timestamped and sourced; unavailable personal integrations remain unavailable.',status:'Warden rule'}];
