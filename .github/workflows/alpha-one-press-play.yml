@@ -58,6 +58,7 @@ jobs:
       - name: Validate contracts
         run: |
           node --test tests/alpha-one-*.test.mjs
+          node scripts/validate_xen_alive.mjs
           python scripts/validate_site.py
       - name: Compile activation plan
         run: node scripts/compile_alpha_one_profile.mjs --profile "${{ inputs.profile_path || 'config/alpha-one.daily-bread.json' }}" --mode "${{ steps.stage.outputs.mode }}" --output reports/alpha-one-plan.json
