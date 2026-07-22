@@ -1,0 +1,52 @@
+{
+  "contract_id": "XDBS-XMR-001",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "surface": "Daily Bread",
+  "trigger": {
+    "day_of_week": 6,
+    "day": "SATURDAY",
+    "timezone": "America/New_York",
+    "manual_commands": [
+      "saturday mirror",
+      "run mirror review",
+      "review my week"
+    ],
+    "missed_run": "offer_on_next_open"
+  },
+  "sections": [
+    "wins",
+    "misses_and_drift",
+    "warden_truth",
+    "learning",
+    "health_and_energy",
+    "money_and_mission",
+    "relationships_and_legacy",
+    "xer_prevention",
+    "carry_forward",
+    "next_week_primary_objective"
+  ],
+  "persistence": {
+    "storage_class": "PRIVATE_LOCAL_OR_AUTHORIZED_BACKEND",
+    "resume_key": "xmr:week-ending:{YYYY-MM-DD}",
+    "required_fields": [
+      "review_id",
+      "week_ending",
+      "status",
+      "completed_sections",
+      "carry_forward",
+      "next_action",
+      "updated_at",
+      "storage_class"
+    ]
+  },
+  "fail_closed": {
+    "invent_missing_data": false,
+    "claim_completion_without_all_sections": false,
+    "expose_private_answers_publicly": false
+  },
+  "canonical": {
+    "repository": "decureton-xencreator/xen-operating-system",
+    "path": "Governance/Mirror/XMR-001-SATURDAY-MIRROR-REVIEW.md"
+  }
+}
