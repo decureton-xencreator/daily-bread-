@@ -1,0 +1,109 @@
+name: Alpha One Live Rollback Drill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/alpha-one-live-rollback-drill.yml"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  ENDPOINT: https://decureton-xencreator.github.io/daily-bread-/
+  ROLLBACK_COMMIT: c8ed2fd620db54aaeca4a8738cc76fe1bd89b75c
+
+jobs:
+  rollback:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ROLLBACK_COMMIT }}
+      - name: Build rollback artifact
+        shell: bash
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '_site' ./ _site/
+          mkdir -p _site/.well-known
+          printf '{"schema":"xen/alpha-one-release-marker/v1","commit":"%s","endpoint":"%s","state":"DEPLOYED"}\n' "$ROLLBACK_COMMIT" "$ENDPOINT" > _site/.well-known/xen-alpha-one-release.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: alpha-one-rollback-site
+          path: _site
+      - name: Deploy rollback candidate
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: alpha-one-rollback-site
+      - name: Prove rollback
+        shell: bash
+        run: |
+          for attempt in {1..12}; do
+            marker="$(curl --fail --silent --show-error --location "${ENDPOINT}.well-known/xen-alpha-one-release.json" || true)"
+            if MARKER="$marker" node -e 'const m=JSON.parse(process.env.MARKER);if(m.commit!==process.env.ROLLBACK_COMMIT||m.state!=="DEPLOYED")process.exit(1)' 2>/dev/null; then
+              printf '%s\n' "$marker" > alpha-one-live-rollback.json
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-one-live-rollback-evidence
+          path: alpha-one-live-rollback.json
+          if-no-files-found: warn
+
+  restore:
+    needs: rollback
+    if: always()
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Build restore artifact
+        shell: bash
+        run: |
+          mkdir -p _site
+          rsync -a --exclude '.git' --exclude '_site' ./ _site/
+          mkdir -p _site/.well-known
+          printf '{"schema":"xen/alpha-one-release-marker/v1","commit":"%s","endpoint":"%s","state":"DEPLOYED"}\n' "${GITHUB_SHA}" "$ENDPOINT" > _site/.well-known/xen-alpha-one-release.json
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          name: alpha-one-restore-site
+          path: _site
+      - name: Restore current release
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: alpha-one-restore-site
+      - name: Prove restoration
+        shell: bash
+        run: |
+          for attempt in {1..12}; do
+            marker="$(curl --fail --silent --show-error --location "${ENDPOINT}.well-known/xen-alpha-one-release.json" || true)"
+            if MARKER="$marker" node -e 'const m=JSON.parse(process.env.MARKER);if(m.commit!==process.env.GITHUB_SHA||m.state!=="DEPLOYED")process.exit(1)' 2>/dev/null; then
+              printf '%s\n' "$marker" > alpha-one-live-restore.json
+              exit 0
+            fi
+            sleep 5
+          done
+          exit 1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alpha-one-live-restore-evidence
+          path: alpha-one-live-restore.json
+          if-no-files-found: warn
