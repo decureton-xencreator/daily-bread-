@@ -1,20 +1,21 @@
-# Warden Report — XDBS 2.3.0
+# Warden Report — XDBS 3.0 / Release 2.4.0
 
-**Evaluated:** 2026-07-21 05:01 EDT
+**Evaluated:** 2026-07-22 05:00 EDT
 
 **Release gates:** 8 / 9 passed
 
-**Deployment:** BLOCKED — workflow `29817324127` failed because the Pages site does not exist and the workflow integration cannot create it.
+**Deployment:** BLOCKED — Pages activation remains externally pending; July 22 workflow and public endpoints must be checked after commit.
 
 ## Capability truth states
 
 - Application shell, current alias, dated archive, manifests, release record and publisher: **Repository-backed**.
 - Command palette, focus timer, world clocks, archive search, local preferences, notes, completion state and XMI save/dismiss: **Locally functional**.
-- Weather, markets, world intelligence and sports schedule: **Live retrieval**, source-linked and timestamped for this edition.
-- Academy scores, XP, streak and course activity: **Demonstration data / local synchronization model**.
+- Weather, markets, world intelligence and sports schedule: **Live retrieval**, source-linked and timestamped for July 22.
+- Academy runtime: **Locally persistent**; public source does not expose private scores or cross-device state.
 - Entertainment and XMI recommendations: **Demonstration data**.
 - Calendar, private travel routes, health biometrics, personalized sports feed and AI-agent execution: **Not connected / unavailable**.
-- GitHub Pages workflow: **Repository-backed / failed**; `actions/configure-pages` returned `Resource not accessible by integration` while attempting to create the missing Pages site.
+- Alpha One manual client, activation gate and governed lifecycle: **Repository implemented**; live pilot and measured outcome pending.
+- GitHub Pages workflow: **Repository-backed**; July 22 deployment evidence pending.
 
 ## Findings
 
@@ -26,8 +27,8 @@
 
 ## Exact continuation
 
-Enable Pages with **GitHub Actions** in repository settings, rerun workflow `29817324127`, verify the root and July 21 archive URL, then change deployment truth state to verified only if both respond with XDBS 2.3.0.
+Commit the July 22 release, inspect its workflow, verify the root and dated archive, then change deployment truth state only if both return release 2.4.0.
 
-## XDBS v3 synchronization checkpoint — 2026-07-21
+## XDBS v3 synchronization checkpoint — 2026-07-22
 
-Canonical architecture v3.0 is now explicitly bound to implementation release 2.3.0 by `releases/XDBS-3.0.0-sync.json` and `scripts/validate_xdbs_v3_sync.py`. Repository synchronization controls are complete; deployment remains blocked and unverified.
+Canonical architecture v3.0 remains bound through `releases/XDBS-3.0.0-sync.json` and `scripts/validate_xdbs_v3_sync.py`. Release 2.4.0 adds today’s living edition without weakening external deployment gates.

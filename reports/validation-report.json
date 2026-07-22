@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "2.3",
-  "validatedAt": "2026-07-21T05:01:00-04:00",
+  "schemaVersion": "2.4",
+  "validatedAt": "2026-07-22T05:00:00-04:00",
   "result": "PASS",
   "checks": {
     "requiredFiles": true,
@@ -10,6 +10,7 @@
     "responsiveViewport": true,
     "reducedMotion": true,
     "archiveIntegrity": true,
+    "academyPublicMetrics": true,
     "secretScan": true
   },
   "issues": [],

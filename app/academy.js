@@ -3,7 +3,7 @@ function isoDay(value){return value?new Date(value).toISOString().slice(0,10):''
 export function hydrateAcademy(state,courses){
  const existing=state.academy&&typeof state.academy==='object'?state.academy:{};
  const academy={...existing};
- for(const c of courses)academy[c.id]={progress:c.progress,xp:c.xp,score:c.score,streak:c.streak,lesson:c.lesson,mission:c.mission,status:'Local browser persistence',sessions:0,completedLessons:0,lastResumedAt:null,lastCompletedAt:null,...existing[c.id]};
+ for(const c of courses)academy[c.id]={progress:0,xp:0,score:null,streak:0,lesson:c.lesson,mission:c.mission,status:'Local browser persistence',sessions:0,completedLessons:0,lastResumedAt:null,lastCompletedAt:null,...existing[c.id]};
  return {...state,academy};
 }
 export function courseView(state,course){return state.academy?.[course.id]||hydrateAcademy(state,[course]).academy[course.id]}

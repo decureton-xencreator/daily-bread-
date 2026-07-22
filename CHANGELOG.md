@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.4.0 — 2026-07-22
+
+- Published the permanent July 22 living edition with fresh weather, geopolitical, market, AI-platform and New York baseball intelligence.
+- Synchronized the current alias and archive with XDBS v3 fail-closed governance.
+- Inherited Academy local persistence, source freshness monitoring, Alpha One readiness/lifecycle, conversation federation and canonical stabilization receipts.
+- Preserved private calendar, route, biometric, Academy-score and local-note data outside public source.
+- Updated release, source, archive, provenance, Warden and offline-cache records.
+
 ## 2.3.0 — 2026-07-21
 
 - Published the permanent July 21 living edition with fresh storm, U.S.–Iran, market, Arizona-primary, cybersecurity and New York baseball intelligence.

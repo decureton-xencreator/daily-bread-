@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "2.4",
+  "version": "2.4.0",
+  "date": "2026-07-22",
+  "edition": "editions/2026/07/daily-bread-2026-07-22.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-blocked",
+  "releaseGates": {"passed": 8, "total": 9, "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification outstanding"},
+  "freshSources": [
+    "https://www.theguardian.com/world/live/2026/jul/22/middle-east-us-iran-war-trump-houthis-strait-of-hormuz-nuclear-pickaxe-mountain-latest-news-updates",
+    "https://www.theguardian.com/world/2026/jul/21/houthis-threaten-attack-tankers-saudi-arabian-ports-red-sea-shipping",
+    "https://www.weather.gov/okx/",
+    "https://www.wsj.com/business/media/google-search-publishers-ai-content-0fb06e41",
+    "https://www.wsj.com/market-data",
+    "https://www.mlb.com/schedule/2026-07-22",
+    "https://techcrunch.com/2026/"
+  ],
+  "privacy": "No sensitive personal context, itinerary, scores, calendar, biometrics, credentials or notes are published.",
+  "deployment": {"target": "https://decureton-xencreator.github.io/daily-bread-/", "verified": false, "blocker": "Pages state must be rechecked after the July 22 release workflow."},
+  "continuation": "Push main, inspect the release workflow, then verify the root and July 22 dated URL."
+}

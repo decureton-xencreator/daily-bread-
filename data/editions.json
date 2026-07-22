@@ -1,9 +1,19 @@
 {
-  "schema_version": "2.3",
+  "schema_version": "2.4",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-21T05:01:00-04:00",
+  "updated_at": "2026-07-22T05:00:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-22",
+      "title": "Stabilize truth. Advance one mission.",
+      "summary": "Fresh geopolitical, weather, market, AI-platform and New York sports intelligence joined to Academy continuity and governed Xen execution.",
+      "path": "editions/2026/07/daily-bread-2026-07-22.html",
+      "mode": "governed-execution",
+      "tags": ["XDBS 3.0", "Release 2.4", "Academy Command", "Middle East", "AI distribution", "Alpha One", "Warden"],
+      "status": "published",
+      "version": "2.4.0"
+    },
     {
       "date": "2026-07-21",
       "title": "Hold the line. Close the loop.",
