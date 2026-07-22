@@ -1,0 +1,48 @@
+name: Alpha One Press Play
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Governed activation stage
+        required: true
+        type: choice
+        options: [plan-only, staging-readiness, pilot-authorize]
+      profile_path:
+        description: Repository path to the filled non-secret profile
+        required: true
+        default: config/alpha-one.daily-bread.json
+
+permissions:
+  contents: read
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate Alpha One controls
+        run: |
+          node --test tests/alpha-one-*.test.mjs
+          python scripts/validate_site.py
+      - name: Compile activation plan
+        run: node scripts/compile_alpha_one_profile.mjs --profile "${{ inputs.profile_path }}" --mode "${{ inputs.mode }}" --output reports/alpha-one-plan.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: alpha-one-${{ inputs.mode }}-plan
+          path: reports/alpha-one-plan.json
+          if-no-files-found: error
+
+  evidence-gate:
+    if: inputs.mode != 'plan-only'
+    needs: compile
+    runs-on: ubuntu-latest
+    environment: alpha-one-${{ inputs.mode }}
+    steps:
+      - name: Preserve external truth boundary
+        run: |
+          echo "Configuration compiled. Authentic identity, approval, health, and pilot evidence must be supplied to the existing fail-closed readiness evaluators."
+          exit 1
