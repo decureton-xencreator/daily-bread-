@@ -1,0 +1,32 @@
+{
+  "contract_id": "DAILY-BREAD-XLIE-XLEE-MISSION-BRIEFING",
+  "version": "1.0.0",
+  "canonical_id": "XLIE-XLEE-001",
+  "enabled_by_default": false,
+  "sections": [
+    "mission objective",
+    "ordered phases",
+    "timing and route truth state",
+    "venue intelligence",
+    "return or exchange deadline",
+    "receipt consent state",
+    "wardrobe and dress-code context",
+    "weather and walking suitability",
+    "unresolved tasks and follow-up"
+  ],
+  "accepted_truth_states": [
+    "planned",
+    "estimated",
+    "inferred",
+    "observed",
+    "user-confirmed",
+    "system-verified"
+  ],
+  "required_controls": [
+    "opt-in",
+    "source attribution",
+    "confidence where inferred",
+    "no persistence claim without write evidence",
+    "no live-navigation claim without verified adapter"
+  ]
+}
