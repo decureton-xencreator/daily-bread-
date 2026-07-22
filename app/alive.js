@@ -79,3 +79,58 @@ document.addEventListener('fullscreenchange',()=>{if(document.fullscreenElement)
 document.addEventListener('keydown',event=>{if(event.key==='Escape'){const active=document.querySelector('.media-thumb.cinema-mode');const id=active?.closest('.media-card')?.dataset.media;if(id)toggleMediaExpand(id,active.querySelector('[data-media-expand]'))}});
 function installLivingLight(){if(document.querySelector('.xps-light-field'))return;const field=document.createElement('div');field.className='xps-light-field';field.setAttribute('aria-hidden','true');field.innerHTML='<i class="aurora a1"></i><i class="aurora a2"></i><i class="aurora a3"></i><b class="energy-rail r1"></b><b class="energy-rail r2"></b>';document.body.prepend(field);window.addEventListener('pointermove',event=>{document.documentElement.style.setProperty('--xps-pointer-x',event.clientX+'px');document.documentElement.style.setProperty('--xps-pointer-y',event.clientY+'px')},{passive:true})}
 installLivingLight();
+
+
+/* XPS 3.2 synchronized automation */
+const xpsNewsArt={
+ World:['WORLD SIGNAL','0b2744','41d8ff','◉'],
+ Business:['BUSINESS FIELD','24134b','b274ff','◆'],
+ Weather:['ATMOSPHERE','10394b','67e8ff','≋'],
+ Markets:['MARKET VECTOR','39231a','ffb454','↗'],
+ Sports:['SPORT SIGNAL','123c34','55ffb7','◎'],
+ 'Water Cooler':['CULTURE / AI','35152f','ff64d8','✦']
+};
+function newsVisualSvg(category,index){
+ const [label,bg,accent,glyph]=xpsNewsArt[category]||xpsNewsArt.World;
+ const lines=Array.from({length:9},(_,i)=>'<path d="M '+(40+i*74)+' 0 L '+(190+i*74)+' 360" />').join('');
+ return '<svg viewBox="0 0 900 360" role="img" aria-label="'+label+' cinematic thumbnail" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="g'+index+'" cx="72%" cy="28%"><stop stop-color="#'+accent+'" stop-opacity=".64"/><stop offset="1" stop-color="#'+bg+'" stop-opacity="0"/></radialGradient><linearGradient id="b'+index+'" x2="1" y2="1"><stop stop-color="#020611"/><stop offset="1" stop-color="#'+bg+'"/></linearGradient></defs><rect width="900" height="360" fill="url(#b'+index+')"/><rect width="900" height="360" fill="url(#g'+index+')"/><g stroke="#'+accent+'" stroke-opacity=".16">'+lines+'</g><circle cx="690" cy="155" r="104" fill="none" stroke="#'+accent+'" stroke-opacity=".55"/><circle cx="690" cy="155" r="72" fill="none" stroke="#'+accent+'" stroke-opacity=".24" stroke-dasharray="5 12"/><text x="690" y="184" text-anchor="middle" fill="#'+accent+'" font-size="82" font-family="system-ui">'+glyph+'</text><path d="M45 292 H430 L472 250 H610" fill="none" stroke="#'+accent+'" stroke-width="2" stroke-opacity=".7"/><text x="48" y="331" fill="#fff" font-size="18" letter-spacing="7" font-family="system-ui">'+label+'</text></svg>';
+}
+function decorateIntelligence(){
+ document.querySelectorAll('.intel-card').forEach((card,index)=>{
+  if(card.querySelector('.intel-visual'))return;
+  const category=card.dataset.category||'World',source=card.querySelector('.source-link')?.href||'#';
+  const visual=document.createElement(source==='#'?'div':'a');
+  visual.className='intel-visual';visual.innerHTML=newsVisualSvg(category,index)+'<span class="intel-visual-label">0'+(index+1)+' // '+category.toUpperCase()+'</span>';
+  if(source!=='#'){visual.href=source;visual.target='_blank';visual.rel='noopener noreferrer';visual.setAttribute('aria-label','Open source for '+(card.querySelector('h3')?.textContent||category));}
+  card.prepend(visual);
+ });
+}
+function commandGlyph(button){
+ const action=button.dataset.action||button.dataset.course||button.dataset.filter||button.dataset.region||'';
+ if(/focus|start|resume|enter/.test(action+' '+button.textContent.toLowerCase()))return '▷';
+ if(/save|complete|captur/.test(button.textContent.toLowerCase()))return '◇';
+ if(/close|dismiss|reset/.test(button.textContent.toLowerCase()))return '×';
+ if(/expand|open|command/.test(action+' '+button.textContent.toLowerCase()))return '⌁';
+ if(/pause/.test(button.textContent.toLowerCase()))return 'Ⅱ';
+ return '◈';
+}
+function decorateCommandControls(){
+ document.querySelectorAll('button,.button-link').forEach(button=>{if(button.classList.contains('xen-command-control'))return;button.classList.add('xen-command-control');button.dataset.commandGlyph=commandGlyph(button)});
+}
+function installXpsHeartbeat(){
+ if(document.querySelector('.xps-pulse-field'))return;
+ const field=document.createElement('div');field.className='xps-pulse-field';field.setAttribute('aria-hidden','true');document.body.prepend(field);
+ const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+ const root=document.documentElement,start=performance.now(),period=2600;
+ function beat(now){
+  if(reduced.matches){root.style.setProperty('--xps-pulse','.45');root.style.setProperty('--xps-pulse-soft','.2');return}
+  const phase=((now-start)%period)/period,primary=Math.exp(-Math.pow((phase-.08)/.055,2)),echo=.62*Math.exp(-Math.pow((phase-.22)/.075,2)),ambient=.16+.12*Math.sin(phase*Math.PI*2);
+  const pulse=Math.min(1,ambient+primary+echo);
+  root.style.setProperty('--xps-pulse',pulse.toFixed(3));root.style.setProperty('--xps-pulse-soft',(pulse*.55).toFixed(3));requestAnimationFrame(beat);
+ }
+ requestAnimationFrame(beat);
+}
+const xps32Observer=new MutationObserver(()=>{decorateIntelligence();decorateCommandControls()});
+xps32Observer.observe(document.documentElement,{subtree:true,childList:true});
+decorateIntelligence();decorateCommandControls();installXpsHeartbeat();
+document.documentElement.dataset.xpsVersion='3.2';
