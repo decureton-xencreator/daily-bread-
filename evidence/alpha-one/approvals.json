@@ -1,0 +1,13 @@
+{
+  "schema": "xen/alpha-one-approval-record/v1",
+  "scope": "daily-bread-founder-alpha1-2026",
+  "approvedBy": "Darren Cureton",
+  "approvedAt": "2026-07-22",
+  "source": "explicit Alpha 1 activation approval",
+  "records": {
+    "privacy": {"id": "alpha1-privacy-20260722", "status": "APPROVED"},
+    "commercial": {"id": "alpha1-commercial-20260722", "status": "APPROVED"},
+    "production": {"id": "alpha1-production-20260722", "status": "PENDING_LIVE_EVIDENCE"},
+    "acceptanceOwner": {"id": "alpha1-owner-20260722", "status": "APPROVED"}
+  }
+}
