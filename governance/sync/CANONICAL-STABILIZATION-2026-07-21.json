@@ -27,11 +27,13 @@
   },
   "local_runtime_change": false,
   "deployment_performed": false,
-  "truth_state": "INHERITANCE_RECEIPT_CANDIDATE",
+  "truth_state": "INHERITANCE_RECEIPT_CERTIFIED",
   "validation": [
     "canonical commit fixed and explicit",
     "repository identity and role explicit",
     "no runtime or deployment claim",
     "external evidence gates preserved"
-  ]
+  ],
+  "local_merge_commit": "ac54b2af8b3899ca75f056c250347048272097ef",
+  "certified_at": "2026-07-22T02:33:00Z"
 }
