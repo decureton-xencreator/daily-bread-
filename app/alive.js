@@ -20,6 +20,24 @@ function openLesson(id){const course=courseCatalog[id];if(!course)return;activeC
 function formatTime(seconds){return String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0')}
 function toggleLessonTimer(){const button=q('[data-alive-start]'),readout=q('.lesson-timer');if(lessonTimer){clearInterval(lessonTimer);lessonTimer=null;button.textContent='Resume session';return}button.textContent='Pause session';lessonTimer=setInterval(()=>{lessonSeconds=Math.max(0,lessonSeconds-1);if(readout)readout.textContent=formatTime(lessonSeconds);if(!lessonSeconds){clearInterval(lessonTimer);lessonTimer=null;button.textContent='Session complete ✓';aliveToast('Learning session complete. Save the lesson checkpoint.')}},1000)}
 function chooseEntertainment(){const cards=[...document.querySelectorAll('.media-card')];if(!cards.length){aliveToast('Restore dismissed recommendations in Preferences to choose again.');return}const card=cards[Math.floor(Math.random()*cards.length)];cards.forEach(x=>x.classList.remove('media-selected'));card.classList.add('media-selected');card.scrollIntoView({behavior:'smooth',block:'center'});aliveToast('Xen chose '+(card.querySelector('h3')?.textContent||'this session')+'.')}
+
+const seriesSections=[...document.querySelectorAll('.module')];
+let activeSeries=null;
+function setActiveSeries(section){
+  if(activeSeries===section)return;
+  activeSeries=section;
+  seriesSections.forEach(node=>{
+    node.classList.toggle('series-active',node===section);
+    node.classList.toggle('series-near',node!==section&&Math.abs(seriesSections.indexOf(node)-seriesSections.indexOf(section))===1);
+  });
+}
+const seriesObserver=new IntersectionObserver(entries=>{
+  const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+  if(visible[0])setActiveSeries(visible[0].target);
+},{rootMargin:'-22% 0px -34% 0px',threshold:[0,.18,.35,.55,.75]});
+seriesSections.forEach(section=>seriesObserver.observe(section));
+if(seriesSections[0])setActiveSeries(seriesSections[0]);
+
 const observer=new MutationObserver(()=>{decorateEntertainment();decorateGlobe()});observer.observe(document.documentElement,{subtree:true,childList:true});decorateEntertainment();decorateGlobe();
 document.addEventListener('click',event=>{const preview=event.target.closest('[data-preview]');if(preview){event.preventDefault();playPreview(preview.dataset.preview)}const close=event.target.closest('[data-close-preview]');if(close){event.preventDefault();closePreview(close.dataset.closePreview)}const course=event.target.closest('[data-course]');if(course)setTimeout(()=>openLesson(course.dataset.course),0);if(event.target.closest('[data-action="choose-entertainment"]'))setTimeout(chooseEntertainment,0);if(event.target.closest('[data-alive-start]'))toggleLessonTimer();if(event.target.closest('[data-alive-complete]')){if(activeCourse){document.querySelector('[data-lesson-complete="'+activeCourse+'"]')?.click();aliveToast(courseCatalog[activeCourse].name+' checkpoint saved.')}q('.drawer-backdrop').hidden=true;if(lessonTimer)clearInterval(lessonTimer);lessonTimer=null}if(event.target.closest('[data-alive-back]')){q('.drawer-backdrop').hidden=true;document.querySelector('#academy')?.scrollIntoView({behavior:'smooth'});if(lessonTimer)clearInterval(lessonTimer);lessonTimer=null}});
 document.documentElement.classList.add('xen-is-alive');
