@@ -1,0 +1,24 @@
+{
+  "schema": "xen/alpha-one-pilot-activation/v1",
+  "pilotId": "daily-bread-founder-alpha1-2026",
+  "pilotUser": "darren-cureton-founder",
+  "authorizedBy": "Darren Cureton",
+  "authorizationDate": "2026-07-22",
+  "pilotStartDate": "2026-07-22",
+  "pilotEndDate": "2026-08-21",
+  "durationDays": 30,
+  "endpoint": "https://decureton-xencreator.github.io/daily-bread-/",
+  "rollbackCommitObserved": "c8ed2fd620db54aaeca4a8738cc76fe1bd89b75c",
+  "restoredCommitObserved": "0386f387783b35c4c1494fe2aaad8994a778c48c",
+  "rollbackObservedAt": "2026-07-22T15:24:01Z",
+  "restoreObservedAt": "2026-07-22T15:24:14Z",
+  "liveRollbackExecuted": true,
+  "liveRestoreVerified": true,
+  "productionEvidence": "ACCEPTED",
+  "pilotState": "AUTHORIZED_TO_START",
+  "successMetrics": [
+    {"id": "daily-open-rate", "target": 0.7, "unit": "ratio"},
+    {"id": "weekly-active-days", "target": 4, "unit": "days"},
+    {"id": "useful-rating", "target": 4, "unit": "score_of_5"}
+  ]
+}
