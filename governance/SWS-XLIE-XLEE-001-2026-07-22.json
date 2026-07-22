@@ -1,0 +1,20 @@
+{
+  "record_id": "SWS-XLIE-XLEE-001-2026-07-22",
+  "status": "synchronized",
+  "repository": "decureton-xencreator/daily-bread-",
+  "role": "derivative-product",
+  "canonical": {
+    "repository": "decureton-xencreator/xen-operating-system",
+    "path": "Foundation/Location/XLIE-XLEE-001.md",
+    "commit": "c4112982ee417de58de2e58f3144c5d795a31347"
+  },
+  "implemented": [
+    "optional pre-mission briefing",
+    "active mission status",
+    "receipt consent reminder",
+    "return and warranty follow-up",
+    "mission closure follow-up"
+  ],
+  "opt_in": true,
+  "truth_boundary": "Daily Bread may report planned, estimated, user-confirmed, or system-verified mission facts with explicit labels; it may not imply live navigation or persistence."
+}
