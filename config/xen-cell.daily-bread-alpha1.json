@@ -1,0 +1,6 @@
+{
+  "cell_id":"daily-bread-alpha1","contract_version":"1.0.0","canonical_contract":"XGS-001-006","canonical_profile":"XPP daily-bread",
+  "inheritance":{"guardian":"deny-by-default","sentinel":"continuous-probes","warden":"fail-closed-authority","xer":"checkpoint-repair-rollback-verify"},
+  "probes":["availability","error-budget","latency","privacy","cost"],
+  "repair_source":"immutable last-known-good deployment artifact","activation_state":"EXTERNAL_INPUTS_PENDING"
+}
