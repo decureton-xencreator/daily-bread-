@@ -1,0 +1,58 @@
+{
+  "receipt_id": "XMR-001-DAILY-BREAD-RECEIPT-1.0.0",
+  "capability": "Saturday Mirror Review",
+  "canonical_id": "XMR-001",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "repository": "decureton-xencreator/daily-bread-",
+  "role": "DERIVATIVE_RUNTIME",
+  "canonical_repository": "decureton-xencreator/xen-operating-system",
+  "canonical_path": "Governance/Mirror/XMR-001-SATURDAY-MIRROR-REVIEW.md",
+  "authority": [
+    "XCB-001",
+    "XCB-002",
+    "XCB-005",
+    "XER",
+    "PHOENIX",
+    "XSOT",
+    "XGW-001",
+    "AM-002-v1.3"
+  ],
+  "schedule": {
+    "day": "SATURDAY",
+    "timezone": "America/New_York",
+    "missed_run_policy": "NEXT_DAILY_BREAD_OPEN"
+  },
+  "commands": [
+    "Saturday Mirror",
+    "Run Mirror Review",
+    "Review my week"
+  ],
+  "state": {
+    "resume_required": true,
+    "public_personal_state": false,
+    "allowed_statuses": [
+      "NOT_STARTED",
+      "IN_PROGRESS",
+      "COMPLETED",
+      "MISSED_CARRY_FORWARD"
+    ]
+  },
+  "privacy": {
+    "public_repository": "SCHEMA_AND_EVIDENCE_ONLY",
+    "private_content": [
+      "answers",
+      "journal entries",
+      "biometrics",
+      "financial details",
+      "relationship notes",
+      "private learner state"
+    ]
+  },
+  "connection": {
+    "canonical_ownership_transferred": false,
+    "reciprocal_link_recorded": true,
+    "truth_state": "REPOSITORY_CONNECTED",
+    "verified_at": "2026-07-22"
+  }
+}
