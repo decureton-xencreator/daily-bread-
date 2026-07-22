@@ -41,3 +41,32 @@ if(seriesSections[0])setActiveSeries(seriesSections[0]);
 const observer=new MutationObserver(()=>{decorateEntertainment();decorateGlobe()});observer.observe(document.documentElement,{subtree:true,childList:true});decorateEntertainment();decorateGlobe();
 document.addEventListener('click',event=>{const preview=event.target.closest('[data-preview]');if(preview){event.preventDefault();playPreview(preview.dataset.preview)}const close=event.target.closest('[data-close-preview]');if(close){event.preventDefault();closePreview(close.dataset.closePreview)}const course=event.target.closest('[data-course]');if(course)setTimeout(()=>openLesson(course.dataset.course),0);if(event.target.closest('[data-action="choose-entertainment"]'))setTimeout(chooseEntertainment,0);if(event.target.closest('[data-alive-start]'))toggleLessonTimer();if(event.target.closest('[data-alive-complete]')){if(activeCourse){document.querySelector('[data-lesson-complete="'+activeCourse+'"]')?.click();aliveToast(courseCatalog[activeCourse].name+' checkpoint saved.')}q('.drawer-backdrop').hidden=true;if(lessonTimer)clearInterval(lessonTimer);lessonTimer=null}if(event.target.closest('[data-alive-back]')){q('.drawer-backdrop').hidden=true;document.querySelector('#academy')?.scrollIntoView({behavior:'smooth'});if(lessonTimer)clearInterval(lessonTimer);lessonTimer=null}});
 document.documentElement.classList.add('xen-is-alive');
+
+
+/* XPS 3.0 visible presence and color-entry controls */
+const xpsSkins=['cyan','violet','solar','emerald','crimson'];
+function installXpsPresence(){
+  if(document.querySelector('.xps-color-dock'))return;
+  const savedSkin=localStorage.getItem('xps-cinematic-skin')||'cyan';
+  document.documentElement.dataset.xpsSkin=xpsSkins.includes(savedSkin)?savedSkin:'cyan';
+  const status=document.createElement('div');
+  status.className='xps-status';
+  status.setAttribute('role','status');
+  status.innerHTML='<i></i><b>XPS ACTIVE</b><span>· XEN IS ALIVE</span>';
+  document.body.append(status);
+  const dock=document.createElement('div');
+  dock.className='xps-color-dock';
+  dock.setAttribute('role','group');
+  dock.setAttribute('aria-label','XPS energy color');
+  dock.innerHTML='<span>ENERGY</span>'+xpsSkins.map(s=>'<button class="color-entry" type="button" data-skin="'+s+'" aria-label="Activate '+s+' XPS energy" aria-pressed="'+String(s===document.documentElement.dataset.xpsSkin)+'"></button>').join('');
+  document.body.append(dock);
+}
+function activateXpsSkin(skin){
+  if(!xpsSkins.includes(skin))return;
+  document.documentElement.dataset.xpsSkin=skin;
+  localStorage.setItem('xps-cinematic-skin',skin);
+  document.querySelectorAll('.color-entry').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.skin===skin)));
+  aliveToast(skin.toUpperCase()+' energy skin active.');
+}
+document.addEventListener('click',event=>{const entry=event.target.closest('.color-entry');if(entry)activateXpsSkin(entry.dataset.skin)});
+installXpsPresence();
