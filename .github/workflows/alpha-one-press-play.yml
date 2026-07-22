@@ -1,6 +1,17 @@
 name: Alpha One Press Play
 
 on:
+  pull_request:
+    paths:
+      - "app/alpha-one-*"
+      - "config/alpha-one.daily-bread.json"
+      - "evidence/alpha-one/**"
+      - "scripts/verify_alpha_one_evidence.mjs"
+      - "tests/alpha-one-*"
+      - ".github/workflows/alpha-one-press-play.yml"
+  workflow_run:
+    workflows: ["Publish XDBS Daily Bread"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       mode:
@@ -17,32 +28,47 @@ permissions:
   contents: read
 
 jobs:
-  compile:
+  activation:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Validate Alpha One controls
+      - name: Resolve governed stage
+        id: stage
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_run" ]]; then
+            echo "mode=staging-readiness" >> "$GITHUB_OUTPUT"
+            echo "commit=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "mode=plan-only" >> "$GITHUB_OUTPUT"
+            echo "commit=${{ github.event.pull_request.head.sha }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+            echo "commit=${{ github.sha }}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Validate contracts
         run: |
           node --test tests/alpha-one-*.test.mjs
           python scripts/validate_site.py
       - name: Compile activation plan
-        run: node scripts/compile_alpha_one_profile.mjs --profile "${{ inputs.profile_path }}" --mode "${{ inputs.mode }}" --output reports/alpha-one-plan.json
+        run: node scripts/compile_alpha_one_profile.mjs --profile "${{ inputs.profile_path || 'config/alpha-one.daily-bread.json' }}" --mode "${{ steps.stage.outputs.mode }}" --output reports/alpha-one-plan.json
+      - name: Verify governed approvals
+        run: node scripts/verify_alpha_one_evidence.mjs --profile "${{ inputs.profile_path || 'config/alpha-one.daily-bread.json' }}" --approvals evidence/alpha-one/approvals.json --mode "${{ steps.stage.outputs.mode }}" --commit "${{ steps.stage.outputs.commit }}" --output reports/alpha-one-evidence.json
+      - name: Verify live Daily Bread health
+        if: steps.stage.outputs.mode != 'plan-only'
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 5 --output /tmp/daily-bread.html https://decureton-xencreator.github.io/daily-bread-/
+          grep -qi "Daily Bread" /tmp/daily-bread.html
+          printf '{"schema":"xen/alpha-one-live-health/v1","endpoint":"https://decureton-xencreator.github.io/daily-bread-/","commit":"%s","status":"PASS"}\n' "${{ steps.stage.outputs.commit }}" > reports/alpha-one-live-health.json
       - uses: actions/upload-artifact@v4
         with:
-          name: alpha-one-${{ inputs.mode }}-plan
-          path: reports/alpha-one-plan.json
+          name: alpha-one-${{ steps.stage.outputs.mode }}-evidence
+          path: reports/alpha-one-*.json
           if-no-files-found: error
-
-  evidence-gate:
-    if: inputs.mode != 'plan-only'
-    needs: compile
-    runs-on: ubuntu-latest
-    environment: alpha-one-${{ inputs.mode }}
-    steps:
-      - name: Preserve external truth boundary
-        run: |
-          echo "Configuration compiled. Authentic identity, approval, health, and pilot evidence must be supplied to the existing fail-closed readiness evaluators."
-          exit 1
