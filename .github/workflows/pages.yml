@@ -42,6 +42,7 @@ jobs:
           python scripts/validate_xdbs_v3_sync.py
           python scripts/validate_source_freshness.py --max-age-hours 36
           node scripts/validate_academy_runtime.mjs
+          node --test tests/saturday-mirror.test.mjs
 
   deploy:
     needs: validate
