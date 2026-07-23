@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.5.0 — 2026-07-23
+
+- Published the permanent July 23 living edition with fresh energy, rates, weather, AI-infrastructure, market and New York sports intelligence.
+- Advanced the current alias, archive, manifests, release records, source registry, Mission Control and offline cache.
+- Inherited XPS 3.2 synchronized pulse/news/command controls, the authorized Alpha One founder window, Saturday Mirror and the July 23 XER/Warden federation audit.
+- Preserved calendar details, Academy metrics, itinerary, biometrics, credentials and notes outside public source.
+- Strengthened validators around dynamic current-release lineage, XPS 3.2 markers, safe external links and fail-closed deployment arithmetic.
+
 ## 2.4.0 — 2026-07-22
 
 - Published the permanent July 22 living edition with fresh weather, geopolitical, market, AI-platform and New York baseball intelligence.

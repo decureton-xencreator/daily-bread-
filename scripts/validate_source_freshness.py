@@ -9,7 +9,8 @@ def main()->int:
  p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--max-age-hours',type=float,default=36);p.add_argument('--now');a=p.parse_args()
  root=a.root.resolve();issues=[]
  sources=json.loads((root/'data/sources.json').read_text())
- release=json.loads((root/'releases/XDBS-2.3.0.json').read_text())
+ releases=json.loads((root/'data/releases.json').read_text())
+ release=json.loads((root/f"releases/XDBS-{releases['current']}.json").read_text())
  now=parse(a.now) if a.now else datetime.now(timezone.utc)
  stamps=[sources.get('publishedAt')]+[s.get('retrievedAt') for s in sources.get('sources',[]) if s.get('type')=='timestamped-external-retrieval']
  for stamp in filter(None,stamps):

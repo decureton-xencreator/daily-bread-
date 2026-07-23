@@ -1,1 +1,1 @@
-{"schemaVersion":"2.0","storage":"local-first","missions":[{"id":"xdbs-2","title":"Complete XDBS 2.0","status":"active","truthState":"repository-backed","objectives":["shell","series","validation-deployment"]}]}
+{"schemaVersion":"2.5","storage":"local-first","missions":[{"id":"xdbs-daily-proof","title":"Turn one new ability into durable proof","status":"active","truthState":"repository-backed","objectives":["academy-application","july-23-immutable-edition","validation-deployment-evidence"],"privateNotes":"local-browser-only"}]}

@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "2.5",
+  "version": "2.5.0",
+  "date": "2026-07-23",
+  "edition": "editions/2026/07/daily-bread-2026-07-23.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-verifying",
+  "architecture": "XDBS 3.0",
+  "experience": "XPS 3.2",
+  "repositoryBase": "e92ca5a48c57906b4f95ae1435e7e6eeae90a858",
+  "releaseGates": {
+    "passed": 8,
+    "total": 9,
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification pending"
+  },
+  "freshSources": [
+    "https://apnews.com/article/45b9165d6c518f5bea668b6ba7a89838",
+    "https://www.ft.com/content/66bf810f-c1c0-488d-bd02-f8eba3acd743",
+    "https://www.weather.gov/okx/",
+    "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-summary.htm",
+    "https://abc.xyz/investor/events/event-details/2026/2026-Q2-Earnings-Call-2026-GgTAq7Is0z/default.aspx",
+    "https://www.wsj.com/market-data",
+    "https://www.mlb.com/yankees/schedule/2026-07",
+    "https://www.wsj.com/tech/ai/amd-and-anthropic-sign-major-chips-and-investment-deal-4adfdc45"
+  ],
+  "capabilityChanges": [
+    "XPS 3.2 synchronized heartbeat, news visuals and command controls",
+    "Alpha One founder pilot authorized to start for July 22 through August 21, 2026; outcomes unmeasured",
+    "XER Warden federation audit inheritance validated July 23",
+    "Saturday Mirror local-only weekly continuity",
+    "private calendar context checked without public event disclosure"
+  ],
+  "privacy": "No sensitive personal context, event details, itinerary, scores, calendar entries, biometrics, credentials or notes are published.",
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-23.html",
+    "verified": false,
+    "blocker": "The July 23 Pages workflow and both public endpoints must be verified after the release commit."
+  },
+  "continuation": "Inspect the July 23 Pages workflow, verify root and immutable edition content, then record deployment evidence or the exact blocker."
+}

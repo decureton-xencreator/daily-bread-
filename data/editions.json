@@ -1,9 +1,19 @@
 {
-  "schema_version": "2.4",
+  "schema_version": "2.5",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-22T05:00:00-04:00",
+  "updated_at": "2026-07-23T05:00:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-23",
+      "title": "Calm the field. Compound capability.",
+      "summary": "Fresh energy, rates, weather, AI-infrastructure and New York sports intelligence translated into Academy application and one governed proof loop.",
+      "path": "editions/2026/07/daily-bread-2026-07-23.html",
+      "mode": "proof",
+      "tags": ["XDBS 3.0", "Release 2.5", "XPS 3.2", "Academy Command", "Oil", "AI infrastructure", "Alpha One", "Warden"],
+      "status": "published",
+      "version": "2.5.0"
+    },
     {
       "date": "2026-07-22",
       "title": "Stabilize truth. Advance one mission.",

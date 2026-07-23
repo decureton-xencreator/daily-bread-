@@ -1,21 +1,21 @@
 {
   "$schema": "../schemas/edition.schema.json",
-  "id": "xdbs-2026-07-22",
-  "editionVersion": "2.4.0",
-  "publishedAt": "2026-07-22T05:00:00-04:00",
-  "title": "Stabilize truth. Advance one mission.",
-  "archivePath": "editions/2026/07/daily-bread-2026-07-22.html",
+  "id": "xdbs-2026-07-23",
+  "editionVersion": "2.5.0",
+  "publishedAt": "2026-07-23T05:00:00-04:00",
+  "title": "Calm the field. Compound capability.",
+  "archivePath": "editions/2026/07/daily-bread-2026-07-23.html",
   "operatingContext": {
-    "mode": "evidence",
+    "mode": "proof",
     "locationState": "public-regional-weather-only",
-    "calendarState": "unavailable-not-connected",
-    "weatherState": "live-retrieval-2026-07-22T05:00:00-04:00",
-    "marketsState": "indicative-retrieval-2026-07-22T08:47:00Z"
+    "calendarState": "connected-checked-private-no-public-details",
+    "weatherState": "live-retrieval-2026-07-23T04:58:00-04:00",
+    "marketsState": "indicative-retrieval-2026-07-23T08:45:00Z"
   },
-  "primeDirective": "Resume. Execute. Verify.",
-  "academyDirective": "Complete the twelve-minute Typing minimum, then close one repository evidence loop.",
+  "primeDirective": "Learn. Apply. Verify.",
+  "academyDirective": "Complete the twelve-minute Typing minimum, then apply one Applied AI lesson to a governed Xen capability.",
   "truthState": "repository-backed-with-timestamped-live-sources",
   "liveDataPolicy": "Every current claim carries a source and freshness timestamp; unavailable integrations are not simulated.",
   "privacyPolicy": "Sensitive personal context, scores, itinerary, calendar, biometrics and notes remain outside public source.",
-  "canonicalInheritance": ["XPF-002","XOS","XKR","XPS","XDL","XDBS-001-v3","XMI","Academy Command","Xen Globe","AM-002-v1.3","XRR-001","MWI-001","XSMEO","XCA","XNI","XHIL","Project Phoenix","XSoT","Xenesis fail-closed protocol enforcement","XEW-001","Academy local persistence","source freshness monitor","Alpha One governed lifecycle","canonical stabilization receipt"]
+  "canonicalInheritance": ["XPF-002","XOS","XKR","XPS 3.2","XDL","XDBS-001-v3","XMI","XLE","Academy Command","Xen Globe","AM-002-v1.3","XGW-001-v1.3","XER-001-v1.2","XRR-001","MWI-001","XSMEO","XCA","XNI","XHIL","Project Phoenix","XSoT","Xenesis fail-closed protocol enforcement","XEW-001","Academy local persistence","source freshness monitor","Alpha One authorized founder pilot","Saturday Mirror","Warden federation audit 2026-07-23"]
 }
