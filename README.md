@@ -2,6 +2,8 @@
 
 XDBS 3.0 is the repository-backed Xen personal executive operating environment and front door of Xen OS. It combines a premium Living Publication, executive narrative briefing, mission control, Xen Globe navigation, contextual World Clock, Academy Priority Dashboard, embedded lesson runtimes, source-linked intelligence, local state, archive, provenance and diagnostics.
 
+XAOA-001 is implemented as the ordered, fail-closed Alpha One activation controller in `app/xaoa-program.js`. It prevents Xen OS 1.0 Gold Master claims until XRI-006–010, live infrastructure, the complete daily operating loop, phone certification, measured Living Company value, recovery drills and XBP-009 all carry timestamped evidence.
+
 ## Canonical architecture
 
 - `decureton-xencreator/xen-operating-system/architecture/xdbs/XDBS-001-XEN-DAILY-BREAD-STUDIO-ARCHITECTURE-v3.0.md`
