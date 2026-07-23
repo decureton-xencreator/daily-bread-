@@ -2,9 +2,9 @@
 
 **Evaluated:** 2026-07-23 05:00 EDT
 
-**Release gates:** 8 / 9 passed before external deployment verification
+**Release gates:** 9 / 9 passed
 
-**Deployment:** VERIFYING — the July 23 workflow, production root and immutable July 23 edition must be checked after the release commit.
+**Deployment:** VERIFIED — [workflow run 29994438348](https://github.com/decureton-xencreator/daily-bread-/actions/runs/29994438348) completed successfully; the production root and immutable July 23 edition returned HTTP 200 with matching release content.
 
 ## Capability truth states
 
@@ -17,19 +17,21 @@
 - Private travel routes, health biometrics, cross-device Academy synchronization and autonomous agent execution: **Not connected / unavailable**.
 - Alpha One founder pilot: **Authorized to start** for July 22 through August 21; success outcomes remain unmeasured.
 - XPS 3.2 synchronized heartbeat, news visuals, command controls and reduced-motion behavior: **Repository-backed**.
-- GitHub Pages workflow and July 23 endpoints: **Verification pending after commit**.
+- GitHub Pages workflow: **Live**; run `29994438348` completed successfully.
+- Production root: **Live**; `https://decureton-xencreator.github.io/daily-bread-/` returned HTTP 200 with July 23 and XPS 3.2 markers.
+- Immutable edition: **Live**; `https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-23.html` returned HTTP 200 with edition 2.5.0 content.
 
 ## Findings
 
 - No invented live data, secrets, private itinerary, personal Academy scores, calendar entries or biometrics were placed in public source.
 - External links use explicit sources and safe new-tab link attributes.
 - Responsive, reduced-motion, keyboard, focus, semantic and touch-target controls remain present.
-- Structural validation must pass before commit. Production is not current until both public URLs return matching July 23 content.
+- Structural validation passed before commit; the deployed root and immutable edition were then independently content-verified.
 - The July 23 XER/Warden federation audit is inherited without claiming autonomous repair telemetry or unsupported runtime authority.
 
 ## Exact continuation
 
-Commit release 2.5.0, inspect its Pages workflow, verify the production root and immutable July 23 URL, then record deployment evidence or the exact blocker.
+Run the founder Alpha One usefulness loop against the live July 23 edition without overstating outcomes, then generate the July 24 edition from release 2.5.0.
 
 ## XDBS v3 synchronization checkpoint — 2026-07-23
 

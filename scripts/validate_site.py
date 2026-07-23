@@ -49,7 +49,13 @@ for p in ROOT.rglob('*'):
   try:
    if secret_pattern.search(p.read_text(errors='ignore')):issues.append(f'possible-secret:{p.relative_to(ROOT)}')
   except:pass
-report={'schemaVersion':'2.5','validatedAt':'2026-07-23T05:00:00-04:00','result':'PASS' if not issues else 'FAIL','checks':{'requiredFiles':not any(x.startswith('missing:') for x in issues),'jsonParse':not any(x.startswith('invalid-json') for x in issues),'internalLinks':not any(x.startswith('broken-link') for x in issues),'safeExternalLinks':not any(x.startswith('unsafe-external-link') for x in issues),'controls':not any(x.startswith('empty-button') for x in issues),'responsiveViewport':not any(x.startswith('viewport') for x in issues),'reducedMotion':'reduced-motion:missing' not in issues,'archiveIntegrity':not any(x.startswith(('archive-missing','current-alias','current-release')) for x in issues),'academyPublicMetrics':'public-academy-metrics' not in issues,'secretScan':not any(x.startswith('possible-secret') for x in issues)},'issues':issues,'warnings':['Calendar details are intentionally withheld; route, biometric and cross-device Academy integrations are not connected','Production deployment requires post-commit workflow and endpoint verification','Visual cross-browser verification remains a manual acceptance item']}
+deployment_verified=False
+if release_path.is_file():
+ try:deployment_verified=json.loads(release_path.read_text()).get('deployment',{}).get('verified') is True
+ except Exception:pass
+warnings=['Calendar details are intentionally withheld; route, biometric and cross-device Academy integrations are not connected','Visual cross-browser verification remains a manual acceptance item']
+if not deployment_verified:warnings.insert(1,'Production deployment requires post-commit workflow and endpoint verification')
+report={'schemaVersion':'2.5','validatedAt':'2026-07-23T05:00:00-04:00','result':'PASS' if not issues else 'FAIL','checks':{'requiredFiles':not any(x.startswith('missing:') for x in issues),'jsonParse':not any(x.startswith('invalid-json') for x in issues),'internalLinks':not any(x.startswith('broken-link') for x in issues),'safeExternalLinks':not any(x.startswith('unsafe-external-link') for x in issues),'controls':not any(x.startswith('empty-button') for x in issues),'responsiveViewport':not any(x.startswith('viewport') for x in issues),'reducedMotion':'reduced-motion:missing' not in issues,'archiveIntegrity':not any(x.startswith(('archive-missing','current-alias','current-release')) for x in issues),'academyPublicMetrics':'public-academy-metrics' not in issues,'secretScan':not any(x.startswith('possible-secret') for x in issues),'deploymentEvidence':deployment_verified},'issues':issues,'warnings':warnings}
 (ROOT/'reports').mkdir(exist_ok=True);(ROOT/'reports/validation-report.json').write_text(json.dumps(report,indent=2)+'\n')
 if issues:raise SystemExit('XDBS validation failed:\n'+'\n'.join(issues))
 print('XDBS 2.5 validation passed')

@@ -4,14 +4,14 @@
   "date": "2026-07-23",
   "edition": "editions/2026/07/daily-bread-2026-07-23.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-verifying",
+  "status": "deployed-verified",
   "architecture": "XDBS 3.0",
   "experience": "XPS 3.2",
   "repositoryBase": "e92ca5a48c57906b4f95ae1435e7e6eeae90a858",
   "releaseGates": {
-    "passed": 8,
+    "passed": 9,
     "total": 9,
-    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment verification pending"
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit + deployment verification"
   },
   "freshSources": [
     "https://apnews.com/article/45b9165d6c518f5bea668b6ba7a89838",
@@ -34,8 +34,11 @@
   "deployment": {
     "target": "https://decureton-xencreator.github.io/daily-bread-/",
     "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-23.html",
-    "verified": false,
-    "blocker": "The July 23 Pages workflow and both public endpoints must be verified after the release commit."
+    "verified": true,
+    "verifiedAt": "2026-07-23T09:15:10Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/29994438348",
+    "releaseCommit": "a2eb326de4e1eb2ed5292229a9ff63ba331c4f28",
+    "evidence": "Pages workflow completed successfully; the production root and immutable July 23 edition both returned HTTP 200 with matching July 23, XPS 3.2 and edition 2.5.0 content."
   },
-  "continuation": "Inspect the July 23 Pages workflow, verify root and immutable edition content, then record deployment evidence or the exact blocker."
+  "continuation": "Run the founder Alpha One usefulness loop against the live July 23 edition without overstating outcomes, then generate the July 24 edition from release 2.5.0."
 }

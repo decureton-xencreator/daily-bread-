@@ -12,12 +12,12 @@
     "reducedMotion": true,
     "archiveIntegrity": true,
     "academyPublicMetrics": true,
-    "secretScan": true
+    "secretScan": true,
+    "deploymentEvidence": true
   },
   "issues": [],
   "warnings": [
     "Calendar details are intentionally withheld; route, biometric and cross-device Academy integrations are not connected",
-    "Production deployment requires post-commit workflow and endpoint verification",
     "Visual cross-browser verification remains a manual acceptance item"
   ]
 }
