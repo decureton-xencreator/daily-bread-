@@ -1,5 +1,11 @@
 # Changelog
 
+## XAOA-001 activation controller — 2026-07-23
+
+- Established the executable Xen Alpha One Activation Program and its canonical Priority Zero build order.
+- Added ordered Warden gates for XRI-006–010, infrastructure, the daily operating loop, phone Alpha, Living Company outcomes, recovery drills and XBP-009.
+- Added fail-closed tests that prevent predecessor bypass, unevidenced completion and unsupported Gold Master claims.
+
 ## 2.5.0 — 2026-07-23
 
 - Published the permanent July 23 living edition with fresh energy, rates, weather, AI-infrastructure, market and New York sports intelligence.

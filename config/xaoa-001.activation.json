@@ -1,0 +1,34 @@
+{
+  "schema": "xen/xaoa-001-activation-plan/v1",
+  "programId": "XAOA-001",
+  "status": "canonical_active",
+  "priority": "priority_zero",
+  "mission": "Transform the completed Xen Alpha One reference environment into a persistent, daily-use, phone-first operating product running on live infrastructure, validated by Warden, and proven through the first Living Company.",
+  "executionOrder": [
+    "XRI-006",
+    "XRI-007",
+    "XRI-008",
+    "XRI-009",
+    "XRI-010",
+    "INFRASTRUCTURE",
+    "DAILY_LOOP",
+    "PHONE_ALPHA",
+    "LIVING_COMPANY",
+    "RECOVERY_DRILLS",
+    "XBP-009"
+  ],
+  "infrastructureBindings": ["identity", "storage", "memory", "models", "events"],
+  "dailyLoop": ["daily_bread", "mission_control", "command", "memory", "warden"],
+  "truthPolicy": {
+    "orderedFailClosed": true,
+    "evidenceRequired": true,
+    "measuredValueRequired": true,
+    "rollbackRequired": true,
+    "goldMasterAuthority": "XBP-009",
+    "architectureAloneIsCompletion": false
+  },
+  "currentGate": "XRI-006",
+  "runtime": "app/xaoa-program.js",
+  "test": "tests/xaoa-program.test.mjs"
+}
+
