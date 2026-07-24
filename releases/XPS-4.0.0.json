@@ -1,0 +1,17 @@
+{
+  "release": "XPS 4.0.0",
+  "date": "2026-07-24",
+  "scope": "Daily Bread Command Deck redesign",
+  "editionRelease": "XDBS 2.6.0",
+  "designAuthority": "Xen Command Deck scene system",
+  "capabilities": [
+    {"name": "Scene-driven command surface", "state": "repository-backed"},
+    {"name": "Back, next and scene index controls", "state": "locally-functional"},
+    {"name": "Keyboard scene navigation", "state": "locally-functional"},
+    {"name": "Responsive command-stage composition", "state": "repository-backed"},
+    {"name": "Existing Academy, intelligence, mission and Warden runtimes", "state": "preserved"}
+  ],
+  "privacy": "The redesign adds no analytics, network transmission or public personal context.",
+  "deployment": {"state": "pending-post-commit-verification", "verified": false},
+  "continuation": "Verify the command-stage composition in production, then inherit XPS 4.0 into the next immutable Daily Bread edition."
+}

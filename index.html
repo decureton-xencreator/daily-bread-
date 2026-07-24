@@ -2,7 +2,7 @@
 <html lang="en" data-theme="midnight"><head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#05080f"><meta name="description" content="Xen Daily Bread — your private-by-default executive operating environment.">
-  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="assets/css/xdbs.css"><link rel="stylesheet" href="assets/css/alive.css">
+  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="assets/css/xdbs.css"><link rel="stylesheet" href="assets/css/alive.css"><link rel="stylesheet" href="assets/css/command-deck.css">
   <title>Xen Daily Bread · July 24, 2026</title>
 </head><body>
 <a class="skip" href="#today">Skip to Today Command</a>
@@ -12,7 +12,9 @@
   <p id="arrival-context">Synchronizing local context…</p><button class="primary" data-action="enter">Enter command</button>
 </div>
 <div class="shell" id="app">
-  <header class="topbar"><a class="brand" href="#today" aria-label="Daily Bread home"><span class="xmark">X</span><span>XENESIS</span><small>DAILY BREAD</small></a>
+  <header class="topbar"><a class="brand" href="#today" aria-label="Daily Bread home"><span class="xmark">X</span><span>XEN</span><small>COMMAND DECK · DAILY BREAD</small></a>
+    <div class="deck-progress" aria-hidden="true"><i id="deck-progress"></i></div>
+    <div class="deck-counter" id="deck-counter" aria-live="polite">01 / 01</div>
     <div class="context-strip"><span class="status-dot"></span><span id="clock">LOCAL TIME</span><span id="mode-label">HOME MODE</span></div>
     <div class="top-actions"><button class="icon-btn" data-action="command" aria-label="Open command palette">⌘</button><button class="avatar" data-action="preferences" aria-label="Open preferences"><span data-user-initial>X</span></button></div>
   </header>
@@ -37,11 +39,14 @@
     <section class="module" data-module="radar" id="radar"><header><div><p class="kicker">SERIES 14 / RISK & OPPORTUNITY RADAR</p><h2>See the decision field.</h2></div></header><div id="radar-grid" class="radar-grid"></div></section>
     <section class="module" data-module="timeline" id="timeline"><header><div><p class="kicker">SERIES 15 / DAILY TIMELINE</p><h2>A rhythm you can finish.</h2></div></header><div id="timeline-list" class="timeline"></div></section>
     <section class="module archive-module" data-module="archive" id="archive"><header><div><p class="kicker">SERIES 18 / ARCHIVE & MEMORY</p><h2>Every day becomes a waypoint.</h2></div><a class="quiet small button-link" href="archive/">Full archive</a></header><div class="archive-tools"><label><span class="sr-only">Search editions</span><input id="archive-search" type="search" placeholder="Search editions, modes, events…"></label></div><div id="archive-cards" class="archive-cards"></div></section>
-    <footer><div><span class="xmark">X</span><b>XPS 3.3 · INTEGRATION RUNTIME</b></div><p>Built on the synchronized XPS 3.2 lineage. Private by default. Truth states visible. No analytics. <button class="link-btn" data-action="provenance">Open provenance</button></p><p>XPS ACTIVE · XEN IS ALIVE · v3.3.0</p></footer>
+    <footer><div><span class="xmark">X</span><b>XPS 4.0 · COMMAND DECK</b></div><p>Built on the synchronized XPS 3.2–3.3 lineage. Private by default. Truth states visible. No analytics. <button class="link-btn" data-action="provenance">Open provenance</button></p><p>XPS ACTIVE · XEN IS ALIVE · v4.0.0</p></footer>
   </div></main>
   <nav class="mobile-nav" aria-label="Mobile modules"><a href="#today">Today</a><a href="#academy">Academy</a><a href="#missions">Mission</a><button data-action="command">Command</button></nav>
 </div>
+<div class="deck-controls" aria-label="Command Deck controls"><button id="deck-back" type="button" aria-label="Previous scene">← <span>BACK</span></button><button id="deck-index" type="button" aria-label="Open scene index">◇ <span>INDEX</span></button><button id="deck-next" type="button" aria-label="Next scene"><span>NEXT</span> →</button></div>
+<div class="deck-scene-status"><i></i><span id="deck-scene-label">DAILY BREAD · ORIENTATION</span></div>
+<div class="deck-index-panel" id="deck-index-panel" hidden><div class="deck-index-head"><span>COMMAND DECK</span><button type="button" id="deck-index-close" aria-label="Close scene index">×</button></div><nav id="deck-scene-list" aria-label="Command Deck scenes"></nav></div>
 <div class="palette-backdrop" data-close="palette" hidden><section class="palette" role="dialog" aria-modal="true" aria-labelledby="palette-title"><header><span id="palette-title">XEN COMMAND</span><kbd>ESC</kbd></header><label><span class="sr-only">Enter command</span><input id="command-input" autocomplete="off" placeholder="Navigate, focus, open Academy…"></label><p class="privacy-note">Commands execute locally. No microphone or AI service is connected.</p><div id="command-results"></div></section></div>
 <div class="drawer-backdrop" data-close="drawer" hidden><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title"><header><div><p class="kicker">SYSTEM CONTROL</p><h2 id="drawer-title">Preferences</h2></div><button class="icon-btn" data-action="close-drawer" aria-label="Close">×</button></header><div id="drawer-body"></div></aside></div>
 <div id="toast-region" class="toasts" aria-live="polite"></div>
-<script type="module" src="app/app.js"></script><script type="module" src="app/alive.js"></script></body></html>
+<script type="module" src="app/app.js"></script><script type="module" src="app/alive.js"></script><script type="module" src="app/command-deck.js"></script></body></html>

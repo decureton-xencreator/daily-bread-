@@ -1,5 +1,13 @@
 # Changelog
 
+## XPS 4.0.0 — 2026-07-24
+
+- Replaced the scrolling dashboard composition with the Xen Command Deck scene system.
+- Added persistent progress, scene count, back/next controls, keyboard navigation and a complete scene index.
+- Reframed every Daily Bread module as one dominant cinematic command stage.
+- Preserved Academy, intelligence, Integration Process, Mission Control, Warden, archive and local persistence behavior.
+- Kept the immutable July 24 edition unchanged.
+
 ## XPS 3.3.0 — 2026-07-24
 
 - Promoted the Xen Integration Process into the Daily Bread command surface.
