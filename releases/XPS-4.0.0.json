@@ -12,6 +12,13 @@
     {"name": "Existing Academy, intelligence, mission and Warden runtimes", "state": "preserved"}
   ],
   "privacy": "The redesign adds no analytics, network transmission or public personal context.",
-  "deployment": {"state": "pending-post-commit-verification", "verified": false},
-  "continuation": "Verify the command-stage composition in production, then inherit XPS 4.0 into the next immutable Daily Bread edition."
+  "deployment": {
+    "state": "deployed-verified",
+    "verified": true,
+    "verifiedAt": "2026-07-24T17:32:43Z",
+    "releaseCommit": "681eef5fef70da89d12cf6ae0e0a50a3c07aa771",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30108732136",
+    "evidence": "Pages workflow completed successfully; production root and command-deck.css returned HTTP 200 with matching XPS 4.0, Command Deck, scene and navigation markers."
+  },
+  "continuation": "Inherit XPS 4.0 into the next immutable Daily Bread edition and perform the next scheduled cross-browser visual acceptance."
 }
