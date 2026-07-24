@@ -4,12 +4,12 @@
   "date": "2026-07-24",
   "edition": "editions/2026/07/daily-bread-2026-07-24.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-verifying",
+  "status": "deployed-verified",
   "architecture": "XDBS 3.0",
   "experience": "XPS 3.2",
   "repositoryBase": "6b45e529a53bd113f216a94dc9a900c853559bc5",
   "releaseGates": {
-    "passed": 8,
+    "passed": 9,
     "total": 9,
     "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit + deployment verification"
   },
@@ -36,11 +36,11 @@
   "deployment": {
     "target": "https://decureton-xencreator.github.io/daily-bread-/",
     "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-24.html",
-    "verified": false,
-    "verifiedAt": null,
-    "workflowRun": null,
-    "releaseCommit": null,
-    "evidence": "Verification pending repository commit, Pages workflow completion and matching production-content checks."
+    "verified": true,
+    "verifiedAt": "2026-07-24T09:18:30Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30082032378",
+    "releaseCommit": "21c28b226b1f9d3c31ff6fb2608097db59a2c5b5",
+    "evidence": "Pages workflow 30082032378 completed successfully; the production root and immutable July 24 edition both returned HTTP 200 with matching July 24, XRI-006 and release 2.6.0 content."
   },
   "continuation": "Verify the July 24 deployment, then score one explicit Alpha One release criterion from repository and runtime evidence without inventing an overall percentage."
 }
