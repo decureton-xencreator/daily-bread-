@@ -1,5 +1,11 @@
 # Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
+## XPS 4.1 clean Command Deck correction — 2026-07-24
+
+**Decision:** PASS
+
+**Deployment:** VERIFIED — [workflow run 30116088111](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30116088111) completed successfully. Browser inspection confirmed one active scene, no legacy Alive/XDBS overlays, no viewport overflow, and a fully decoded Xen globe.
+
 ## XPS 4.0 Command Deck redesign — 2026-07-24
 
 **Decision:** PASS
