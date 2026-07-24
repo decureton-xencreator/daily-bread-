@@ -9,8 +9,14 @@
     "Promoted the full Xen globe asset into the hero and dedicated world stage.",
     "Preserved Daily Bread intelligence, Academy, XMI, mission, archive, provenance and local persistence."
   ],
-  "truthState": "repository-backed-deployment-pending",
+  "truthState": "live-verified",
   "privacy": "No analytics, raw chat or sensitive personal context is included.",
-  "deployment": {"state": "pending-post-commit-verification", "verified": false},
-  "continuation": "Verify the clean production root, Globe asset, stylesheet and application runtime before closing Warden."
+  "deployment": {
+    "state": "deployed",
+    "verified": true,
+    "commit": "cb1890f207659f632abaa96857fceeb5578848a3",
+    "workflow": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30116088111",
+    "endpoint": "https://decureton-xencreator.github.io/daily-bread-/"
+  },
+  "continuation": "Use the clean Command Deck shell and browser-safe Xen globe as the baseline for future editions."
 }
