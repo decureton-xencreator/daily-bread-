@@ -1,0 +1,21 @@
+{
+  "release": "XPS 4.2.0",
+  "date": "2026-07-24",
+  "scope": "Active Academy, source actions and privacy-minimized XER refinement",
+  "changes": [
+    "Added verified Watch and Preview actions to entertainment cards.",
+    "Implemented actual local Academy lessons with start, resume, pause, step progression and completion.",
+    "Added explicit daily and weekday learning schedules with neglect and overdue alerts.",
+    "Added permission-gated device notifications and persistent in-application alerts.",
+    "Added local aggregate interaction telemetry and bounded Warden/XER findings without raw key or content capture.",
+    "Added Warden, XER and XEW synchronization truth states."
+  ],
+  "privacy": {
+    "storage": "local browser only",
+    "captured": ["interaction category", "control identifier", "aggregate count", "bounded runtime finding"],
+    "excluded": ["printable keystrokes", "typed content", "field values", "notes", "credentials", "precise location", "calendar details", "biometrics"]
+  },
+  "truthState": "repository-backed-deployment-pending",
+  "deployment": {"verified": false},
+  "continuation": "Validate, deploy, browser-test every external action and Academy state transition, then record evidence."
+}

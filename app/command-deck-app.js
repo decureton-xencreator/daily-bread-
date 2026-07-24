@@ -1,16 +1,50 @@
 import{priorities,courses,intelligence,entertainment,risks,timeline,evolution}from'./data.js';
+import{ACADEMY_SCHEDULE,LESSONS,normalizeAcademy,academyAlerts,startLesson,advanceLesson,completeAcademyLesson}from'./academy-runtime.js';
+import{recordInteraction,recordFinding,telemetrySummary,clearTelemetry,safeKeyClass}from'./local-telemetry.js';
 
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
 const STORAGE='xdbs-command-deck-v2';
-const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas'};
-let state=loadState(),active=0,toastTimer;
+const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas',alertsEnabled:false};
+let state=loadState(),active=0,toastTimer,activeLesson=null,lessonTimer=null;
+state.academy=normalizeAcademy(state.academy);
 const scenes=$$('.scene');
 
 function loadState(){try{return{...initial,...JSON.parse(localStorage.getItem(STORAGE)||'{}')}}catch{return{...initial}}}
 function saveState(){localStorage.setItem(STORAGE,JSON.stringify(state))}
 function escapeHTML(value=''){return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
 function notify(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
+
+function alertSummary(){
+  const alerts=academyAlerts(state.academy),overdue=alerts.filter(item=>item.level==='overdue');
+  const rail=$('#academy-alert');
+  if(!overdue.length){rail.className='academy-alert clear';rail.innerHTML='<b>ACADEMY ON SCHEDULE</b><span>Daily minimum protected.</span>';return}
+  const names=overdue.map(item=>courses.find(course=>course.id===item.courseId)?.name||item.courseId).join(' + ');
+  rail.className='academy-alert overdue';
+  rail.innerHTML=`<b>ACADEMY OVERDUE</b><span>${escapeHTML(names)}. No excuses: complete the 20-minute daily minimum now.</span><button type="button" data-jump="scene-academy">OPEN ACADEMY</button>${state.alertsEnabled?'':'<button type="button" data-enable-alerts>ENABLE DEVICE ALERTS</button>'}`;
+}
+
+function openLesson(courseId){
+  if(!LESSONS[courseId])return;
+  activeLesson=courseId;
+  state.academy=startLesson(state.academy,courseId);
+  saveState();recordInteraction('academy','start-or-resume');
+  $('#lesson-drawer').hidden=false;$('#lesson-backdrop').hidden=false;
+  renderLesson();
+  $('#lesson-close').focus();
+}
+
+function renderLesson(){
+  const lesson=LESSONS[activeLesson],record=state.academy[activeLesson],step=lesson.steps[record.step];
+  $('#lesson-title').textContent=lesson.title;
+  $('#lesson-runtime').innerHTML=`<section class="lesson-status"><span>${escapeHTML(lesson.mission)}</span><b>STEP ${record.step+1} / ${lesson.steps.length}</b><strong>${lesson.minutes} MIN SCHEDULE</strong></section><div class="lesson-progress"><i style="width:${((record.step+1)/lesson.steps.length)*100}%"></i></div><article class="lesson-step"><p class="eyebrow">${escapeHTML(step.title)}</p><p>${escapeHTML(step.body)}</p></article><div class="lesson-actions">${record.step?'<button class="secondary" type="button" data-lesson-back>Previous</button>':''}${record.step<lesson.steps.length-1?'<button class="primary" type="button" data-lesson-next>Continue lesson</button>':'<button class="primary" type="button" data-lesson-finish>Complete & save lesson</button>'}<button class="secondary" type="button" data-lesson-pause>Pause · save checkpoint</button></div><p class="privacy">Your exact lesson position is saved locally. Typed content is never captured by XER telemetry.</p>`;
+}
+
+function closeLesson(message='Lesson checkpoint saved. Resume Anywhere is active.'){
+  $('#lesson-drawer').hidden=true;$('#lesson-backdrop').hidden=true;
+  if(lessonTimer)clearInterval(lessonTimer);lessonTimer=null;activeLesson=null;
+  notify(message);
+}
 
 const processStages=[
   ['SYNC','Reconcile approved repository state.'],['INHERIT','Accept compatible governed outcomes.'],['CLASSIFY','Declare the truthful capability state.'],
@@ -19,15 +53,18 @@ const processStages=[
 ];
 
 function render(){
+  alertSummary();
   $('#hero-vitals').innerHTML=[
     ['Evidence-led','Operating mode'],['Learn. Measure. Advance.','Prime directive'],['Local only','Personal context'],['Verified deployment','System posture']
   ].map(([value,label])=>`<div class="vital"><b>${value}</b><span>${label}</span></div>`).join('');
 
   $('#integration-runtime').innerHTML=`<div class="process-rail">${processStages.map(([label],index)=>`<button class="process-step ${index===state.integration?'active':''}" data-process="${index}"><i>${String(index+1).padStart(2,'0')}</i><b>${label}</b></button>`).join('')}</div><div class="process-detail"><div><small class="eyebrow">CURRENT GATE</small><p><b>${processStages[state.integration][0]}</b> · ${processStages[state.integration][1]}</p></div><button class="action-button" data-process-advance>${state.integration===processStages.length-1?'Reset local run':'Advance with evidence'}</button></div>`;
 
-  $('#academy-runtime').innerHTML=courses.map(course=>{
-    const progress=state.academy[course.id]||0;
-    return `<article class="course-row"><div><h3>${escapeHTML(course.name)}</h3><p>${escapeHTML(course.mission)} · ${escapeHTML(course.lesson)}</p></div><div class="progress-track" aria-label="${progress}% local progress"><i style="width:${progress}%"></i></div><button class="action-button" data-course="${course.id}">${progress?'Resume':'Begin'}</button></article>`;
+  const alerts=academyAlerts(state.academy);
+  $('#academy-runtime').innerHTML=`<div class="academy-order"><b>TODAY—NON-NEGOTIABLE</b><span>12 min Typing + 8 min Spanish. Applied AI: Mon/Wed/Fri. Finance: Tue/Thu.</span></div>`+courses.map(course=>{
+    const record=state.academy[course.id],alert=alerts.find(item=>item.courseId===course.id);
+    const progress=record.progress||0;
+    return `<article class="course-row ${alert.level}"><div><small class="course-alert">${escapeHTML(alert.label)}</small><h3>${escapeHTML(course.name)}</h3><p>${escapeHTML(course.mission)} · ${escapeHTML(course.lesson)}</p><small>${record.completedLessons} completed · ${record.status.replaceAll('-',' ')}</small></div><div class="progress-track" aria-label="${progress}% local progress"><i style="width:${progress}%"></i></div><button class="action-button" data-course="${course.id}">${record.lastStartedAt?'Resume actual lesson':'Start actual lesson'}</button></article>`;
   }).join('');
 
   const regions=['Americas','Europe','Asia','Africa','Oceania'];
@@ -44,7 +81,7 @@ function render(){
   const market=intelligence.find(item=>item.category==='Markets')||intelligence.find(item=>item.category==='Business');
   $('#markets-runtime').innerHTML=`<div class="market-metric"><strong>LIVE</strong><span>SOURCE-LINKED POSTURE</span></div><div class="market-metric"><strong>${market?escapeHTML(market.confidence):'—'}</strong><span>CONFIDENCE</span></div><div class="market-metric"><strong>NOW</strong><span>DECISION HORIZON</span></div><div class="market-consequence"><b>${market?escapeHTML(market.title):'Market provider unavailable'}</b><br>${market?escapeHTML(market.consequence):'No current market consequence is asserted.'}<br><strong>Action:</strong> ${market?escapeHTML(market.action):'Use an authoritative market source before acting.'}</div>`;
 
-  $('#xmi-runtime').innerHTML=entertainment.filter(item=>!state.dismissed.includes(item.id)).map(item=>`<article class="media-card"><small>${escapeHTML(item.type)}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.why)}</p><div class="media-actions"><button class="action-button" data-save="${item.id}">${state.saved.includes(item.id)?'Saved ✓':'Save'}</button><button class="action-button" data-dismiss="${item.id}">Dismiss</button></div></article>`).join('')||'<div class="media-card"><h3>Recommendations cleared.</h3><p>Reset local state from the Command Deck index to restore them.</p></div>';
+  $('#xmi-runtime').innerHTML=entertainment.filter(item=>!state.dismissed.includes(item.id)).map(item=>`<article class="media-card"><small>${escapeHTML(item.type)}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.why)}</p><div class="media-actions">${item.watchUrl?`<a class="action-button" href="${item.watchUrl}" target="_blank" rel="noopener noreferrer" data-outbound="watch-${item.id}">Watch now</a>`:''}${item.previewUrl?`<a class="action-button" href="${item.previewUrl}" target="_blank" rel="noopener noreferrer" data-outbound="preview-${item.id}">Preview</a>`:''}<button class="action-button" data-save="${item.id}">${state.saved.includes(item.id)?'Saved ✓':'Save'}</button><button class="action-button" data-dismiss="${item.id}">Dismiss</button></div></article>`).join('')||'<div class="media-card"><h3>Recommendations cleared.</h3><p>Reset local state from the Command Deck index to restore them.</p></div>';
 
   const missionItems=[['academy','Complete the Academy minimum'],['evidence','Measure one Alpha One criterion'],['brief','Act on one verified Daily Bread signal'],['handoff','Record the exact continuation']];
   $('#mission-runtime').innerHTML=`<article class="mission-panel"><small class="eyebrow">ACTIVE MISSION</small><h3>Learn one thing. Measure one criterion. Move the mission.</h3>${missionItems.map(([id,label])=>`<div class="mission-check ${state.completed.includes(id)?'done':''}"><button data-complete="${id}" aria-label="Toggle ${escapeHTML(label)}">${state.completed.includes(id)?'✓':''}</button><span>${escapeHTML(label)}</span></div>`).join('')}</article><aside><label class="eyebrow" for="mission-notes">MISSION NOTES · LOCAL ONLY</label><textarea class="mission-notes" id="mission-notes" placeholder="Capture the next thought…">${escapeHTML(state.notes)}</textarea><p class="privacy">Auto-saved only in this browser.</p></aside>`;
@@ -53,8 +90,9 @@ function render(){
   $('#radar-runtime').innerHTML=risks.map(item=>`<article class="radar-card ${item.type}"><small>${escapeHTML(item.scope)} · ${item.type==='risk'?'RISK':'OPPORTUNITY'} · ${escapeHTML(item.level)}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.body)}</p><details><summary>Recommended move</summary><p>${escapeHTML(item.action)}</p></details></article>`).join('');
   $('#timeline-runtime').innerHTML=timeline.map((item,index)=>`<div class="time-row ${state.completed.includes(`time-${index}`)?'done':''}"><b>${escapeHTML(item[0])}</b><i></i><span>${escapeHTML(item[1])}</span><button class="action-button" data-complete="time-${index}">${state.completed.includes(`time-${index}`)?'Done':'Complete'}</button></div>`).join('');
 
+  const telemetry=telemetrySummary();
   $('#warden-runtime').innerHTML=`<article class="warden-panel">${[
-    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Academy, mission and preferences','LOCAL ONLY'],['Weather, world, markets and sports','SOURCE-LINKED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED'],['Analytics and tracking','NONE']
+    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Academy lesson runtime','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / typed content','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
   ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details, biometrics, Academy metrics and notes are excluded from public source.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.1 Clean Command Deck · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
   loadArchive();
 }
@@ -70,6 +108,15 @@ function tick(){
   $('#local-time').textContent=new Intl.DateTimeFormat([],{hour:'numeric',minute:'2-digit',timeZoneName:'short'}).format(now);
   const zones=[['New York','America/New_York'],['London','Europe/London'],['Singapore','Asia/Singapore'],['Dubai','Asia/Dubai']];
   $('#world-clocks').innerHTML=zones.map(([city,zone])=>`<div class="world-clock"><b>${city}</b><span>${new Intl.DateTimeFormat([],{timeZone:zone,hour:'numeric',minute:'2-digit'}).format(now)}</span></div>`).join('');
+}
+
+function enforceSchedule(){
+  const overdue=academyAlerts(state.academy).filter(item=>item.level==='overdue');
+  if(!overdue.length||!state.alertsEnabled||!('Notification'in window)||Notification.permission!=='granted')return;
+  const day=new Intl.DateTimeFormat('en-CA',{timeZone:ACADEMY_SCHEDULE.timezone,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+  if(state.lastAcademyAlertDay===day)return;
+  new Notification('Xen Academy is overdue',{body:'Your 20-minute minimum is not complete. Open Daily Bread: 12 min Typing + 8 min Spanish.'});
+  state.lastAcademyAlertDay=day;saveState();
 }
 
 function setScene(index,focus=true){
@@ -93,6 +140,8 @@ function openIndex(){
 }
 
 document.addEventListener('click',event=>{
+  const tracked=event.target.closest('button,a,[data-action]');
+  if(tracked)recordInteraction('click',tracked.dataset.action||tracked.dataset.course||tracked.dataset.outbound||tracked.id||tracked.tagName.toLowerCase());
   if(event.target.closest('#deck-back'))setScene(active-1);
   if(event.target.closest('#deck-next'))setScene(active+1);
   if(event.target.closest('#deck-index-button,[data-open-index]'))openIndex();
@@ -101,17 +150,23 @@ document.addEventListener('click',event=>{
   const indexed=event.target.closest('[data-scene-index]');if(indexed){$('#scene-index').hidden=true;setScene(Number(indexed.dataset.sceneIndex))}
   const process=event.target.closest('[data-process]');if(process){state.integration=Number(process.dataset.process);saveState();render()}
   if(event.target.closest('[data-process-advance]')){state.integration=state.integration===processStages.length-1?0:state.integration+1;saveState();render();notify('Integration gate saved locally.')}
-  const course=event.target.closest('[data-course]');if(course){state.academy[course.dataset.course]=Math.min(100,(state.academy[course.dataset.course]||0)+12);saveState();render();notify('Academy checkpoint saved locally.')}
+  const course=event.target.closest('[data-course]');if(course)openLesson(course.dataset.course);
+  if(event.target.closest('#lesson-close,#lesson-backdrop,[data-lesson-pause]'))closeLesson();
+  if(event.target.closest('[data-lesson-next]')&&activeLesson){state.academy=advanceLesson(state.academy,activeLesson);saveState();recordInteraction('academy','step-complete');renderLesson()}
+  if(event.target.closest('[data-lesson-back]')&&activeLesson){state.academy[activeLesson].step=Math.max(0,state.academy[activeLesson].step-1);state.academy[activeLesson].lastActiveAt=new Date().toISOString();saveState();renderLesson()}
+  if(event.target.closest('[data-lesson-finish]')&&activeLesson){const result=completeAcademyLesson(state.academy,activeLesson);state.academy=result.academy;saveState();if(result.completed){recordInteraction('academy','lesson-complete');render();closeLesson('Lesson complete. Schedule checkpoint saved locally.')}else{recordFinding('academy-premature-completion',activeLesson);notify('Warden blocked completion: finish every lesson step.')}}
+  if(event.target.closest('[data-enable-alerts]')){if('Notification'in window){Notification.requestPermission().then(permission=>{state.alertsEnabled=permission==='granted';saveState();render();notify(state.alertsEnabled?'Device alerts enabled.':'Device alerts remain off. The in-app overdue rail stays active.')})}else notify('Device notifications are unavailable. The in-app overdue rail stays active.')}
   const region=event.target.closest('[data-region]');if(region){state.region=region.dataset.region;saveState();render();notify(`${state.region} intelligence lens active.`)}
   const filter=event.target.closest('[data-filter]');if(filter){$$('[data-filter]').forEach(button=>button.classList.toggle('active',button===filter));renderIntelligence(filter.dataset.filter)}
   const save=event.target.closest('[data-save]');if(save){state.saved=state.saved.includes(save.dataset.save)?state.saved.filter(id=>id!==save.dataset.save):[...state.saved,save.dataset.save];saveState();render()}
   const dismiss=event.target.closest('[data-dismiss]');if(dismiss){state.dismissed=[...state.dismissed,dismiss.dataset.dismiss];saveState();render()}
   const complete=event.target.closest('[data-complete]');if(complete){state.completed=state.completed.includes(complete.dataset.complete)?state.completed.filter(id=>id!==complete.dataset.complete):[...state.completed,complete.dataset.complete];saveState();render()}
-  if(event.target.closest('#reset-local')){localStorage.removeItem(STORAGE);state={...initial,academy:{},completed:[],saved:[],dismissed:[]};$('#scene-index').hidden=true;render();notify('Local Daily Bread state reset.')}
+  if(event.target.closest('#reset-local')){localStorage.removeItem(STORAGE);clearTelemetry();state={...initial,academy:normalizeAcademy({}),completed:[],saved:[],dismissed:[]};$('#scene-index').hidden=true;render();notify('Local Daily Bread state and XER telemetry reset.')}
   if(event.target.closest('#open-preferences'))notify('Preferences remain private and local. Use regional and Academy controls in the deck.');
 });
 document.addEventListener('input',event=>{if(event.target.id==='mission-notes'){state.notes=event.target.value;saveState()}});
 document.addEventListener('keydown',event=>{
+  const keyClass=safeKeyClass(event);if(keyClass)recordInteraction('key',keyClass);
   if(event.key==='Escape'&&!$('#scene-index').hidden){$('#scene-index').hidden=true;return}
   if(event.target.matches('textarea,input'))return;
   if(event.key==='ArrowRight'||event.key==='PageDown')setScene(active+1);
@@ -119,6 +174,9 @@ document.addEventListener('keydown',event=>{
   if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();openIndex()}
 });
 
+window.addEventListener('error',event=>recordFinding('runtime-error',event.message));
+window.addEventListener('unhandledrejection',()=>recordFinding('unhandled-promise','Promise rejection withheld'));
+
 const hashIndex=scenes.findIndex(scene=>`#${scene.id}`===location.hash);
-render();tick();setScene(hashIndex>=0?hashIndex:0,false);setInterval(tick,30000);
+render();tick();enforceSchedule();setScene(hashIndex>=0?hashIndex:0,false);setInterval(tick,30000);
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));

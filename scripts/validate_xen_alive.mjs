@@ -13,11 +13,11 @@ assert.doesNotMatch(index, /assets\/css\/alive\.css|app\/alive\.js|assets\/css\/
 for (const scene of ['today', 'integration', 'academy', 'globe', 'intelligence', 'water-cooler', 'markets', 'xmi', 'mission', 'evolution', 'radar', 'timeline', 'archive', 'warden']) {
   assert.match(index, new RegExp(`id="scene-${scene}"`), `${scene} scene`);
 }
-for (const behavior of ['localStorage', 'deck-progress', 'scene-index', 'world-clocks', 'serviceWorker']) {
+for (const behavior of ['localStorage', 'deck-progress', 'scene-index', 'world-clocks', 'serviceWorker', 'completeAcademyLesson', 'recordInteraction']) {
   assert.ok(app.includes(behavior), `${behavior} runtime`);
 }
 for (const contract of ['prefers-reduced-motion', '.hero-globe', '.globe-visual', '.deck-controls', '.scene-index']) {
   assert.ok(css.includes(contract), `${contract} visual contract`);
 }
 
-console.log('XPS 4.1 clean Command Deck contract: PASS (14 scenes, Xen globe, local persistence, reduced motion, no legacy overlays)');
+console.log('XPS 4.2 Command Deck contract: PASS (14 scenes, active Academy, safe XER telemetry, Xen globe, no legacy overlays)');
