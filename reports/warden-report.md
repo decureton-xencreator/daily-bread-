@@ -1,5 +1,17 @@
 # Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
+## XPS 3.3 Integration Process upgrade — 2026-07-24
+
+**Decision:** PASS
+
+**Deployment:** VERIFIED — [workflow run 30107176129](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30107176129) completed successfully. The production root and Integration Process runtime returned HTTP 200 with matching XPS 3.3, lifecycle and control markers.
+
+- Nine-stage `SYNC → INHERIT → CLASSIFY → PLAN_GATE → EXECUTE → VALIDATE → TRUTH_GATE → RECORD → RESPOND` runway: **Repository-backed**.
+- `notify → reveal → act` interaction: **Locally functional**.
+- Evidence-withheld action attempts: **Fail closed** and enter a **local-only** Warden ledger.
+- Raw chat, private authority, identity details and personal progress: **Excluded from public source**.
+- Immutable July 24 archive: **Unchanged**.
+
 **Evaluated:** 2026-07-24 05:18 EDT
 
 **Repository release commit:** `21c28b226b1f9d3c31ff6fb2608097db59a2c5b5`

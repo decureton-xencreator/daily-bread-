@@ -10,6 +10,13 @@
     {"name": "Nine-stage evidence lifecycle", "state": "repository-backed"}
   ],
   "privacy": "Raw conversation, private repository authority, identity details and personal progress are excluded from public source.",
-  "deployment": {"state": "pending-post-commit-verification", "verified": false},
+  "deployment": {
+    "state": "deployed-verified",
+    "verified": true,
+    "verifiedAt": "2026-07-24T15:54:00Z",
+    "releaseCommit": "574308c3ec799566be9eaadc7947a4e0b3a3589f",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30107176129",
+    "evidence": "Pages workflow completed successfully; production root and app/integration.js returned HTTP 200 with matching XPS 3.3 and lifecycle markers."
+  },
   "continuation": "Verify the XPS 3.3 runtime at the production root, then preserve this shell for the July 25 immutable edition."
 }
