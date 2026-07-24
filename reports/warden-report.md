@@ -1,5 +1,18 @@
 # Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
+## XPS 4.3 Guided Command Deck — 2026-07-24
+
+**Decision:** PASS
+
+**Deployment:** VERIFIED — [workflow run 30131026760](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30131026760) completed successfully; the live root and XPS 4.3 stylesheet returned HTTP 200 with matching tutorial and spatial-integrity markers.
+
+- Entertainment copy and actions now remain in content flow: **Verified**.
+- Cross-component word wrapping and minimum-width safeguards: **Repository-backed**.
+- Mobile touch spacing and two-column action wrapping: **Repository-backed**.
+- Six-stage first-run and replayable product tutorial: **Locally functional**.
+- Tutorial scene routing, next, back, skip, finish and keyboard dismissal: **Tested**.
+- Tutorial completion and interaction events: **Local only**.
+
 ## XPS 4.2 Academy + XER activation — 2026-07-24
 
 **Decision:** PASS

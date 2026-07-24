@@ -10,9 +10,18 @@
     "Connected tutorial stages to Today, Integration, Academy, Globe, XMI and Warden scenes.",
     "Preserved reduced-motion, keyboard, local-state and privacy contracts."
   ],
-  "truthState": "repository-backed-deployment-pending",
+  "truthState": "repository-backed-deployed",
   "deployment": {
-    "verified": false
+    "verified": true,
+    "verifiedAt": "2026-07-24T18:29:02-04:00",
+    "endpointStatus": 200,
+    "commit": "d69d3af3a5e8f186b9adbbff1dbcdec043d77125",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30131026760"
   },
-  "continuation": "Validate mobile spatial integrity, tutorial controls and production deployment; then record Warden evidence."
+  "verification": {
+    "spatialIntegrity": "PASS — content-flow actions, wrapping rules and mobile touch spacing validated.",
+    "tutorial": "PASS — first-run, replay, next, back, skip, finish and scene-routing contracts validated.",
+    "production": "PASS — live root and XPS 4.3 stylesheet returned HTTP 200 with matching release markers."
+  },
+  "continuation": "Use market feedback and local aggregate findings to refine tutorial clarity without weakening spacing, accessibility or privacy gates."
 }
