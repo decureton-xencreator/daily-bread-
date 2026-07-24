@@ -5,15 +5,52 @@ import{recordInteraction,recordFinding,telemetrySummary,clearTelemetry,safeKeyCl
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
 const STORAGE='xdbs-command-deck-v2';
-const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas',alertsEnabled:false};
-let state=loadState(),active=0,toastTimer,activeLesson=null,lessonTimer=null;
+const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas',alertsEnabled:false,tutorialSeen:false};
+let state=loadState(),active=0,toastTimer,activeLesson=null,lessonTimer=null,tutorialStep=0;
 state.academy=normalizeAcademy(state.academy);
 const scenes=$$('.scene');
+const tutorial=[
+  {kicker:'WELCOME ABOARD',title:'Your command deck,<br>in six moves.',copy:'Daily Bread turns verified signal into a clear daily operating rhythm. This tour shows you where to look, what to press and what stays private.',callout:'Use NEXT and BACK to move through the deck. INDEX opens every module instantly.',scene:'scene-today'},
+  {kicker:'01 · NAVIGATE',title:'Move by sequence.<br>Jump by intent.',copy:'The bottom arrows move one scene at a time. INDEX reveals the full Command Deck. On a keyboard, use the arrow keys or Control/Command + K.',callout:'The cyan line and scene counter always show where you are.',scene:'scene-integration'},
+  {kicker:'02 · LEARN',title:'Start once.<br>Resume anywhere.',copy:'Academy Command is the prime directive. Open a real lesson, move through its steps, pause safely, and complete it only after the final checkpoint.',callout:'Overdue learning appears as a blunt red alert. Your exact lesson position stays on this device.',scene:'scene-academy'},
+  {kicker:'03 · ORIENT',title:'Use the Globe<br>as your world lens.',copy:'Choose a region to reorient the intelligence lens. The Globe, world clocks, verified developments and consequence cards help you understand what matters beyond the headline.',callout:'Precise location and private travel details are not published.',scene:'scene-globe'},
+  {kicker:'04 · ACT',title:'Open sources.<br>Make the move.',copy:'Intelligence cards expand from event to meaning, consequence and action. Entertainment cards open the verified watch page or preview. Mission Control turns the brief into completion.',callout:'Buttons are functional: open, save, dismiss, complete or resume. Warden rejects decorative controls.',scene:'scene-xmi'},
+  {kicker:'05 · TRUST',title:'Inspect the truth.<br>Keep refining.',copy:'Warden Diagnostics separates live, repository-backed, local and unavailable capabilities. XER learns from aggregate interactions and failures to improve the experience.',callout:'Typed text, passwords and raw printable keystrokes are never collected. Replay this guide anytime from GUIDE or the Command Deck index.',scene:'scene-warden'}
+];
 
 function loadState(){try{return{...initial,...JSON.parse(localStorage.getItem(STORAGE)||'{}')}}catch{return{...initial}}}
 function saveState(){localStorage.setItem(STORAGE,JSON.stringify(state))}
 function escapeHTML(value=''){return String(value).replace(/[&<>'"]/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[char]))}
 function notify(message){const el=$('#toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2400)}
+
+function renderTutorial(){
+  const step=tutorial[tutorialStep];
+  $('#tutorial-count').textContent=`${String(tutorialStep+1).padStart(2,'0')} / ${String(tutorial.length).padStart(2,'0')}`;
+  $('#tutorial-kicker').textContent=step.kicker;
+  $('#tutorial-title').innerHTML=step.title;
+  $('#tutorial-copy').textContent=step.copy;
+  $('#tutorial-callout').textContent=step.callout;
+  $('#tutorial-back').disabled=tutorialStep===0;
+  $('#tutorial-next').textContent=tutorialStep===tutorial.length-1?'Finish tour':tutorialStep===0?'Begin tour':'Next';
+  const sceneIndex=scenes.findIndex(scene=>scene.id===step.scene);
+  if(sceneIndex>=0)setScene(sceneIndex,false);
+}
+
+function openTutorial(start=0){
+  tutorialStep=Math.max(0,Math.min(start,tutorial.length-1));
+  $('#scene-index').hidden=true;
+  $('#tutorial-panel').hidden=false;$('#tutorial-backdrop').hidden=false;
+  document.body.classList.add('tutorial-open');
+  renderTutorial();$('#tutorial-close').focus();
+  recordInteraction('tutorial','open');
+}
+
+function closeTutorial(completed=false){
+  $('#tutorial-panel').hidden=true;$('#tutorial-backdrop').hidden=true;
+  document.body.classList.remove('tutorial-open');
+  if(completed){state.tutorialSeen=true;saveState();recordInteraction('tutorial','complete');notify('Tour complete. GUIDE reopens it anytime.')}
+  $('#tutorial-launch').focus();
+}
 
 function alertSummary(){
   const alerts=academyAlerts(state.academy),overdue=alerts.filter(item=>item.level==='overdue');
@@ -92,8 +129,8 @@ function render(){
 
   const telemetry=telemetrySummary();
   $('#warden-runtime').innerHTML=`<article class="warden-panel">${[
-    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Academy lesson runtime','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / typed content','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
-  ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details, biometrics, Academy metrics and notes are excluded from public source.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.1 Clean Command Deck · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
+    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Guided product tutorial','LOCAL · REPLAYABLE'],['Academy lesson runtime','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / typed content','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
+  ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details, biometrics, Academy metrics and notes are excluded from public source.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.3 Guided Command Deck · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
   loadArchive();
 }
 
@@ -145,6 +182,10 @@ document.addEventListener('click',event=>{
   if(event.target.closest('#deck-back'))setScene(active-1);
   if(event.target.closest('#deck-next'))setScene(active+1);
   if(event.target.closest('#deck-index-button,[data-open-index]'))openIndex();
+  if(event.target.closest('#tutorial-launch,#tutorial-replay'))openTutorial();
+  if(event.target.closest('#tutorial-close,#tutorial-skip,#tutorial-backdrop'))closeTutorial(false);
+  if(event.target.closest('#tutorial-back')){tutorialStep=Math.max(0,tutorialStep-1);renderTutorial()}
+  if(event.target.closest('#tutorial-next')){if(tutorialStep===tutorial.length-1)closeTutorial(true);else{tutorialStep+=1;renderTutorial()}}
   if(event.target.closest('#scene-index-close')){$('#scene-index').hidden=true;$('#deck-index-button').focus()}
   const jump=event.target.closest('[data-jump]');if(jump)setScene(scenes.findIndex(scene=>scene.id===jump.dataset.jump));
   const indexed=event.target.closest('[data-scene-index]');if(indexed){$('#scene-index').hidden=true;setScene(Number(indexed.dataset.sceneIndex))}
@@ -167,6 +208,7 @@ document.addEventListener('click',event=>{
 document.addEventListener('input',event=>{if(event.target.id==='mission-notes'){state.notes=event.target.value;saveState()}});
 document.addEventListener('keydown',event=>{
   const keyClass=safeKeyClass(event);if(keyClass)recordInteraction('key',keyClass);
+  if(event.key==='Escape'&&!$('#tutorial-panel').hidden){closeTutorial(false);return}
   if(event.key==='Escape'&&!$('#scene-index').hidden){$('#scene-index').hidden=true;return}
   if(event.target.matches('textarea,input'))return;
   if(event.key==='ArrowRight'||event.key==='PageDown')setScene(active+1);
@@ -179,4 +221,5 @@ window.addEventListener('unhandledrejection',()=>recordFinding('unhandled-promis
 
 const hashIndex=scenes.findIndex(scene=>`#${scene.id}`===location.hash);
 render();tick();enforceSchedule();setScene(hashIndex>=0?hashIndex:0,false);setInterval(tick,30000);
+if(!state.tutorialSeen&&!location.hash)setTimeout(()=>openTutorial(),700);
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));

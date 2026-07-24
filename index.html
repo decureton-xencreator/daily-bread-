@@ -7,7 +7,7 @@
   <meta name="description" content="Xen Daily Bread — a private-by-default executive Command Deck.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icons/xen-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/command-deck.css?v=4.2.0">
+  <link rel="stylesheet" href="assets/css/command-deck.css?v=4.3.0">
   <title>Xen Daily Bread · Command Deck</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
       <a class="deck-brand" href="#scene-today" aria-label="Xen Daily Bread home"><b>X</b><strong>XEN</strong><span>COMMAND DECK · DAILY BREAD</span></a>
       <div class="deck-progress" aria-hidden="true"><i id="deck-progress"></i></div>
       <div class="deck-count" id="deck-count" aria-live="polite">01 / 14</div>
-      <div class="deck-context"><i></i><time id="local-time">LOCAL TIME</time><span id="operating-mode">HOME MODE</span></div>
+      <div class="deck-context"><i></i><time id="local-time">LOCAL TIME</time><span id="operating-mode">HOME MODE</span><button class="tutorial-launch" id="tutorial-launch" type="button" aria-label="Open Daily Bread tutorial">GUIDE</button></div>
     </header>
     <aside class="academy-alert" id="academy-alert" role="alert" aria-live="assertive"></aside>
 
@@ -55,14 +55,25 @@
   <aside class="scene-index" id="scene-index" aria-labelledby="scene-index-title" hidden>
     <header><div><p>DAILY BREAD</p><h2 id="scene-index-title">Command Deck</h2></div><button id="scene-index-close" type="button" aria-label="Close scene index">×</button></header>
     <nav id="scene-index-list" aria-label="All scenes"></nav>
-    <footer><button type="button" id="open-preferences">Local preferences</button><button type="button" id="reset-local">Reset local state</button></footer>
+    <footer><button type="button" id="tutorial-replay">Replay tutorial</button><button type="button" id="open-preferences">Local preferences</button><button type="button" id="reset-local">Reset local state</button></footer>
   </aside>
   <aside class="lesson-drawer" id="lesson-drawer" aria-labelledby="lesson-title" hidden>
     <header><div><p>ACADEMY · RESUME ANYWHERE</p><h2 id="lesson-title">Lesson</h2></div><button id="lesson-close" type="button" aria-label="Close lesson">×</button></header>
     <div id="lesson-runtime"></div>
   </aside>
   <div class="lesson-backdrop" id="lesson-backdrop" hidden></div>
+  <div class="tutorial-backdrop" id="tutorial-backdrop" hidden></div>
+  <section class="tutorial-panel" id="tutorial-panel" role="dialog" aria-modal="true" aria-labelledby="tutorial-title" hidden>
+    <header><div><p>XEN DAILY BREAD · PRODUCT TOUR</p><span id="tutorial-count">01 / 06</span></div><button id="tutorial-close" type="button" aria-label="Close tutorial">×</button></header>
+    <div class="tutorial-body">
+      <p class="eyebrow" id="tutorial-kicker">WELCOME ABOARD</p>
+      <h2 id="tutorial-title">Your command deck,<br>in six moves.</h2>
+      <p id="tutorial-copy">Daily Bread turns verified signal into a clear daily operating rhythm. This tour shows you where to look, what to press and what stays private.</p>
+      <div class="tutorial-callout" id="tutorial-callout">Use NEXT and BACK to move through the deck. INDEX opens every module instantly.</div>
+    </div>
+    <footer><button class="secondary" id="tutorial-back" type="button">Back</button><button class="secondary" id="tutorial-skip" type="button">Skip tour</button><button class="primary" id="tutorial-next" type="button">Begin tour</button></footer>
+  </section>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="app/command-deck-app.js?v=4.2.0"></script>
+  <script type="module" src="app/command-deck-app.js?v=4.3.0"></script>
 </body>
 </html>

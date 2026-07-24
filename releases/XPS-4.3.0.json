@@ -1,0 +1,18 @@
+{
+  "release": "XPS 4.3.0",
+  "date": "2026-07-24",
+  "scope": "Guided Command Deck and cross-component spatial integrity",
+  "changes": [
+    "Replaced absolute entertainment actions with content-flow layout to prevent mobile text overlap.",
+    "Applied minimum-width, wrapping, line-height and control-spacing safeguards across every card, node, bubble and diagnostic surface.",
+    "Added a six-stage interactive Daily Bread product tutorial.",
+    "Added automatic first-run guidance plus permanent GUIDE and Replay tutorial controls.",
+    "Connected tutorial stages to Today, Integration, Academy, Globe, XMI and Warden scenes.",
+    "Preserved reduced-motion, keyboard, local-state and privacy contracts."
+  ],
+  "truthState": "repository-backed-deployment-pending",
+  "deployment": {
+    "verified": false
+  },
+  "continuation": "Validate mobile spatial integrity, tutorial controls and production deployment; then record Warden evidence."
+}
