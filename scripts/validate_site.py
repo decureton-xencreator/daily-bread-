@@ -4,7 +4,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];issues=[];warnings=[]
 required=['index.html','archive/index.html','data/editions.json','data/current-edition.json','data/academy.json','data/missions.json','data/sources.json','data/releases.json','data/preferences.schema.json','schemas/edition.schema.json','manifest.webmanifest','service-worker.js','assets/css/xdbs.css','assets/css/alive.css','app/app.js','app/alive.js','app/integration.js','tests/integration-process.test.mjs','app/state.js','app/academy.js','app/data.js','app/commands.js','app/saturday-mirror.js','tests/saturday-mirror.test.mjs','app/alpha-one-client.js','app/alpha-one-activation.js','tests/alpha-one-client.test.mjs','tests/alpha-one-activation.test.mjs','app/xaoa-program.js','tests/xaoa-program.test.mjs','config/xaoa-001.activation.json','docs/XAOA-001-XEN-ALPHA-ONE-ACTIVATION-PROGRAM.md','docs/XAO-003-DAILY-BREAD-CONSUMPTION.md','docs/XAO-004-PRODUCTION-ACTIVATION-READINESS.md','releases/XDBS-2.6.0.json','releases/XPS-3.3.0.json','governance/sync/XDBS-XIP-INTEGRATION-2026-07-24.md','.github/workflows/pages.yml','.nojekyll']
-required += ['assets/css/command-deck.css','app/command-deck.js','tests/command-deck.test.mjs','releases/XPS-4.0.0.json','governance/sync/XDBS-COMMAND-DECK-2026-07-24.md']
+required += ['assets/css/command-deck.css','assets/images/xen-globe.png','app/command-deck-app.js','tests/command-deck.test.mjs','releases/XPS-4.0.0.json','releases/XPS-4.1.0.json','governance/sync/XDBS-COMMAND-DECK-2026-07-24.md']
 for p in required:
  if not (ROOT/p).is_file():issues.append(f'missing:{p}')
 for p in ROOT.rglob('*.json'):
@@ -31,11 +31,11 @@ for p in ROOT.rglob('*.html'):
   if 'noopener' not in match.group(0).lower():issues.append(f'unsafe-external-link:{p.relative_to(ROOT)}')
 if 'prefers-reduced-motion' not in (ROOT/'assets/css/xdbs.css').read_text():issues.append('reduced-motion:missing')
 index=(ROOT/'index.html').read_text()
-for series in ['SERIES 02','SERIES 03','SERIES 04','SERIES 05','SERIES 11','SERIES 12','SERIES 13','SERIES 14','SERIES 15','SERIES 18']:
+for series in ['scene-today','scene-integration','scene-academy','scene-globe','scene-intelligence','scene-water-cooler','scene-markets','scene-xmi','scene-mission','scene-evolution','scene-radar','scene-timeline','scene-archive','scene-warden']:
  if series not in index:issues.append(f'missing-ui-marker:{series}')
-for marker in ['XEN INTEGRATION PROCESS','Notify the truth.','XPS 3.3']:
+for marker in ['XEN INTEGRATION PROCESS','Know what matters.','Xen Globe']:
  if marker not in index:issues.append(f'missing-ui-marker:{marker}')
-for marker in ['COMMAND DECK · DAILY BREAD','deck-progress','deck-counter','deck-scene-list','XPS 4.0']:
+for marker in ['COMMAND DECK · DAILY BREAD','deck-progress','deck-count','scene-index-list','assets/images/xen-globe.png']:
  if marker not in index:issues.append(f'missing-ui-marker:{marker}')
 manifest=json.loads((ROOT/'data/editions.json').read_text())
 for e in manifest['editions']:

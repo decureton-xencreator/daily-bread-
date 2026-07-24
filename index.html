@@ -1,52 +1,62 @@
 <!doctype html>
-<html lang="en" data-theme="midnight"><head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#05080f"><meta name="description" content="Xen Daily Bread — your private-by-default executive operating environment.">
-  <link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="assets/css/xdbs.css"><link rel="stylesheet" href="assets/css/alive.css"><link rel="stylesheet" href="assets/css/command-deck.css">
-  <title>Xen Daily Bread · July 24, 2026</title>
-</head><body>
-<a class="skip" href="#today">Skip to Today Command</a>
-<div id="arrival" class="arrival" aria-label="Xenesis arrival">
-  <div class="arrival-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-  <p class="kicker">XENESIS / DAILY BREAD</p><h1>Good <span id="daypart">day</span>, <span data-user-name>Commander</span>.</h1>
-  <p id="arrival-context">Synchronizing local context…</p><button class="primary" data-action="enter">Enter command</button>
-</div>
-<div class="shell" id="app">
-  <header class="topbar"><a class="brand" href="#today" aria-label="Daily Bread home"><span class="xmark">X</span><span>XEN</span><small>COMMAND DECK · DAILY BREAD</small></a>
-    <div class="deck-progress" aria-hidden="true"><i id="deck-progress"></i></div>
-    <div class="deck-counter" id="deck-counter" aria-live="polite">01 / 01</div>
-    <div class="context-strip"><span class="status-dot"></span><span id="clock">LOCAL TIME</span><span id="mode-label">HOME MODE</span></div>
-    <div class="top-actions"><button class="icon-btn" data-action="command" aria-label="Open command palette">⌘</button><button class="avatar" data-action="preferences" aria-label="Open preferences"><span data-user-initial>X</span></button></div>
-  </header>
-  <nav class="rail" aria-label="Primary modules"><div id="module-nav"></div><button data-action="diagnostics" title="Warden diagnostics"><span>◈</span><em>Warden</em></button></nav>
-  <main id="main"><section class="orientation" id="today" data-module="today">
-    <div class="orientation-copy"><p class="kicker"><span class="live-pip"></span><span id="date-long">FRIDAY · JULY 24</span> / LIVING EDITION</p>
-      <h1>Notify the truth.<br><span>Reveal the system. Act.</span></h1><p class="lede">Daily Bread is Xen’s front door: a living integration surface that turns verified intelligence into Academy learning, bounded execution, evidence and continuity.</p>
-      <div class="hero-actions"><a class="primary button-link" href="#integration">Open integration runway</a><button class="quiet" data-action="ask-xen">Ask Xen <kbd>LIVE MANUAL</kbd></button></div>
-    </div><div class="planet-wrap" aria-hidden="true"><div class="planet"><span class="node n1"></span><span class="node n2"></span><span class="route"></span></div><p>Declared home node<br><b data-home-location>Location not set</b></p></div>
-    <div class="vitals" id="vitals"></div>
-  </section>
-  <div class="content">
-    <section class="module feature" data-module="command"><header><div><p class="kicker">SERIES 02 / TODAY COMMAND</p><h2>What matters now</h2></div><span class="truth local">Locally functional</span></header><div id="command-grid" class="command-grid"></div></section>
-    <section class="module integration-module" data-module="integration" id="integration"><header><div><p class="kicker">XIP-001 / XEN INTEGRATION PROCESS</p><h2>From signal to durable proof.</h2></div><span class="truth repo">XPS 3.3 · Repository-backed</span></header><p class="module-intro">Every Xen capability moves through the same fail-closed lifecycle. The public interface exposes the process; sensitive context and personal progress stay local.</p><div id="integration-runtime"></div></section>
-    <section class="module" data-module="academy" id="academy"><header><div><p class="kicker">SERIES 03 / ACADEMY COMMAND</p><h2>Resume. Never restart.</h2></div><button class="quiet small" data-action="academy-minimum">Daily minimum</button></header><div class="academy-layout"><div id="academy-courses" class="course-list"></div><aside class="academy-reco"><span class="eyebrow">BALANCE ENGINE</span><div class="ring" style="--progress:0"><strong>Local</strong></div><h3>Protect the neglected edge.</h3><p>Local Academy state identifies the neglected edge. A twelve-minute return restores balance without exposing private progress.</p><button class="primary full" data-course="typing">Resume Typing</button></aside></div></section>
-    <section class="module globe-module" data-module="globe" id="globe"><div class="globe-copy"><p class="kicker">SERIES 04 / XEN GLOBE</p><h2>The world,<br>oriented to you.</h2><p>Choose a region to shift the intelligence lens. Time zones are computed locally; routes remain private on this device.</p><div id="regions" class="regions"></div><div id="world-clocks" class="world-clocks" aria-label="World clocks"></div></div><div class="globe-stage" role="img" aria-label="Stylized world globe with regional nodes"><div class="world"><button style="--x:22%;--y:38%" data-region="Americas" aria-label="Americas node"></button><button style="--x:51%;--y:31%" data-region="Europe" aria-label="Europe node"></button><button style="--x:70%;--y:44%" data-region="Asia" aria-label="Asia node"></button><span class="world-ring r1"></span><span class="world-ring r2"></span></div><div id="region-readout" class="region-readout">Americas · UTC−04:00</div></div></section>
-    <section class="module" data-module="intelligence" id="intelligence"><header><div><p class="kicker">SERIES 05–10 / WORLD & PERSONAL INTELLIGENCE</p><h2>Signal, then consequence.</h2></div><div class="segmented" id="intel-filters"></div></header><div id="intel-grid" class="intel-grid"></div></section>
-    <section class="module" data-module="xmi" id="xmi"><header><div><p class="kicker">SERIES 11 / ENTERTAINMENT & XMI</p><h2>A deliberate end to the day.</h2></div><button class="quiet small" data-action="choose-entertainment">Choose for me</button></header><div id="entertainment-grid" class="entertainment-grid"></div></section>
-    <section class="module mirror-module" data-module="saturday-mirror" id="saturday-mirror"><header><div><p class="kicker">XMR-001 / SATURDAY MIRROR</p><h2>Review the week. Choose the next.</h2></div><span class="truth local">Private · local only</span></header><div id="mirror-runtime"></div></section>
-    <section class="module" data-module="missions" id="missions"><header><div><p class="kicker">SERIES 12 / MISSION CONTROL</p><h2>Move the mission.</h2></div><span class="truth local">Locally functional</span></header><div class="mission-layout"><div id="mission-main"></div><aside><h3>Mission notes</h3><textarea id="mission-notes" rows="9" placeholder="Capture the next thought. Stored only on this device."></textarea><p class="privacy-note">Local only · auto-saved</p></aside></div></section>
-    <section class="module" data-module="evolution" id="evolution"><header><div><p class="kicker">SERIES 13 / XEN BUILD EVOLUTION</p><h2>Proof over theater.</h2></div><span class="truth repo">Repository-backed</span></header><div id="evolution-grid" class="evolution-grid"></div></section>
-    <section class="module" data-module="radar" id="radar"><header><div><p class="kicker">SERIES 14 / RISK & OPPORTUNITY RADAR</p><h2>See the decision field.</h2></div></header><div id="radar-grid" class="radar-grid"></div></section>
-    <section class="module" data-module="timeline" id="timeline"><header><div><p class="kicker">SERIES 15 / DAILY TIMELINE</p><h2>A rhythm you can finish.</h2></div></header><div id="timeline-list" class="timeline"></div></section>
-    <section class="module archive-module" data-module="archive" id="archive"><header><div><p class="kicker">SERIES 18 / ARCHIVE & MEMORY</p><h2>Every day becomes a waypoint.</h2></div><a class="quiet small button-link" href="archive/">Full archive</a></header><div class="archive-tools"><label><span class="sr-only">Search editions</span><input id="archive-search" type="search" placeholder="Search editions, modes, events…"></label></div><div id="archive-cards" class="archive-cards"></div></section>
-    <footer><div><span class="xmark">X</span><b>XPS 4.0 · COMMAND DECK</b></div><p>Built on the synchronized XPS 3.2–3.3 lineage. Private by default. Truth states visible. No analytics. <button class="link-btn" data-action="provenance">Open provenance</button></p><p>XPS ACTIVE · XEN IS ALIVE · v4.0.0</p></footer>
-  </div></main>
-  <nav class="mobile-nav" aria-label="Mobile modules"><a href="#today">Today</a><a href="#academy">Academy</a><a href="#missions">Mission</a><button data-action="command">Command</button></nav>
-</div>
-<div class="deck-controls" aria-label="Command Deck controls"><button id="deck-back" type="button" aria-label="Previous scene">← <span>BACK</span></button><button id="deck-index" type="button" aria-label="Open scene index">◇ <span>INDEX</span></button><button id="deck-next" type="button" aria-label="Next scene"><span>NEXT</span> →</button></div>
-<div class="deck-scene-status"><i></i><span id="deck-scene-label">DAILY BREAD · ORIENTATION</span></div>
-<div class="deck-index-panel" id="deck-index-panel" hidden><div class="deck-index-head"><span>COMMAND DECK</span><button type="button" id="deck-index-close" aria-label="Close scene index">×</button></div><nav id="deck-scene-list" aria-label="Command Deck scenes"></nav></div>
-<div class="palette-backdrop" data-close="palette" hidden><section class="palette" role="dialog" aria-modal="true" aria-labelledby="palette-title"><header><span id="palette-title">XEN COMMAND</span><kbd>ESC</kbd></header><label><span class="sr-only">Enter command</span><input id="command-input" autocomplete="off" placeholder="Navigate, focus, open Academy…"></label><p class="privacy-note">Commands execute locally. No microphone or AI service is connected.</p><div id="command-results"></div></section></div>
-<div class="drawer-backdrop" data-close="drawer" hidden><aside class="drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title"><header><div><p class="kicker">SYSTEM CONTROL</p><h2 id="drawer-title">Preferences</h2></div><button class="icon-btn" data-action="close-drawer" aria-label="Close">×</button></header><div id="drawer-body"></div></aside></div>
-<div id="toast-region" class="toasts" aria-live="polite"></div>
-<script type="module" src="app/app.js"></script><script type="module" src="app/alive.js"></script><script type="module" src="app/command-deck.js"></script></body></html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#020607">
+  <meta name="description" content="Xen Daily Bread — a private-by-default executive Command Deck.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/xen-mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/command-deck.css">
+  <title>Xen Daily Bread · Command Deck</title>
+</head>
+<body>
+  <a class="skip-link" href="#scene-today">Skip to Daily Bread</a>
+  <div class="deck-shell">
+    <header class="deck-header">
+      <a class="deck-brand" href="#scene-today" aria-label="Xen Daily Bread home"><b>X</b><strong>XEN</strong><span>COMMAND DECK · DAILY BREAD</span></a>
+      <div class="deck-progress" aria-hidden="true"><i id="deck-progress"></i></div>
+      <div class="deck-count" id="deck-count" aria-live="polite">01 / 14</div>
+      <div class="deck-context"><i></i><time id="local-time">LOCAL TIME</time><span id="operating-mode">HOME MODE</span></div>
+    </header>
+
+    <main class="deck-stage" id="deck-stage">
+      <section class="scene scene-hero active" id="scene-today" data-label="Today Command" tabindex="-1">
+        <div class="hero-copy">
+          <p class="eyebrow"><i></i> FRIDAY, JULY 24 / LIVING EDITION</p>
+          <h1>Know what matters.<br><em>Move with proof.</em></h1>
+          <p class="scene-lede">Daily Bread translates world signal, Academy learning and operating evidence into one clear executive rhythm.</p>
+          <div class="hero-actions"><button class="primary" type="button" data-action="academy" data-jump="scene-academy">Begin prime directive</button><button class="secondary" type="button" data-action="index" data-open-index>Open Command Deck</button></div>
+        </div>
+        <div class="hero-globe" aria-hidden="true"><img src="assets/images/xen-globe.png" alt=""><i class="orbit orbit-a"></i><i class="orbit orbit-b"></i><span class="globe-node n-a"></span><span class="globe-node n-b"></span></div>
+        <div class="hero-vitals" id="hero-vitals"></div>
+      </section>
+
+      <section class="scene" id="scene-integration" data-label="Integration Process" tabindex="-1"><header class="scene-copy"><p class="eyebrow">01 · XEN INTEGRATION PROCESS</p><h2>From signal<br>to durable proof.</h2><p>Every capability advances through the same evidence-gated operating lifecycle.</p></header><div class="scene-visual integration-visual" id="integration-runtime"></div></section>
+      <section class="scene" id="scene-academy" data-label="Academy Command" tabindex="-1"><header class="scene-copy"><p class="eyebrow">02 · ACADEMY COMMAND · PRIME DIRECTIVE</p><h2>Resume.<br>Never restart.</h2><p>Learning is the first operating move. Progress stays on this device.</p></header><div class="scene-visual academy-visual" id="academy-runtime"></div></section>
+      <section class="scene globe-scene" id="scene-globe" data-label="Xen Globe" tabindex="-1"><header class="scene-copy"><p class="eyebrow">03 · XEN GLOBE</p><h2>The world,<br>oriented to you.</h2><p>Select a region to move the intelligence lens. Time is computed locally; routes and precise location remain private.</p><div class="region-controls" id="region-controls"></div><div class="region-readout" id="region-readout">AMERICAS · ACTIVE LENS</div></header><div class="scene-visual globe-visual"><img src="assets/images/xen-globe.png" alt="Earth viewed from space, centered on Europe and Africa"><i class="globe-scan"></i><span class="world-node node-home" aria-label="Declared home region"></span><span class="world-node node-europe"></span><span class="world-node node-asia"></span><div class="clock-stack" id="world-clocks"></div></div></section>
+      <section class="scene" id="scene-intelligence" data-label="World Intelligence" tabindex="-1"><header class="scene-copy"><p class="eyebrow">04 · WORLD IN FIVE MINUTES</p><h2>Signal.<br><em>Then consequence.</em></h2><p>Only developments that change a decision, risk, opportunity or conversation.</p><div class="filter-row" id="intel-filters"></div></header><div class="scene-visual intel-visual" id="intel-runtime"></div></section>
+      <section class="scene" id="scene-water-cooler" data-label="Water Cooler" tabindex="-1"><header class="scene-copy"><p class="eyebrow">05 · WATER COOLER MODE</p><h2>Know enough<br>to enter the room.</h2><p>Fast context, a deeper angle and one useful thing to say.</p></header><div class="scene-visual briefing-visual" id="water-runtime"></div></section>
+      <section class="scene" id="scene-markets" data-label="Markets & Business" tabindex="-1"><header class="scene-copy"><p class="eyebrow">06 · MARKETS & BUSINESS IMPACT</p><h2>Price movement<br>is not the decision.</h2><p>Translate market posture into cash, cost, demand and margin consequences.</p></header><div class="scene-visual metric-visual" id="markets-runtime"></div></section>
+      <section class="scene" id="scene-xmi" data-label="Entertainment & XMI" tabindex="-1"><header class="scene-copy"><p class="eyebrow">07 · ENTERTAINMENT & XMI</p><h2>End the day<br>on purpose.</h2><p>One film, one sound and one long-form choice matched to the day.</p></header><div class="scene-visual media-visual" id="xmi-runtime"></div></section>
+      <section class="scene" id="scene-mission" data-label="Mission Control" tabindex="-1"><header class="scene-copy"><p class="eyebrow">08 · MISSION CONTROL</p><h2>Turn the brief<br>into movement.</h2><p>One mission, explicit evidence and a saved continuation.</p></header><div class="scene-visual mission-visual" id="mission-runtime"></div></section>
+      <section class="scene" id="scene-evolution" data-label="Xen Build Evolution" tabindex="-1"><header class="scene-copy"><p class="eyebrow">09 · XEN BUILD EVOLUTION</p><h2>Proof<br>over theater.</h2><p>Repository truth, current gates, blocked integrations and the next canonical continuation.</p></header><div class="scene-visual evolution-visual" id="evolution-runtime"></div></section>
+      <section class="scene" id="scene-radar" data-label="Risk & Opportunity" tabindex="-1"><header class="scene-copy"><p class="eyebrow">10 · RISK & OPPORTUNITY</p><h2>See the<br>decision field.</h2><p>Immediate risks, strategic opportunities and the move each one demands.</p></header><div class="scene-visual radar-visual" id="radar-runtime"></div></section>
+      <section class="scene" id="scene-timeline" data-label="Daily Timeline" tabindex="-1"><header class="scene-copy"><p class="eyebrow">11 · DAILY TIMELINE</p><h2>A rhythm<br>you can finish.</h2><p>Now, next and the protected windows that make the day coherent.</p></header><div class="scene-visual timeline-visual" id="timeline-runtime"></div></section>
+      <section class="scene" id="scene-archive" data-label="Archive & Memory" tabindex="-1"><header class="scene-copy"><p class="eyebrow">12 · ARCHIVE & MEMORY</p><h2>Every day<br>becomes a waypoint.</h2><p>Permanent editions, operating modes and durable continuation.</p><a class="text-link" href="archive/">Open full archive →</a></header><div class="scene-visual archive-visual" id="archive-runtime"></div></section>
+      <section class="scene" id="scene-warden" data-label="Warden Diagnostics" tabindex="-1"><header class="scene-copy"><p class="eyebrow">13 · PROVENANCE & TRUST</p><h2>Truth is<br>a product feature.</h2><p>Every capability is separated by actual state: live, repository-backed, local, unavailable or blocked. XPS 4.1 preserves the governed XPS 3.2 lineage.</p></header><div class="scene-visual warden-visual" id="warden-runtime"></div></section>
+    </main>
+
+    <nav class="deck-controls" aria-label="Scene controls"><button id="deck-back" type="button">← <span>BACK</span></button><button id="deck-index-button" type="button">◇ <span>INDEX</span></button><button id="deck-next" type="button"><span>NEXT</span> →</button></nav>
+    <div class="scene-status"><i></i><span id="scene-status">01 · TODAY COMMAND</span></div>
+  </div>
+
+  <aside class="scene-index" id="scene-index" aria-labelledby="scene-index-title" hidden>
+    <header><div><p>DAILY BREAD</p><h2 id="scene-index-title">Command Deck</h2></div><button id="scene-index-close" type="button" aria-label="Close scene index">×</button></header>
+    <nav id="scene-index-list" aria-label="All scenes"></nav>
+    <footer><button type="button" id="open-preferences">Local preferences</button><button type="button" id="reset-local">Reset local state</button></footer>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="app/command-deck-app.js"></script>
+</body>
+</html>

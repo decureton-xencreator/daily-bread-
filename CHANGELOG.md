@@ -1,5 +1,13 @@
 # Changelog
 
+## XPS 4.1.0 — 2026-07-24
+
+- Removed the conflicting legacy dashboard and Alive presentation layers from the production root.
+- Rebuilt Daily Bread as one clean Xen Command Deck runtime instead of a CSS overlay.
+- Replaced the decorative planet with the full Xen Globe asset in both the opening and world stages.
+- Preserved Academy, intelligence, Water Cooler, markets, XMI, Mission Control, evolution, radar, timeline, archive and Warden capabilities.
+- Added explicit regression tests preventing the legacy presentation runtimes from returning to the root.
+
 ## XPS 4.0.0 — 2026-07-24
 
 - Replaced the scrolling dashboard composition with the Xen Command Deck scene system.

@@ -1,10 +1,11 @@
 import assert from'node:assert/strict';
 import{readFileSync}from'node:fs';
 const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
-const runtime=readFileSync(new URL('../app/command-deck.js',import.meta.url),'utf8');
+const runtime=readFileSync(new URL('../app/command-deck-app.js',import.meta.url),'utf8');
 const css=readFileSync(new URL('../assets/css/command-deck.css',import.meta.url),'utf8');
-for(const marker of['deck-progress','deck-counter','deck-back','deck-index','deck-next','deck-scene-list'])assert.match(html,new RegExp(marker));
-for(const behavior of['ArrowRight','ArrowLeft','data-deck-jump','history.replaceState','available'])assert.match(runtime,new RegExp(behavior));
-for(const contract of['\\.deck-scene\\.active','\\.deck-controls','prefers-reduced-motion','@media\\(max-width:640px\\)'])assert.match(css,new RegExp(contract));
-assert.doesNotMatch(runtime,/\bfetch\s*\(/);
-console.log('XPS 4.0 Command Deck tests passed');
+for(const marker of['deck-progress','deck-count','deck-back','deck-index-button','deck-next','scene-index-list','assets/images/xen-globe.png'])assert.match(html,new RegExp(marker));
+for(const behavior of['ArrowRight','ArrowLeft','data-scene-index','history.replaceState','localStorage','world-clocks','renderIntelligence'])assert.match(runtime,new RegExp(behavior));
+for(const contract of['\\.scene\\.active','\\.deck-controls','\\.globe-visual','prefers-reduced-motion','@media\\(max-width:760px\\)'])assert.match(css,new RegExp(contract));
+assert.doesNotMatch(html,/assets\/css\/(?:xdbs|alive)\.css/);
+assert.doesNotMatch(html,/app\/(?:app|alive)\.js/);
+console.log('XPS 4.1 clean Command Deck tests passed');

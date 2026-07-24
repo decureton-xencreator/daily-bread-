@@ -1,0 +1,16 @@
+{
+  "release": "XPS 4.1.0",
+  "date": "2026-07-24",
+  "scope": "Clean Xen Command Deck runtime",
+  "editionRelease": "XDBS 2.6.0",
+  "changes": [
+    "Removed the legacy XDBS and Alive presentation runtimes from the production root.",
+    "Rebuilt the root as one scene-driven Command Deck application.",
+    "Promoted the full Xen globe asset into the hero and dedicated world stage.",
+    "Preserved Daily Bread intelligence, Academy, XMI, mission, archive, provenance and local persistence."
+  ],
+  "truthState": "repository-backed-deployment-pending",
+  "privacy": "No analytics, raw chat or sensitive personal context is included.",
+  "deployment": {"state": "pending-post-commit-verification", "verified": false},
+  "continuation": "Verify the clean production root, Globe asset, stylesheet and application runtime before closing Warden."
+}

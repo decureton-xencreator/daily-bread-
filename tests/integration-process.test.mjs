@@ -8,6 +8,6 @@ assert.match(source,/localStorage/);
 assert.match(source,/failures\.unshift/);
 assert.match(source,/evidence was not revealed/);
 assert.match(html,/XEN INTEGRATION PROCESS/);
-assert.match(html,/Notify the truth/);
+assert.match(html,/evidence-gated operating lifecycle/);
 assert.doesNotMatch(source,/\bfetch\s*\(/);
 console.log('Xen Integration Process tests passed');
