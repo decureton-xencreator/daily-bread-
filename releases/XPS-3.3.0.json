@@ -1,0 +1,15 @@
+{
+  "release": "XPS 3.3.0",
+  "date": "2026-07-24",
+  "scope": "Daily Bread integration runtime",
+  "editionRelease": "XDBS 2.6.0",
+  "capabilities": [
+    {"name": "Xen Integration Process runway", "state": "repository-backed"},
+    {"name": "Notify → Reveal → Act controls", "state": "locally-functional"},
+    {"name": "Warden failed-action ledger", "state": "local-only"},
+    {"name": "Nine-stage evidence lifecycle", "state": "repository-backed"}
+  ],
+  "privacy": "Raw conversation, private repository authority, identity details and personal progress are excluded from public source.",
+  "deployment": {"state": "pending-post-commit-verification", "verified": false},
+  "continuation": "Verify the XPS 3.3 runtime at the production root, then preserve this shell for the July 25 immutable edition."
+}

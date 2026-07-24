@@ -133,4 +133,4 @@ function installXpsHeartbeat(){
 const xps32Observer=new MutationObserver(()=>{decorateIntelligence();decorateCommandControls()});
 xps32Observer.observe(document.documentElement,{subtree:true,childList:true});
 decorateIntelligence();decorateCommandControls();installXpsHeartbeat();
-document.documentElement.dataset.xpsVersion='3.2';
+document.documentElement.dataset.xpsVersion='3.3';

@@ -1,5 +1,13 @@
 # Changelog
 
+## XPS 3.3.0 — 2026-07-24
+
+- Promoted the Xen Integration Process into the Daily Bread command surface.
+- Added the visible nine-stage lifecycle from synchronization through response.
+- Added working `notify → reveal → act` controls with evidence-gated local progression.
+- Added a local-only Warden failed-action ledger for attempted action without revealed evidence.
+- Preserved the July 24 immutable archive and kept raw chat, private authority and personal progress outside public source.
+
 ## 2.6.0 — 2026-07-24
 
 - Published the permanent July 24 living edition with fresh shipping, rates, weather, market, AI-adoption, entertainment and Yankees intelligence.

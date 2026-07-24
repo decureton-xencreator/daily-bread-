@@ -1,0 +1,13 @@
+import assert from'node:assert/strict';
+import{readFileSync}from'node:fs';
+const source=readFileSync(new URL('../app/integration.js',import.meta.url),'utf8');
+const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
+for(const stage of['SYNC','INHERIT','CLASSIFY','PLAN GATE','EXECUTE','VALIDATE','TRUTH GATE','RECORD','RESPOND'])assert.match(source,new RegExp(`'${stage}'`));
+for(const control of['data-xip-stage','data-xip-reveal','data-xip-act','data-xip-reset'])assert.match(source,new RegExp(control));
+assert.match(source,/localStorage/);
+assert.match(source,/failures\.unshift/);
+assert.match(source,/evidence was not revealed/);
+assert.match(html,/XEN INTEGRATION PROCESS/);
+assert.match(html,/Notify the truth/);
+assert.doesNotMatch(source,/\bfetch\s*\(/);
+console.log('Xen Integration Process tests passed');

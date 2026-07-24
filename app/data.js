@@ -1,4 +1,4 @@
-export const nav=[['today','⌂','Today'],['academy','◫','Academy'],['globe','◎','Globe'],['intelligence','◇','Intel'],['xmi','♫','XMI'],['missions','△','Mission'],['evolution','↗','Build'],['radar','◌','Radar'],['timeline','│','Timeline'],['archive','≡','Archive']];
+export const nav=[['today','⌂','Today'],['integration','⟲','Integrate'],['academy','◫','Academy'],['globe','◎','Globe'],['intelligence','◇','Intel'],['xmi','♫','XMI'],['missions','△','Mission'],['evolution','↗','Build'],['radar','◌','Radar'],['timeline','│','Timeline'],['archive','≡','Archive']];
 export const priorities=[
  {id:'p1',title:'Complete the Academy minimum',detail:'Typing accuracy for twelve minutes, then apply one Applied AI lesson to a release criterion.',urgency:'Prime'},
  {id:'p2',title:'Measure one Alpha One criterion',detail:'Name the criterion, inspect its evidence, record the gap, and avoid an unsupported completion percentage.',urgency:'High'},
