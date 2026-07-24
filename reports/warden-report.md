@@ -1,5 +1,18 @@
 # Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
+## XPS 4.2 Academy + XER activation — 2026-07-24
+
+**Decision:** PASS
+
+**Deployment:** VERIFIED — [workflow run 30121230810](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30121230810) completed successfully; the production root returned HTTP 200 with XPS 4.2 assets, the Academy alert rail and lesson drawer.
+
+- Actual Academy start, resume, pause, step progression and evidence-gated completion: **Locally functional**.
+- Daily minimum and rotation schedule with overdue/neglect alerts: **Locally functional**.
+- Apple TV watch and official preview actions for The Dink: **Live and source-verified**.
+- Warden + XER + XEW bounded synchronization: **Repository-backed**.
+- Interaction learning: **Local aggregate telemetry only**; printable keys, typed content, form values, notes and credentials are never captured.
+- Automated validation: **PASS** — site, canonical sync, source freshness, Academy assertions, Command Deck governance and runtime tests.
+
 ## XPS 4.1 clean Command Deck correction — 2026-07-24
 
 **Decision:** PASS
