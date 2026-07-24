@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "2.5",
-  "validatedAt": "2026-07-23T05:00:00-04:00",
+  "schemaVersion": "2.6",
+  "validatedAt": "2026-07-24T05:01:00-04:00",
   "result": "PASS",
   "checks": {
     "requiredFiles": true,
@@ -13,11 +13,12 @@
     "archiveIntegrity": true,
     "academyPublicMetrics": true,
     "secretScan": true,
-    "deploymentEvidence": true
+    "deploymentEvidence": false
   },
   "issues": [],
   "warnings": [
     "Calendar details are intentionally withheld; route, biometric and cross-device Academy integrations are not connected",
+    "Production deployment requires post-commit workflow and endpoint verification",
     "Visual cross-browser verification remains a manual acceptance item"
   ]
 }

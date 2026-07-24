@@ -1,5 +1,5 @@
 const mediaCatalog={
- film:{label:'CINEMA MODE',videoId:'6ZfuNTqbHE8',url:'https://www.youtube.com/watch?v=6ZfuNTqbHE8',cta:'Open trailer',alt:'Official Avengers: Infinity War trailer thumbnail'},
+ film:{label:'FRIDAY PREMIERE',videoId:'YyVNFzx5Pl8',url:'https://www.youtube.com/watch?v=YyVNFzx5Pl8',cta:'Open official trailer',alt:'Official The Dink trailer thumbnail'},
  music:{label:'SONG OF THE DAY',videoId:'bEeaS6fuUoA',url:'https://www.youtube.com/watch?v=bEeaS6fuUoA',cta:'Open full video',alt:'Bill Withers Lovely Day official video thumbnail'},
  longform:{label:'OPERATOR STORIES',videoId:'UF8uR6Z6KLc',url:'https://www.youtube.com/watch?v=UF8uR6Z6KLc',cta:'Open talk',alt:'Steve Jobs Stanford commencement address thumbnail'}
 };

@@ -1,9 +1,19 @@
 {
-  "schema_version": "2.5",
+  "schema_version": "2.6",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-23T05:00:00-04:00",
+  "updated_at": "2026-07-24T05:01:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-24",
+      "title": "Measure the truth. Move the mission.",
+      "summary": "Fresh shipping, rates, weather, markets, AI-adoption and Yankees intelligence translated into Academy action and one evidence-backed Alpha One criterion.",
+      "path": "editions/2026/07/daily-bread-2026-07-24.html",
+      "mode": "evidence-led-execution",
+      "tags": ["XDBS 3.0", "Release 2.6", "XPS 3.2", "Academy Command", "Alpha One", "XET", "XEE", "XWR", "Warden"],
+      "status": "published",
+      "version": "2.6.0"
+    },
     {
       "date": "2026-07-23",
       "title": "Calm the field. Compound capability.",

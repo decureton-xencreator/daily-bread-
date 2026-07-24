@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.6.0 — 2026-07-24
+
+- Published the permanent July 24 living edition with fresh shipping, rates, weather, market, AI-adoption, entertainment and Yankees intelligence.
+- Made Academy Command the prime directive and connected its Applied AI lesson to one explicit Alpha One release criterion.
+- Inherited XAOA-001, XCC-002 and the execution-evidence contract from Daily Bread main.
+- Recorded bounded Phase 1 (`XWC`, `XCE`, `XOR`, `XCF`) and Phase 2 (`XET`, `XEE`, `XWB`, `XPSDK`, `XWR`) canonical reference-runtime inheritance with external production gates preserved.
+- Withheld an Alpha One completion percentage until a defensible release-criteria denominator exists.
+- Preserved private calendar, itinerary, biometrics, Academy metrics and notes outside public source.
+
 ## XAOA-001 activation controller — 2026-07-23
 
 - Established the executable Xen Alpha One Activation Program and its canonical Priority Zero build order.

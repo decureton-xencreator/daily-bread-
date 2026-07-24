@@ -1,38 +1,40 @@
-# Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.5.0
+# Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
-**Evaluated:** 2026-07-23 05:00 EDT
+**Evaluated:** 2026-07-24 05:01 EDT
 
-**Release gates:** 9 / 9 passed
+**Repository base:** `main@6b45e529a53bd113f216a94dc9a900c853559bc5`
 
-**Deployment:** VERIFIED — [workflow run 29994438348](https://github.com/decureton-xencreator/daily-bread-/actions/runs/29994438348) completed successfully; the production root and immutable July 23 edition returned HTTP 200 with matching release content.
+**Decision:** PASS WITH DEPLOYMENT VERIFICATION PENDING
 
-## Capability truth states
+**Deployment:** VERIFYING — repository commit, Pages workflow and matching production-content checks remain gate nine.
 
-- Application shell, current alias, dated archive, manifests, release record and publisher: **Repository-backed**.
-- Command palette, focus timer, world clocks, archive search, local preferences, notes, completion state and XMI save/dismiss: **Locally functional**.
-- Weather, markets, world intelligence and sports schedule: **Live retrieval**, source-linked and timestamped for July 23.
-- Academy runtime: **Locally persistent**; public source does not expose private scores or cross-device state.
-- Entertainment and XMI recommendations: **Demonstration data**.
-- Calendar context: **Connected and checked privately**; no event detail is copied into public source.
-- Private travel routes, health biometrics, cross-device Academy synchronization and autonomous agent execution: **Not connected / unavailable**.
-- Alpha One founder pilot: **Authorized to start** for July 22 through August 21; success outcomes remain unmeasured.
-- XPS 3.2 synchronized heartbeat, news visuals, command controls and reduced-motion behavior: **Repository-backed**.
-- GitHub Pages workflow: **Live**; run `29994438348` completed successfully.
-- Production root: **Live**; `https://decureton-xencreator.github.io/daily-bread-/` returned HTTP 200 with July 23 and XPS 3.2 markers.
-- Immutable edition: **Live**; `https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-23.html` returned HTTP 200 with edition 2.5.0 content.
+## Truth states
 
-## Findings
+- Edition, current alias, archive, manifests, release record and runtime shell: **Repository-backed**.
+- Academy sessions, focus controls, preferences, mission notes, completion controls and world clocks: **Locally functional**.
+- Weather, markets, world intelligence and sports schedule: **Live retrieval**, source-linked and timestamped for July 24.
+- Entertainment: **Mixed live release and demonstration recommendations**, visibly labeled.
+- Connected calendar: **Checked privately**; no event title, time, location or itinerary is present in public source.
+- Routes, biometrics and cross-device Academy sync: **Not connected**.
+- Alpha One: **Evidence-gated activation authorized**; usefulness outcomes and an overall completion percentage remain pending.
+- Phase 1 and Phase 2 competitive runtime capabilities: **Repository-implemented and locally tested in canonical authority**; hosted persistence, identity federation, key custody, live providers and external distribution remain pending.
 
-- No invented live data, secrets, private itinerary, personal Academy scores, calendar entries or biometrics were placed in public source.
-- External links use explicit sources and safe new-tab link attributes.
-- Responsive, reduced-motion, keyboard, focus, semantic and touch-target controls remain present.
-- Structural validation passed before commit; the deployed root and immutable edition were then independently content-verified.
-- The July 23 XER/Warden federation audit is inherited without claiming autonomous repair telemetry or unsupported runtime authority.
+## Publication gate calculation
 
-## Exact continuation
+Eight of nine release gates are complete: content, immutable archive, manifests, provenance, accessibility structure, privacy, validation and commit preparation. Deployment verification is deliberately not counted before the external workflow and public URLs are checked.
 
-Run the founder Alpha One usefulness loop against the live July 23 edition without overstating outcomes, then generate the July 24 edition from release 2.5.0.
+## Warden findings
 
-## XDBS v3 synchronization checkpoint — 2026-07-23
+- No invented live data or unsupported Alpha One percentage.
+- No private calendar, itinerary, biometrics, Academy metrics or notes in public source.
+- No empty buttons, unsafe external targets or deliberate broken links.
+- XAOA-001, XCC-002 and execution-evidence inheritance are recorded without upgrading reference-runtime proof into production claims.
+- July 24 sources were retrieved at or after 05:01 EDT and carry direct provenance.
 
-Canonical architecture v3.0 remains bound through `releases/XDBS-3.0.0-sync.json` and the dynamic `scripts/validate_xdbs_v3_sync.py`. Release 2.5.0 inherits repository `main@e92ca5a` and XPS 3.2 without weakening deployment, privacy or outcome gates.
+## Continuation
+
+Commit the July 24 transaction, verify the Pages workflow and both production URLs, then update release arithmetic and deployment evidence to 9/9 only if the live content matches release 2.6.0.
+
+## XDBS v3 synchronization checkpoint — 2026-07-24
+
+Canonical architecture v3.0 remains bound through `releases/XDBS-3.0.0-sync.json` and `scripts/validate_xdbs_v3_sync.py`. Release 2.6.0 inherits XPS 3.2, current Daily Bread governance and bounded canonical Phase 1/Phase 2 capability truth states without weakening privacy, deployment or outcome gates.

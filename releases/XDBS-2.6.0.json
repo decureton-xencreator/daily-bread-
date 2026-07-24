@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "2.6",
+  "version": "2.6.0",
+  "date": "2026-07-24",
+  "edition": "editions/2026/07/daily-bread-2026-07-24.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-verifying",
+  "architecture": "XDBS 3.0",
+  "experience": "XPS 3.2",
+  "repositoryBase": "6b45e529a53bd113f216a94dc9a900c853559bc5",
+  "releaseGates": {
+    "passed": 8,
+    "total": 9,
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit + deployment verification"
+  },
+  "freshSources": [
+    "https://apnews.com/article/4e25fbdad821762e478173e6308884fb",
+    "https://apnews.com/article/896c02f0c978986fff0ae7fc389ea51f",
+    "https://www.weather.gov/okx/",
+    "https://www.federalreserve.gov/monetarypolicy/2026-07-mpr-summary.htm",
+    "https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q2-2026/",
+    "https://blog.google/innovation-and-ai/technology/research/understanding-the-ai-economy/",
+    "https://finance.yahoo.com/quote/SPY/",
+    "https://www.mlb.com/gameday/yankees-vs-phillies/2026/07/24/823434",
+    "https://www.apple.com/tv-pr/news/2026/02/apple-original-films-summer-comedy-the-dink-starring-jake-johnson-mary-steenburgen-and-ed-harris-premieres-globally-july-24/"
+  ],
+  "capabilityChanges": [
+    "XAOA-001 evidence-gated Alpha One activation controller inherited from repository main",
+    "XCC-002 repository-first synchronization and fail-closed memory boundary inherited",
+    "XEE-001 execution evidence contract inherited for bounded Daily Bread application",
+    "XWC, XCE, XOR and XCF Phase 1 reference runtime acknowledged as repository complete with external production gates pending",
+    "XET, XEE, XWB, XPSDK and XWR Phase 2 reference runtime acknowledged as repository complete with external production gates pending",
+    "Alpha One percentage withheld until explicit release criteria produce a defensible denominator"
+  ],
+  "privacy": "No sensitive personal context, event details, itinerary, scores, calendar entries, biometrics, credentials or notes are published.",
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-24.html",
+    "verified": false,
+    "verifiedAt": null,
+    "workflowRun": null,
+    "releaseCommit": null,
+    "evidence": "Verification pending repository commit, Pages workflow completion and matching production-content checks."
+  },
+  "continuation": "Verify the July 24 deployment, then score one explicit Alpha One release criterion from repository and runtime evidence without inventing an overall percentage."
+}
