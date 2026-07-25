@@ -7,7 +7,7 @@
   <meta name="description" content="Xen Daily Bread — a private-by-default executive Command Deck.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/icons/xen-mark.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/command-deck.css?v=4.5.0">
+  <link rel="stylesheet" href="assets/css/command-deck.css?v=4.6.0">
   <title>Xen Daily Bread · Command Deck</title>
   <link rel="stylesheet" href="assets/css/voice-assessment.css?v=1.0.0">
 </head>
@@ -36,7 +36,7 @@
 
       <section class="scene" id="scene-integration" data-label="Integration Process" tabindex="-1"><header class="scene-copy"><p class="eyebrow">01 · XEN INTEGRATION PROCESS</p><h2>From signal<br>to durable proof.</h2><p>Every capability advances through the same evidence-gated operating lifecycle.</p></header><div class="scene-visual integration-visual" id="integration-runtime"></div></section>
       <section class="scene" id="scene-academy" data-label="Academy Command" tabindex="-1"><header class="scene-copy"><p class="eyebrow">02 · ACADEMY COMMAND · PRIME DIRECTIVE</p><h2>Resume.<br>Never restart.</h2><p>Learning is the first operating move. Progress stays on this device.</p></header><div class="scene-visual academy-visual" id="academy-runtime"></div><div class="scene-visual academy-visual" id="voice-assessment-runtime" aria-label="Spanish voice assessment"></div></section>
-      <section class="scene globe-scene" id="scene-globe" data-label="Xen Globe" tabindex="-1"><header class="scene-copy"><p class="eyebrow">03 · XEN GLOBE</p><h2>The world,<br>oriented to you.</h2><p>Select a region to move the intelligence lens. Time is computed locally; routes and precise location remain private.</p><div class="region-controls" id="region-controls"></div><div class="region-readout" id="region-readout">AMERICAS · ACTIVE LENS</div></header><div class="scene-visual globe-visual"><img src="assets/images/xen-globe.webp?v=4.1.4" alt="Earth viewed from space, centered on Europe and Africa"><i class="globe-scan"></i><span class="world-node node-home" aria-label="Declared home region"></span><span class="world-node node-europe"></span><span class="world-node node-asia"></span><div class="clock-stack" id="world-clocks"></div></div></section>
+      <section class="scene globe-scene" id="scene-globe" data-label="Xen Globe" tabindex="-1"><header class="scene-copy"><p class="eyebrow">03 · XEN GLOBE · LIVING EARTH</p><h2>The world,<br>oriented to you.</h2><p>Touch and drag the real-time Earth. Select one of your world points for its local time and current weather. No precise device location is requested.</p><div class="region-controls" id="region-controls"></div><div class="region-readout" id="region-readout">AMERICAS · ACTIVE INTELLIGENCE LENS</div><div class="weather-readout" id="globe-weather" role="status" aria-live="polite"><small>YOUR WORLD · LIVE</small><strong>Touch a relationship point</strong><span>Weather loads only when requested.</span></div></header><div class="scene-visual globe-visual" id="living-globe-shell"><div id="living-globe" role="application" aria-label="Interactive rotating Earth. Drag to rotate; select a relationship point for live weather."></div><img class="globe-fallback" src="assets/images/xen-globe.webp?v=4.1.4" alt="Earth viewed from space, centered on Europe and Africa"><i class="globe-terminator" aria-hidden="true"></i><div class="globe-state" id="globe-state">EARTH SYNC · CONNECTING</div><div class="clock-stack" id="world-clocks"></div></div></section>
       <section class="scene" id="scene-intelligence" data-label="World Intelligence" tabindex="-1"><header class="scene-copy"><p class="eyebrow">04 · WORLD IN FIVE MINUTES</p><h2>Signal.<br><em>Then consequence.</em></h2><p>Only developments that change a decision, risk, opportunity or conversation.</p><div class="filter-row" id="intel-filters"></div></header><div class="scene-visual intel-visual" id="intel-runtime"></div></section>
       <section class="scene" id="scene-water-cooler" data-label="Water Cooler" tabindex="-1"><header class="scene-copy"><p class="eyebrow">05 · WATER COOLER MODE</p><h2>Know enough<br>to enter the room.</h2><p>Fast context, a deeper angle and one useful thing to say.</p></header><div class="scene-visual briefing-visual" id="water-runtime"></div></section>
       <section class="scene" id="scene-markets" data-label="Markets & Business" tabindex="-1"><header class="scene-copy"><p class="eyebrow">06 · MARKETS & BUSINESS IMPACT</p><h2>Price movement<br>is not the decision.</h2><p>Translate market posture into cash, cost, demand and margin consequences.</p></header><div class="scene-visual metric-visual" id="markets-runtime"></div></section>
@@ -75,7 +75,9 @@
     <footer><button class="secondary" id="tutorial-back" type="button">Back</button><button class="secondary" id="tutorial-skip" type="button">Skip tour</button><button class="primary" id="tutorial-next" type="button">Begin tour</button></footer>
   </section>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-  <script type="module" src="app/command-deck-app.js?v=4.5.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/globe.gl@2.45.0/dist/globe.gl.min.js" defer></script>
+  <script type="module" src="app/command-deck-app.js?v=4.6.0"></script>
+  <script type="module" src="app/living-globe.js?v=1.0.0"></script>
   <script type="module" src="app/voice-ui.js?v=1.0.0"></script>
 </body>
 </html>
