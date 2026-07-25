@@ -1,0 +1,8 @@
+{
+  "release":"XPS 4.8.0",
+  "component":"Xen Alpha One Activation Center 1.0",
+  "date":"2026-07-25",
+  "status":"local-validated",
+  "changes":["Guided 11-gate activation view","Plain-language current blocker","Retry, recovery guide, safe defer, and non-secret continuation","Guardian coverage and full product package"],
+  "rollback":"Revert the XPS 4.8.0 release commit. XAOA-001 evidence and controller records remain unchanged."
+}

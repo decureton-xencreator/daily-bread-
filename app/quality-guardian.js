@@ -16,6 +16,7 @@ export const SURFACE_REGISTRY=Object.freeze([
   {id:'media',selector:'#scene-xmi',controls:'a[href],[data-save],[data-dismiss],[data-preview]',minimumControls:1,recovery:'direct-link-and-close'},
   {id:'mission',selector:'#scene-mission',controls:'[data-complete],#mission-notes',minimumControls:2,recovery:'local-save-and-toggle'},
   {id:'evolution',selector:'#scene-evolution',controls:'button,a[href]',minimumControls:0,recovery:'truth-state-display'},
+  {id:'activation',selector:'#scene-activation',controls:'[data-activation-retry],[data-activation-guide],[data-activation-copy],[data-activation-defer]',minimumControls:2,recovery:'retry-guide-defer-continuation'},
   {id:'radar',selector:'#scene-radar',controls:'button,a[href]',minimumControls:0,recovery:'read-only-decision-field'},
   {id:'timeline',selector:'#scene-timeline',controls:'[data-complete]',minimumControls:1,recovery:'reversible-local-toggle'},
   {id:'archive',selector:'#scene-archive',controls:'a[href]',minimumControls:1,recovery:'degraded-manifest-state'},

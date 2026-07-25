@@ -5,8 +5,8 @@
   "release": "XPS 4.7.0",
   "truthState": "PRODUCTION_VERIFIED",
   "scope": {
-    "registeredSurfaces": 16,
-    "commandDeckScenes": 14,
+    "registeredSurfaces": 17,
+    "commandDeckScenes": 15,
     "globalNavigation": true,
     "voiceRuntime": true
   },

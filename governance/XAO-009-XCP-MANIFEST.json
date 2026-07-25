@@ -1,0 +1,20 @@
+{
+  "schema":"xen/xcp-complete-product-package/v1",
+  "item":"Xen Alpha One Activation Center",
+  "version":"1.0.0",
+  "components":{
+    "functional_build":{"state":"VALIDATED","artifacts":["app/activation-center.js","app/command-deck-app.js","index.html"],"exception":null},
+    "operating_manual":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-OPERATING-MANUAL.md"],"exception":null},
+    "design_canon":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-DESIGN-CANON.md"],"exception":null},
+    "tutorial_onboarding":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-OPERATING-MANUAL.md","app/command-deck-app.js"],"exception":null},
+    "publication_suite":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-PUBLICATION.md"],"exception":null},
+    "pdf_edition":{"state":"VALIDATED","artifacts":["output/pdf/XAO-009-ACTIVATION-CENTER-MANUAL.pdf"],"evidence":["Two-page render visually reviewed; SHA-256 a182bb07d3be7780d852af67c7526d1b73ecb25e1d55350f1880cff5ebd2368e"],"exception":null},
+    "voice_experience":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-VOICE-SCRIPT.md"],"exception":null},
+    "accessibility_language":{"state":"VALIDATED","artifacts":["assets/css/command-deck.css","index.html"],"exception":null},
+    "privacy_safety_governance":{"state":"VALIDATED","artifacts":["app/activation-center.js","app/local-telemetry.js"],"exception":null},
+    "validation_evidence":{"state":"LOCAL_VALIDATED","artifacts":["tests/activation-center.test.mjs","tests/activation-center-package.test.mjs","tests/quality-guardian.test.mjs"],"evidence":["55/55 repository tests and site validator passed"],"exception":null},
+    "release_lifecycle":{"state":"RELEASE_CANDIDATE","artifacts":["releases/XPS-4.8.0.json"],"exception":null},
+    "maintenance_rollback":{"state":"VALIDATED","artifacts":["docs/XAO-009-ACTIVATION-CENTER-OPERATING-MANUAL.md","releases/XPS-4.8.0.json"],"exception":null}
+  },
+  "warden":{"result":"RELEASE_CANDIDATE","approved_exceptions":[]}
+}
