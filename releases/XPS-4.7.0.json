@@ -2,7 +2,16 @@
   "release": "XPS 4.7.0",
   "component": "Xen Quality Guardian 1.1",
   "date": "2026-07-25",
-  "status": "validated-release-candidate",
+  "status": "production-verified",
+  "productionCommit": "a46981a373c3bd1f67eb70b68bbd88f9bf5351a7",
+  "pullRequest": 37,
+  "hostedCI": "Alpha One Press Play run 58 — PASS",
+  "productionEvidence": {
+    "releaseMarker": "DEPLOYED",
+    "surfaceRegistry": "LIVE",
+    "cache": "xdbs-4.7.0-quality-guardian",
+    "pdfSha256": "2cb8355a9fd8b928f181d06ff39b0f71c58ff8eedc263775f6b6b10f98bf64ad"
+  },
   "changes": [
     "Sixteen-surface Guardian registry covering all Command Deck scenes, navigation, and Voice",
     "Automatic audit after dynamically rendered interface changes",
