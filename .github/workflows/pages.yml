@@ -46,6 +46,8 @@ jobs:
           node scripts/validate_xen_alive.mjs
           node --test tests/saturday-mirror.test.mjs
           node --test tests/alpha-one-*.test.mjs
+          node --test tests/evidence-federation.test.mjs
+          node tests/evidence-federation-package.test.mjs
 
   deploy:
     needs: validate

@@ -1,0 +1,20 @@
+{
+  "schema": "xen/xcp-complete-product-package/v1",
+  "item": "Alpha One Evidence Federation Bridge",
+  "version": "1.0.0",
+  "components": {
+    "functional_build": {"state":"VALIDATED","artifacts":["app/evidence-federation.js","app/activation-center.js","app/command-deck-app.js","data/xri-evidence-federation.json"],"exception":null},
+    "operating_manual": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-OPERATING-MANUAL.md"],"exception":null},
+    "design_canon": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-DESIGN-CANON.md"],"exception":null},
+    "tutorial_onboarding": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-OPERATING-MANUAL.md"],"exception":null},
+    "publication_suite": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-PUBLICATION.md"],"exception":null},
+    "pdf_edition": {"state":"VALIDATED","artifacts":["output/pdf/XAO-010-EVIDENCE-FEDERATION-MANUAL.pdf"],"evidence":["Two-page render visually reviewed; SHA-256 aa499e637f640f0746a26deabbb15b7d2f5bf0e57b3772d8260e83b2091c8f3b"],"exception":null},
+    "voice_experience": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-VOICE-SCRIPT.md"],"exception":null},
+    "accessibility_language": {"state":"VALIDATED","artifacts":["index.html","app/command-deck-app.js"],"exception":null},
+    "privacy_safety_governance": {"state":"VALIDATED","artifacts":["app/evidence-federation.js","data/xri-evidence-federation.json"],"exception":null},
+    "validation_evidence": {"state":"LOCAL_VALIDATED","artifacts":["tests/evidence-federation.test.mjs","tests/activation-center.test.mjs"],"evidence":["Contract, collision, certification, source and privacy gates tested"],"exception":null},
+    "release_lifecycle": {"state":"RELEASE_CANDIDATE","artifacts":["releases/XPS-4.9.0.json"],"exception":null},
+    "maintenance_rollback": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-OPERATING-MANUAL.md","releases/XPS-4.9.0.json"],"exception":null}
+  },
+  "warden": {"result":"RELEASE_CANDIDATE","approved_exceptions":[]}
+}
