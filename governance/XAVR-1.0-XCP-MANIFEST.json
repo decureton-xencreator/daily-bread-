@@ -1,0 +1,34 @@
+{
+  "schema": "xen/xcp-complete-product-package/v1",
+  "item_id": "XAVR-1.0",
+  "name": "Xen Academy Voice Assessment Runtime",
+  "version": "1.0.0",
+  "owner": "AM / Xen",
+  "status": "PUBLISHED_WITH_OPEN_VALIDATION",
+  "components": {
+    "product_definition": {"state": "PUBLISHED", "artifacts": ["releases/XPS-4.5.0.json", "governance/sync/XDBS-VOICE-ASSESSMENT-2026-07-25.md"], "evidence": ["production release 2fe1bcd3b497251836a497ccfb1c7def1be7d15d"], "exception": null},
+    "design_canon": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-DESIGN-CANON.md", "assets/css/voice-assessment.css"], "evidence": ["tests/voice-runtime.test.mjs"], "exception": null},
+    "operating_manual": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-OPERATING-MANUAL.md"], "evidence": ["tests/xavr-complete-product-package.test.mjs"], "exception": null},
+    "tutorial_onboarding": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-OPERATING-MANUAL.md", "app/voice-ui.js"], "evidence": ["pre-capture disclosure and state-specific controls"], "exception": null},
+    "publication_suite": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-PUBLICATION.md"], "evidence": ["tests/xavr-complete-product-package.test.mjs"], "exception": null},
+    "pdf_edition": {"state": "VALIDATED", "artifacts": ["output/pdf/XAVR-1.0-OPERATING-MANUAL.pdf"], "evidence": ["PDF render and extraction validation"], "exception": null},
+    "voice_experience": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-VOICE-SCRIPT.md", "app/voice-ui.js"], "evidence": ["visible captions and browser-supported slow/natural model playback"], "exception": null},
+    "accessibility_language": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-DESIGN-CANON.md", "assets/css/voice-assessment.css", "app/voice-ui.js"], "evidence": ["ARIA live status, keyboard buttons, reduced-motion and responsive contracts; Spanish followed by English"], "exception": null},
+    "privacy_safety_governance": {"state": "VALIDATED", "artifacts": ["docs/XAVR-1.0-OPERATING-MANUAL.md", "governance/sync/XDBS-VOICE-ASSESSMENT-2026-07-25.md"], "evidence": ["audio excluded from persistence; explicit-action permission; delete/cancel/disable controls"], "exception": null},
+    "functional_build": {"state": "PRODUCTION_VERIFIED", "artifacts": ["app/voice-runtime.js", "app/voice-ui.js"], "evidence": ["production release marker 2fe1bcd3b497251836a497ccfb1c7def1be7d15d", "governance/XAVR-1.0-DEVICE-EVIDENCE-2026-07-25.json"], "exception": null},
+    "validation_evidence": {"state": "VALIDATED", "artifacts": ["tests/voice-runtime.test.mjs", "tests/xavr-complete-product-package.test.mjs", "governance/XAVR-1.0-DEVICE-EVIDENCE-2026-07-25.json"], "evidence": ["deterministic suite and user-reported physical-device allow path"], "exception": null},
+    "release_lifecycle": {"state": "VALIDATED", "artifacts": ["releases/XPS-4.5.0.json", "releases/XPS-4.5.1.json", "governance/sync/XDBS-VOICE-ASSESSMENT-2026-07-25.md"], "evidence": ["XPS 4.5.0 runtime production URL and release commit; XPS 4.5.1 package publication pending"], "exception": null}
+  },
+  "approved_exceptions": [],
+  "warden": {
+    "result": "BLOCKED_DEVICE_MATRIX",
+    "reviewed_at": "2026-07-25",
+    "evidence": ["The production allow path is evidenced on the product owner's physical device."]
+  },
+  "remaining_blockers": [
+    "Record deny-permission recovery on a real device.",
+    "Record replay, deletion, Disable Voice, and mobile accessibility behavior on a real device.",
+    "Publish XPS 4.5.1 package backfill and verify its production release binding."
+  ],
+  "exact_continuation_point": "Publish and production-bind XPS 4.5.1, then run the remaining real-device certification checklist for denied permission, replay/deletion, Disable Voice, and mobile accessibility."
+}

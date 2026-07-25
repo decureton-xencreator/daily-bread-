@@ -3,6 +3,9 @@ import {
   LESSONS,normalizeAcademy,academyAlerts,startLesson,saveAcademyDraft,gradeAcademyResponse,
   submitAcademyResponse,advanceLesson,previousLessonActivity,completeAcademyLesson
 } from '../app/academy-runtime.js';
+import {
+  SPANISH_VOICE_ACTIVITIES,scoreVoiceAssessment,saveVoiceEvidence
+} from '../app/voice-runtime.js';
 
 const now=new Date('2026-07-25T16:00:00-04:00');
 let academy=normalizeAcademy({});
@@ -45,6 +48,18 @@ for(const response of responses){
   if(academy.spanish.step<LESSONS.spanish.activities.length-1)academy=advanceLesson(academy,'spanish').academy;
 }
 assert.equal(academy.spanish.score,100);
+const voiceBlocked=completeAcademyLesson(academy,'spanish',new Date(now.getTime()+19000));
+assert.equal(voiceBlocked.completed,false);
+assert.equal(voiceBlocked.voiceGate.passed,false);
+const passingVoice=scoreVoiceAssessment({
+  target:'Quiero practicar hoy.',
+  transcript:'Quiero practicar hoy.',
+  durationMs:2200,
+  recognitionConfidence:.94
+});
+for(const activity of SPANISH_VOICE_ACTIVITIES){
+  academy=saveVoiceEvidence(academy,activity.id,passingVoice,{attemptedAt:new Date(now.getTime()+19500).toISOString()});
+}
 const result=completeAcademyLesson(academy,'spanish',new Date(now.getTime()+20000));
 assert.equal(result.completed,true);
 assert.equal(result.academy.spanish.completedLessons,1);

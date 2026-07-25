@@ -1,0 +1,33 @@
+{
+  "schema": "xen.xps.release.v1",
+  "release": "XPS-4.5.1",
+  "date": "2026-07-25",
+  "title": "Xen Academy Voice Complete Product Package",
+  "runtime_release": "XAVR 1.0.0 / XPS 4.5.0",
+  "scope": [
+    "operating manual",
+    "voice assessment design canon",
+    "learner publication",
+    "approved Xen voice and caption script",
+    "accessible printable PDF manual",
+    "device evidence receipt",
+    "XCP-001 package manifest",
+    "automated package completeness gate",
+    "maintenance, rollback, and continuation guidance"
+  ],
+  "privacy": {
+    "device_evidence": "contains no recording, transcript, score, or sensitive learning content",
+    "audio_retention": "unchanged: ephemeral browser memory only",
+    "audio_transmission": "unchanged: disabled"
+  },
+  "truthState": {
+    "functional_runtime": "production verified at XPS 4.5.0",
+    "physical_device_allow_path": "user reported and recorded",
+    "deny_recovery_and_device_matrix": "open until separately evidenced",
+    "package_publication": "pending merge and Pages verification"
+  },
+  "rollback": {
+    "package": "revert the XPS 4.5.1 package commit without altering the XAVR 1.0.0 runtime",
+    "runtime": "restore production commit preceding XPS 4.5.0 only under an independently approved runtime rollback"
+  }
+}
