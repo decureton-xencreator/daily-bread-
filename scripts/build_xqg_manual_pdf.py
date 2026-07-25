@@ -22,11 +22,11 @@ styles.add(ParagraphStyle(name="BodyX",parent=styles["BodyText"],fontName="XenSa
 styles.add(ParagraphStyle(name="SmallX",parent=styles["BodyText"],fontName="XenSans",fontSize=8,leading=11,textColor=muted))
 def footer(canvas,doc):
     canvas.saveState();canvas.setStrokeColor(colors.HexColor("#D9E1EA"));canvas.line(.7*inch,.55*inch,7.8*inch,.55*inch)
-    canvas.setFont("XenSans",8);canvas.setFillColor(muted);canvas.drawString(.7*inch,.35*inch,"XQG 1.0 | Xen Quality Guardian")
-    canvas.drawRightString(7.8*inch,.35*inch,f"Page {doc.page}");canvas.restoreState()
-doc=SimpleDocTemplate(str(OUT),pagesize=letter,leftMargin=.7*inch,rightMargin=.7*inch,topMargin=.7*inch,bottomMargin=.7*inch,title="XQG 1.0 Operating Manual",author="Xen")
+    canvas.setFont("XenSans",8);canvas.setFillColor(muted);canvas.drawString(.7*inch,.35*inch,"XQG 1.1 | Xen Quality Guardian")
+    canvas.drawRightString(7.55*inch,.35*inch,f"Page {doc.page}");canvas.restoreState()
+doc=SimpleDocTemplate(str(OUT),pagesize=letter,leftMargin=.7*inch,rightMargin=.7*inch,topMargin=.7*inch,bottomMargin=.7*inch,title="XQG 1.1 Operating Manual",author="Xen")
 story=[]
-cover=Table([[Paragraph("XEN QUALITY<br/>GUARDIAN",styles["Cover"])],[Paragraph("OPERATING MANUAL<br/><br/>XQG 1.0.0 / XPS 4.6.0<br/>No action may leave the user trapped.",styles["CoverSub"])]],colWidths=[6.8*inch],rowHeights=[3.8*inch,3.5*inch])
+cover=Table([[Paragraph("XEN QUALITY<br/>GUARDIAN",styles["Cover"])],[Paragraph("OPERATING MANUAL<br/><br/>XQG 1.1.0 / XPS 4.7.0<br/>No action may leave the user trapped.",styles["CoverSub"])]],colWidths=[6.8*inch],rowHeights=[3.8*inch,3.5*inch])
 cover.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,-1),navy),("TEXTCOLOR",(0,1),(-1,-1),colors.white),("ALIGN",(0,0),(-1,-1),"CENTER"),("VALIGN",(0,0),(-1,-1),"MIDDLE"),("BOX",(0,0),(-1,-1),2,cyan)]))
 story.extend([cover,PageBreak()])
 def h(text):story.append(Paragraph(text,styles["H1X"]))
@@ -34,7 +34,7 @@ def p(text):story.append(Paragraph(text,styles["BodyX"]))
 h("Recover from a wrong answer")
 for i,text in enumerate(["Read the explanation. Your attempt and checkpoint remain local.","Choose Correct and retry to clear the draft and answer again.","Choose Show coaching hint for focused help.","Choose Continue - revisit before completion to move forward without receiving credit.","Return with Previous or at completion. Warden requires every assessed activity to pass."],1):p(f"<b>{i}.</b> {text}")
 h("What Guardian checks")
-data=[["Signal","Guardian behavior"],["Wrong or blank input","Explanation and tested recovery route"],["Repeated clicks","Local rage-click finding after three rapid activations"],["Buttons and links","Label and actionable-control audit"],["Pause and resume","Exact browser checkpoint preserved"],["Deferred work","No points; completion remains blocked"],["Runtime failure","Privacy-safe error category; no entered content"]]
+data=[["Signal","Guardian behavior"],["Wrong or blank input","Explanation and tested recovery route"],["Repeated clicks","Local rage-click finding after three rapid activations"],["16 registered surfaces","Presence, minimum controls, and named fallback"],["Buttons and links","Label, action, destination, and external-link safety"],["Media nodes","Labelled and controllable player contract"],["Dynamic interface","Automatic rescan after rendered changes"],["Runtime failure","Privacy-safe error category; no entered content"]]
 t=Table(data,colWidths=[1.7*inch,5.0*inch],repeatRows=1)
 t.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),navy),("TEXTCOLOR",(0,0),(-1,0),colors.white),("FONTNAME",(0,0),(-1,0),"XenSans-Bold"),("FONTNAME",(0,1),(0,-1),"XenSans-Bold"),("FONTNAME",(1,1),(-1,-1),"XenSans"),("FONTSIZE",(0,0),(-1,-1),8.5),("LEADING",(0,0),(-1,-1),12),("GRID",(0,0),(-1,-1),.4,colors.HexColor("#CFD8E3")),("VALIGN",(0,0),(-1,-1),"TOP"),("TOPPADDING",(0,0),(-1,-1),7),("BOTTOMPADDING",(0,0),(-1,-1),7)]))
 story.append(t)

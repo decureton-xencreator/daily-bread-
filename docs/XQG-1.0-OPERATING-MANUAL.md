@@ -27,6 +27,17 @@ click patterns, failed recovery contracts, runtime errors, premature completion,
 abandoned or deferred learning paths. Diagnostics identify a control category such as
 `academy:answer-deferred`; they never contain the learner’s answer.
 
+XQG 1.1 continuously audits all 14 Command Deck scenes plus global navigation and the
+Voice runtime. It checks newly rendered controls, safe external-link handling, labelled
+and controllable media, minimum controls on interactive scenes, and the declared
+fallback for every surface. Read-only scenes are registered explicitly so that an
+intentional briefing is distinguishable from a missing interface.
+
+The sweep reruns when the interface changes. A new or modified node can therefore
+create a local `control-contract`, `link-contract`, `media-contract`, or
+`surface-contract` finding without requiring someone to remember a bespoke listener.
+Only the finding category and sanitized control name are retained.
+
 Use **Warden Diagnostics** to see aggregate event and finding counts. Use **Reset local
 data** to delete Daily Bread progress and XER/XQG diagnostics from the browser.
 
@@ -36,6 +47,12 @@ For each interactive surface, test the happy path, wrong or invalid input, blank
 retry, deferral, back, pause/resume, completion gate, keyboard operation, mobile layout,
 reduced motion, unavailable provider state, and reset. Links must have a destination;
 buttons must have an action or a labelled unavailable state.
+
+Before release, compare the runtime registry with the Command Deck scene list. Every
+scene must be registered, every interactive scene must meet its minimum-control count,
+external links must open with `noopener`, and embedded media must be labelled and
+controllable. A clean automated sweep is necessary but does not replace physical-device
+checks for microphone permission, touch, reduced motion, or mobile assistive technology.
 
 ## Troubleshooting
 

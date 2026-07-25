@@ -1,0 +1,35 @@
+{
+  "schema": "xen/xqg-surface-coverage/v1",
+  "product": "Xen Quality Guardian",
+  "version": "1.1.0",
+  "release": "XPS 4.7.0",
+  "truthState": "VALIDATED",
+  "scope": {
+    "registeredSurfaces": 16,
+    "commandDeckScenes": 14,
+    "globalNavigation": true,
+    "voiceRuntime": true
+  },
+  "contracts": [
+    "surface-presence",
+    "minimum-interactive-controls",
+    "control-label-and-action",
+    "external-link-safety",
+    "media-label-and-control",
+    "named-recovery-or-degraded-state",
+    "dynamic-interface-rescan",
+    "local-content-free-findings"
+  ],
+  "validation": {
+    "localSuite": "PASS",
+    "siteValidator": "PASS",
+    "pdfVisualReview": "PASS",
+    "pdfSha256": "2cb8355a9fd8b928f181d06ff39b0f71c58ff8eedc263775f6b6b10f98bf64ad",
+    "hostedCI": "PENDING",
+    "productionVerification": "PENDING"
+  },
+  "production": {
+    "commit": null,
+    "pullRequest": null
+  }
+}
