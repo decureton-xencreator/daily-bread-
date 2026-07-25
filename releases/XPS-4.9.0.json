@@ -2,9 +2,18 @@
   "schema": "xen/release/v1",
   "release": "XPS 4.9.0",
   "package": "XAO-010 Evidence Federation Bridge 1.0.0",
-  "state": "RELEASE_CANDIDATE",
+  "state": "PRODUCTION_VERIFIED",
   "runtime": "Fail-closed canonical evidence import and identifier-collision control",
-  "sourceCommit": null,
-  "productionCommit": null,
+  "sourceCommit": "b9e8f766063acf13ff83d8d6fd86e7982e77e097",
+  "productionCommit": "e5427fb01eb6d12bd3a325306e4ea51555dfb549",
+  "pullRequest": 41,
+  "hostedWorkflow": {"name":"Alpha One Press Play","run":64,"id":30177482834,"conclusion":"success"},
+  "productionEvidence": {
+    "releaseMarker": "e5427fb01eb6d12bd3a325306e4ea51555dfb549",
+    "activationScene": "HELD / IDENTIFIER_COLLISION_CONTRACT_MISMATCH",
+    "receipt": "LIVE",
+    "pdf": "LIVE",
+    "verifiedAt": "2026-07-25T22:24:00Z"
+  },
   "rollback": "Revert the XAO-010 runtime, receipt, UI and cache files together; preserve XAOA-001 evidence."
 }
