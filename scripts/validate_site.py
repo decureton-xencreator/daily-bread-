@@ -8,6 +8,7 @@ required += ['assets/css/command-deck.css','assets/images/xen-globe.webp','app/c
 required += ['app/academy-runtime.js','app/local-telemetry.js','tests/academy-command-v2.test.mjs','releases/XPS-4.2.0.json','governance/sync/XDBS-ACADEMY-XER-SYNC-2026-07-24.md']
 required += ['releases/XPS-4.3.0.json','governance/sync/XDBS-GUIDED-DECK-SPACING-2026-07-24.md']
 required += ['releases/XPS-4.4.0.json','governance/sync/XDBS-FULL-ACADEMY-2026-07-25.md']
+required += ['app/voice-runtime.js','app/voice-ui.js','assets/css/voice-assessment.css','tests/voice-runtime.test.mjs','releases/XPS-4.5.0.json','governance/sync/XDBS-VOICE-ASSESSMENT-2026-07-25.md']
 for p in required:
  if not (ROOT/p).is_file():issues.append(f'missing:{p}')
 for p in ROOT.rglob('*.json'):
