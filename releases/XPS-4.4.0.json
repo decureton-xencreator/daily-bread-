@@ -16,7 +16,20 @@
     "telemetry": "aggregate interaction category only",
     "excludedFromTelemetry": ["answer text", "raw printable keystrokes", "field values", "credentials"]
   },
-  "truthState": "repository-backed-deployment-pending",
-  "deployment": {"verified": false},
-  "continuation": "Validate every assessment type, publish, verify production and record Warden deployment evidence."
+  "truthState": "repository-backed-deployed",
+  "deployment": {
+    "verified": true,
+    "verifiedAt": "2026-07-25T10:53:18-04:00",
+    "endpointStatus": 200,
+    "commit": "58a22fa736e33873732a3816e5a5192a0cbba475",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30162490770"
+  },
+  "verification": {
+    "assessmentEngine": "PASS — answer required, grading, retry, score, XP and evidence-gated progression.",
+    "typing": "PASS — exact comparison, accuracy, edit-distance errors and WPM.",
+    "spanish": "PASS — choices, accepted translations, English support and grammatical pattern validation.",
+    "persistence": "PASS — drafts, answers, results and exact activity resume locally.",
+    "production": "PASS — root and XPS 4.4 Academy assets returned HTTP 200 with matching runtime markers."
+  },
+  "continuation": "Expand the curriculum into sequential course modules while preserving the same grading, evidence and privacy contracts."
 }

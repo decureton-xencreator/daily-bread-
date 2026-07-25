@@ -1,5 +1,19 @@
 # Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
 
+## XPS 4.4 Full Academy Runtime — 2026-07-25
+
+**Decision:** PASS
+
+**Deployment:** VERIFIED — [workflow run 30162490770](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30162490770) completed successfully; the production root and XPS 4.4 Academy assets returned HTTP 200 with matching grading and answer-input markers.
+
+- Passive sample cards removed from the Academy runtime: **Verified**.
+- Full Typing, Spanish, Applied AI and Finance lessons: **Repository-backed and deployed**.
+- Answer fields, multiple choice, numeric work and constructed responses: **Locally functional**.
+- Accuracy, WPM, errors, automatic grading, retries, score and XP: **Locally functional**.
+- Evidence-gated progression and completion: **Tested**.
+- Draft, answer, result and exact-position Resume Anywhere: **Local only**.
+- Answer text and raw printable keystrokes in XER telemetry: **Never captured**.
+
 ## XPS 4.3 Guided Command Deck — 2026-07-24
 
 **Decision:** PASS
