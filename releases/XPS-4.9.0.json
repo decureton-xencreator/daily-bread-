@@ -1,0 +1,10 @@
+{
+  "schema": "xen/release/v1",
+  "release": "XPS 4.9.0",
+  "package": "XAO-010 Evidence Federation Bridge 1.0.0",
+  "state": "RELEASE_CANDIDATE",
+  "runtime": "Fail-closed canonical evidence import and identifier-collision control",
+  "sourceCommit": null,
+  "productionCommit": null,
+  "rollback": "Revert the XAO-010 runtime, receipt, UI and cache files together; preserve XAOA-001 evidence."
+}

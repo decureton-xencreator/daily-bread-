@@ -1,0 +1,48 @@
+{
+  "schema": "xen/evidence-federation-receipt/v1",
+  "generatedAt": "2026-07-25T22:30:00Z",
+  "source": {
+    "repository": "decureton-xencreator/xen-operating-system",
+    "ref": "main",
+    "observedCommit": "d4aabab4a0e4f098ba7a680cda296e5342bfcb02"
+  },
+  "target": {
+    "program": "XAOA-001",
+    "gate": "XRI-006",
+    "contract": "GOVERNED_WORKFLOW_EXECUTION_RUNTIME",
+    "minimumCertification": "ENVIRONMENT"
+  },
+  "candidates": [
+    {
+      "identifier": "XRI-006",
+      "contract": "REPOSITORY_INTELLIGENCE_RUNTIME_V2",
+      "name": "Xen Repository Intelligence Runtime Version 2.0",
+      "status": "CANONICAL_CERTIFIED_ACTIVE",
+      "certificationLevel": "REPOSITORY",
+      "releaseCommit": "7ba39900d5dfbf0af07e7be360242ef5420f9169",
+      "workflowRun": "29494790462",
+      "receiptPath": ".xen/releases/XRI-006-XSS-002-CERTIFICATION.md"
+    },
+    {
+      "identifier": "XRI-006",
+      "contract": "GOVERNED_WORKFLOW_EXECUTION_RUNTIME",
+      "name": "Governed Workflow Execution Runtime",
+      "status": "CANONICAL_CANDIDATE",
+      "certificationLevel": "REPOSITORY_IMPLEMENTED",
+      "releaseCommit": null,
+      "workflowRun": null,
+      "receiptPath": "Runtime-Implementation/XRI/XRI-006.md"
+    }
+  ],
+  "decision": {
+    "passed": false,
+    "code": "IDENTIFIER_COLLISION_CONTRACT_MISMATCH",
+    "message": "The certified XRI-006 receipt proves Repository Intelligence, not the Governed Workflow Execution Runtime required by XAOA-001.",
+    "nextAction": "Publish a contract-matching environment certification receipt for the Governed Workflow Execution Runtime, then regenerate this federation receipt."
+  },
+  "privacy": {
+    "secretsIncluded": false,
+    "rawWorkflowLogsIncluded": false,
+    "credentialsIncluded": false
+  }
+}
