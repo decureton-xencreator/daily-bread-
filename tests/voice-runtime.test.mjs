@@ -1,5 +1,5 @@
 import assert from'node:assert/strict';
-import{SPANISH_VOICE_ACTIVITIES,VOICE_PASSING_SCORE,VOICE_WEIGHTS,scoreVoiceAssessment,saveVoiceEvidence,voiceGate}from'./xen-academy-voice-runtime.js';
+import{SPANISH_VOICE_ACTIVITIES,VOICE_PASSING_SCORE,VOICE_WEIGHTS,scoreVoiceAssessment,saveVoiceEvidence,voiceGate}from'../app/voice-runtime.js';
 assert.equal(Object.values(VOICE_WEIGHTS).reduce((a,b)=>a+b,0),100);
 assert.equal(VOICE_PASSING_SCORE,80);
 const perfect=scoreVoiceAssessment({target:'Quiero practicar hoy.',transcript:'Quiero practicar hoy',durationMs:2200,recognitionConfidence:.91});
