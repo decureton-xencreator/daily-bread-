@@ -1,5 +1,5 @@
 import{priorities,courses,intelligence,entertainment,risks,timeline,evolution}from'./data.js';
-import{ACADEMY_SCHEDULE,LESSONS,normalizeAcademy,academyAlerts,startLesson,advanceLesson,completeAcademyLesson}from'./academy-runtime.js';
+import{ACADEMY_SCHEDULE,LESSONS,normalizeAcademy,academyAlerts,startLesson,saveAcademyDraft,submitAcademyResponse,advanceLesson,previousLessonActivity,completeAcademyLesson}from'./academy-runtime.js';
 import{recordInteraction,recordFinding,telemetrySummary,clearTelemetry,safeKeyClass}from'./local-telemetry.js';
 
 const $=(selector,root=document)=>root.querySelector(selector);
@@ -71,10 +71,22 @@ function openLesson(courseId){
   $('#lesson-close').focus();
 }
 
+function activityControl(activity,draft){
+  if(activity.type==='lesson')return`<div class="lesson-foundation"><p>${escapeHTML(activity.body)}</p><button class="primary" type="button" data-lesson-submit value="reviewed">I reviewed this · continue</button></div>`;
+  if(activity.type==='choice')return`<fieldset class="academy-choice"><legend>${escapeHTML(activity.prompt)}</legend>${activity.options.map((option,index)=>`<label><input type="radio" name="academy-answer" value="${escapeHTML(option)}" ${draft===option?'checked':''}><span><i>${String.fromCharCode(65+index)}</i>${escapeHTML(option)}</span></label>`).join('')}</fieldset><button class="primary" type="button" data-lesson-submit>Submit answer</button>`;
+  const target=activity.type==='typing'?`<div class="typing-target"><small>COPY EXACTLY</small><pre>${escapeHTML(Array.from({length:activity.repetitions||1},()=>activity.target).join('\n'))}</pre></div>`:'';
+  const hint=activity.hint?`<p class="academy-hint">${escapeHTML(activity.hint)}</p>`:'';
+  const inputMode=activity.type==='number'?'decimal':'text';
+  const rows=activity.type==='typing'?Math.max(4,(activity.repetitions||1)+2):activity.type==='reflection'?6:3;
+  return`${target}<label class="academy-answer-label" for="academy-answer">YOUR ANSWER · SAVED LOCALLY</label><textarea id="academy-answer" rows="${rows}" inputmode="${inputMode}" autocomplete="off" autocapitalize="${activity.type==='typing'?'off':'sentences'}" spellcheck="${activity.type==='typing'?'false':'true'}" placeholder="Enter your answer here…">${escapeHTML(draft||'')}</textarea>${hint}<button class="primary" type="button" data-lesson-submit>Grade my answer</button>`;
+}
+
 function renderLesson(){
-  const lesson=LESSONS[activeLesson],record=state.academy[activeLesson],step=lesson.steps[record.step];
+  const lesson=LESSONS[activeLesson],record=state.academy[activeLesson],activity=lesson.activities[record.step],result=record.results[activity.id],draft=record.responses[activity.id]||'';
+  const passed=result?.passed;
   $('#lesson-title').textContent=lesson.title;
-  $('#lesson-runtime').innerHTML=`<section class="lesson-status"><span>${escapeHTML(lesson.mission)}</span><b>STEP ${record.step+1} / ${lesson.steps.length}</b><strong>${lesson.minutes} MIN SCHEDULE</strong></section><div class="lesson-progress"><i style="width:${((record.step+1)/lesson.steps.length)*100}%"></i></div><article class="lesson-step"><p class="eyebrow">${escapeHTML(step.title)}</p><p>${escapeHTML(step.body)}</p></article><div class="lesson-actions">${record.step?'<button class="secondary" type="button" data-lesson-back>Previous</button>':''}${record.step<lesson.steps.length-1?'<button class="primary" type="button" data-lesson-next>Continue lesson</button>':'<button class="primary" type="button" data-lesson-finish>Complete & save lesson</button>'}<button class="secondary" type="button" data-lesson-pause>Pause · save checkpoint</button></div><p class="privacy">Your exact lesson position is saved locally. Typed content is never captured by XER telemetry.</p>`;
+  $('#lesson-runtime').innerHTML=`<section class="lesson-status"><span>${escapeHTML(lesson.mission)}</span><b>ACTIVITY ${record.step+1} / ${lesson.activities.length}</b><strong>${record.score} / 100 · ${lesson.passingScore}% TO PASS</strong></section><div class="lesson-progress"><i style="width:${((record.step+(passed?1:0))/lesson.activities.length)*100}%"></i></div><article class="lesson-step"><p class="eyebrow">${escapeHTML(activity.title)}</p><h3>${escapeHTML(activity.prompt)}</h3><div class="academy-work">${activityControl(activity,draft)}</div>${result?`<div class="academy-feedback ${passed?'pass':'retry'}" role="status"><b>${passed?'PASS':'RETRY'}</b><span>${escapeHTML(result.feedback)}</span></div>`:''}</article><div class="lesson-actions">${record.step?'<button class="secondary" type="button" data-lesson-back>Previous</button>':''}${passed&&record.step<lesson.activities.length-1?'<button class="primary" type="button" data-lesson-next>Continue to next activity</button>':''}${passed&&record.step===lesson.activities.length-1?'<button class="primary" type="button" data-lesson-finish>Complete lesson · save score</button>':''}<button class="secondary" type="button" data-lesson-pause>Pause · save checkpoint</button></div><p class="privacy">Your answers, score and exact position are stored only in this browser for grading and Resume Anywhere. XER telemetry never receives answer text or raw printable keystrokes.</p>`;
+  if(!passed){const answer=$('#academy-answer');if(answer)answer.focus({preventScroll:true})}
 }
 
 function closeLesson(message='Lesson checkpoint saved. Resume Anywhere is active.'){
@@ -101,7 +113,8 @@ function render(){
   $('#academy-runtime').innerHTML=`<div class="academy-order"><b>TODAY—NON-NEGOTIABLE</b><span>12 min Typing + 8 min Spanish. Applied AI: Mon/Wed/Fri. Finance: Tue/Thu.</span></div>`+courses.map(course=>{
     const record=state.academy[course.id],alert=alerts.find(item=>item.courseId===course.id);
     const progress=record.progress||0;
-    return `<article class="course-row ${alert.level}"><div><small class="course-alert">${escapeHTML(alert.label)}</small><h3>${escapeHTML(course.name)}</h3><p>${escapeHTML(course.mission)} · ${escapeHTML(course.lesson)}</p><small>${record.completedLessons} completed · ${record.status.replaceAll('-',' ')}</small></div><div class="progress-track" aria-label="${progress}% local progress"><i style="width:${progress}%"></i></div><button class="action-button" data-course="${course.id}">${record.lastStartedAt?'Resume actual lesson':'Start actual lesson'}</button></article>`;
+    const actionLabel=record.status==='completed'?'Start today’s lesson':record.lastStartedAt?'Resume full lesson':'Start full lesson';
+    return `<article class="course-row ${alert.level}"><div><small class="course-alert">${escapeHTML(alert.label)}</small><h3>${escapeHTML(course.name)}</h3><p>${escapeHTML(course.mission)} · ${escapeHTML(course.lesson)}</p><small>${record.completedLessons} completed · ${record.score}/100 latest score · ${record.xp} XP · ${record.status.replaceAll('-',' ')}</small></div><div class="progress-track" aria-label="${progress}% local progress"><i style="width:${progress}%"></i></div><button class="action-button" data-course="${course.id}">${actionLabel}</button></article>`;
   }).join('');
 
   const regions=['Americas','Europe','Asia','Africa','Oceania'];
@@ -129,8 +142,8 @@ function render(){
 
   const telemetry=telemetrySummary();
   $('#warden-runtime').innerHTML=`<article class="warden-panel">${[
-    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Guided product tutorial','LOCAL · REPLAYABLE'],['Academy lesson runtime','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / typed content','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
-  ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details, biometrics, Academy metrics and notes are excluded from public source.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.3 Guided Command Deck · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
+    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Guided product tutorial','LOCAL · REPLAYABLE'],['Academy lessons + grading','LOCAL · EVIDENCE-GATED'],['Academy Resume Anywhere','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / answer text in telemetry','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
+  ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details and biometrics are excluded from public source. Academy answers and grades remain local to this browser.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.4 Full Academy · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
   loadArchive();
 }
 
@@ -193,8 +206,14 @@ document.addEventListener('click',event=>{
   if(event.target.closest('[data-process-advance]')){state.integration=state.integration===processStages.length-1?0:state.integration+1;saveState();render();notify('Integration gate saved locally.')}
   const course=event.target.closest('[data-course]');if(course)openLesson(course.dataset.course);
   if(event.target.closest('#lesson-close,#lesson-backdrop,[data-lesson-pause]'))closeLesson();
-  if(event.target.closest('[data-lesson-next]')&&activeLesson){state.academy=advanceLesson(state.academy,activeLesson);saveState();recordInteraction('academy','step-complete');renderLesson()}
-  if(event.target.closest('[data-lesson-back]')&&activeLesson){state.academy[activeLesson].step=Math.max(0,state.academy[activeLesson].step-1);state.academy[activeLesson].lastActiveAt=new Date().toISOString();saveState();renderLesson()}
+  if(event.target.closest('[data-lesson-submit]')&&activeLesson){
+    const activity=LESSONS[activeLesson].activities[state.academy[activeLesson].step];
+    const response=activity.type==='lesson'?'reviewed':activity.type==='choice'?$('input[name="academy-answer"]:checked')?.value:$('#academy-answer')?.value;
+    if(!String(response??'').trim()){notify('Enter or select an answer before grading.');return}
+    const submission=submitAcademyResponse(state.academy,activeLesson,response);state.academy=submission.academy;saveState();recordInteraction('academy',submission.result.passed?'answer-pass':'answer-retry');renderLesson();
+  }
+  if(event.target.closest('[data-lesson-next]')&&activeLesson){const moved=advanceLesson(state.academy,activeLesson);state.academy=moved.academy;saveState();if(moved.advanced){recordInteraction('academy','activity-complete');renderLesson()}else notify('Warden blocked progress: pass this activity first.')}
+  if(event.target.closest('[data-lesson-back]')&&activeLesson){state.academy=previousLessonActivity(state.academy,activeLesson);saveState();renderLesson()}
   if(event.target.closest('[data-lesson-finish]')&&activeLesson){const result=completeAcademyLesson(state.academy,activeLesson);state.academy=result.academy;saveState();if(result.completed){recordInteraction('academy','lesson-complete');render();closeLesson('Lesson complete. Schedule checkpoint saved locally.')}else{recordFinding('academy-premature-completion',activeLesson);notify('Warden blocked completion: finish every lesson step.')}}
   if(event.target.closest('[data-enable-alerts]')){if('Notification'in window){Notification.requestPermission().then(permission=>{state.alertsEnabled=permission==='granted';saveState();render();notify(state.alertsEnabled?'Device alerts enabled.':'Device alerts remain off. The in-app overdue rail stays active.')})}else notify('Device notifications are unavailable. The in-app overdue rail stays active.')}
   const region=event.target.closest('[data-region]');if(region){state.region=region.dataset.region;saveState();render();notify(`${state.region} intelligence lens active.`)}
@@ -205,7 +224,10 @@ document.addEventListener('click',event=>{
   if(event.target.closest('#reset-local')){localStorage.removeItem(STORAGE);clearTelemetry();state={...initial,academy:normalizeAcademy({}),completed:[],saved:[],dismissed:[]};$('#scene-index').hidden=true;render();notify('Local Daily Bread state and XER telemetry reset.')}
   if(event.target.closest('#open-preferences'))notify('Preferences remain private and local. Use regional and Academy controls in the deck.');
 });
-document.addEventListener('input',event=>{if(event.target.id==='mission-notes'){state.notes=event.target.value;saveState()}});
+document.addEventListener('input',event=>{
+  if(event.target.id==='mission-notes'){state.notes=event.target.value;saveState()}
+  if(event.target.id==='academy-answer'&&activeLesson){state.academy=saveAcademyDraft(state.academy,activeLesson,event.target.value);saveState()}
+});
 document.addEventListener('keydown',event=>{
   const keyClass=safeKeyClass(event);if(keyClass)recordInteraction('key',keyClass);
   if(event.key==='Escape'&&!$('#tutorial-panel').hidden){closeTutorial(false);return}

@@ -1,0 +1,22 @@
+{
+  "release": "XPS 4.4.0",
+  "date": "2026-07-25",
+  "scope": "Full Xen Academy lesson, assessment and Resume Anywhere runtime",
+  "changes": [
+    "Replaced passive three-card lesson samples with complete assessable lesson sequences.",
+    "Added answer fields, multiple choice, numeric work, constructed responses and exact-copy typing exercises.",
+    "Added automatic grading, accepted variants, retry feedback, passing thresholds, scores and XP.",
+    "Added typing accuracy, edit-distance error count, elapsed-time and words-per-minute measurement.",
+    "Added local drafts, answers, results and exact-activity Resume Anywhere persistence.",
+    "Added evidence-gated completion: Continue and Complete remain unavailable until the required work passes.",
+    "Added full Typing, Spanish, Applied AI and Financial Intelligence lesson content."
+  ],
+  "privacy": {
+    "answerStorage": "local browser only",
+    "telemetry": "aggregate interaction category only",
+    "excludedFromTelemetry": ["answer text", "raw printable keystrokes", "field values", "credentials"]
+  },
+  "truthState": "repository-backed-deployment-pending",
+  "deployment": {"verified": false},
+  "continuation": "Validate every assessment type, publish, verify production and record Warden deployment evidence."
+}
