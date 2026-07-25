@@ -2,11 +2,12 @@ import{priorities,courses,intelligence,entertainment,risks,timeline,evolution}fr
 import{ACADEMY_SCHEDULE,LESSONS,normalizeAcademy,academyAlerts,startLesson,saveAcademyDraft,submitAcademyResponse,retryAcademyActivity,deferAcademyActivity,advanceLesson,previousLessonActivity,completeAcademyLesson}from'./academy-runtime.js';
 import{recordInteraction,recordFinding,telemetrySummary,clearTelemetry,safeKeyClass}from'./local-telemetry.js';
 import{auditRecoveryResult,observeQuality}from'./quality-guardian.js';
+import{activationCenterModel,activationContinuation}from'./activation-center.js';
 
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
 const STORAGE='xdbs-command-deck-v2';
-const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas',alertsEnabled:false,tutorialSeen:false};
+const initial={completed:[],saved:[],dismissed:[],notes:'',academy:{},integration:0,region:'Americas',alertsEnabled:false,tutorialSeen:false,activationGuide:false};
 let state=loadState(),active=0,toastTimer,activeLesson=null,lessonTimer=null,tutorialStep=0;
 state.academy=normalizeAcademy(state.academy);
 const scenes=$$('.scene');
@@ -139,6 +140,8 @@ function render(){
   $('#mission-runtime').innerHTML=`<article class="mission-panel"><small class="eyebrow">ACTIVE MISSION</small><h3>Learn one thing. Measure one criterion. Move the mission.</h3>${missionItems.map(([id,label])=>`<div class="mission-check ${state.completed.includes(id)?'done':''}"><button data-complete="${id}" aria-label="Toggle ${escapeHTML(label)}">${state.completed.includes(id)?'✓':''}</button><span>${escapeHTML(label)}</span></div>`).join('')}</article><aside><label class="eyebrow" for="mission-notes">MISSION NOTES · LOCAL ONLY</label><textarea class="mission-notes" id="mission-notes" placeholder="Capture the next thought…">${escapeHTML(state.notes)}</textarea><p class="privacy">Auto-saved only in this browser.</p></aside>`;
 
   $('#evolution-runtime').innerHTML=evolution.map(item=>`<article class="evo-card"><small>${escapeHTML(item.status)}</small><strong>${escapeHTML(item.metric)}</strong><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.body)}</p></article>`).join('');
+  const activation=activationCenterModel();
+  $('#activation-runtime').innerHTML=`<article class="activation-summary"><div><small>CURRENT GATE</small><strong>${escapeHTML(activation.currentGate)}</strong><span>${escapeHTML(activation.stateLabel)}</span></div><p>${escapeHTML(activation.explanation)}</p></article><ol class="activation-gates">${activation.gates.map(gate=>`<li class="${gate.tone}" ${gate.current?'aria-current="step"':''}><i>${gate.index}</i><div><b>${escapeHTML(gate.id)}</b><span>${escapeHTML(gate.label)}</span></div><em>${escapeHTML(gate.stateLabel)}</em></li>`).join('')}</ol><section class="activation-recovery" ${state.activationGuide?'':'hidden'}><p class="eyebrow">SAFE RECOVERY</p><h3>${escapeHTML(activation.recovery.title)}</h3><p>${escapeHTML(activation.recovery.body)}</p><div><button class="secondary" type="button" data-activation-copy>Copy continuation</button><button class="secondary" type="button" data-activation-defer>Defer safely</button></div><p class="privacy">No credentials, approval payloads, private content, or invented evidence are stored or exported.</p></section>`;
   $('#radar-runtime').innerHTML=risks.map(item=>`<article class="radar-card ${item.type}"><small>${escapeHTML(item.scope)} · ${item.type==='risk'?'RISK':'OPPORTUNITY'} · ${escapeHTML(item.level)}</small><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.body)}</p><details><summary>Recommended move</summary><p>${escapeHTML(item.action)}</p></details></article>`).join('');
   $('#timeline-runtime').innerHTML=timeline.map((item,index)=>`<div class="time-row ${state.completed.includes(`time-${index}`)?'done':''}"><b>${escapeHTML(item[0])}</b><i></i><span>${escapeHTML(item[1])}</span><button class="action-button" data-complete="time-${index}">${state.completed.includes(`time-${index}`)?'Done':'Complete'}</button></div>`).join('');
 
@@ -206,6 +209,10 @@ document.addEventListener('click',event=>{
   const indexed=event.target.closest('[data-scene-index]');if(indexed){$('#scene-index').hidden=true;setScene(Number(indexed.dataset.sceneIndex))}
   const process=event.target.closest('[data-process]');if(process){state.integration=Number(process.dataset.process);saveState();render()}
   if(event.target.closest('[data-process-advance]')){state.integration=state.integration===processStages.length-1?0:state.integration+1;saveState();render();notify('Integration gate saved locally.')}
+  if(event.target.closest('[data-activation-guide]')){state.activationGuide=!state.activationGuide;saveState();render();recordInteraction('activation','recovery-guide')}
+  if(event.target.closest('[data-activation-retry]')){render();recordInteraction('activation','retry-evaluation');notify('Evaluation refreshed. XRI-006 still requires authentic evidence.')}
+  if(event.target.closest('[data-activation-defer]')){recordInteraction('activation','deferred');notify('Checkpoint preserved. Return through the Activation Center.')}
+  if(event.target.closest('[data-activation-copy]')){navigator.clipboard?.writeText(activationContinuation()).then(()=>notify('Non-secret continuation copied.')).catch(()=>notify('Copy unavailable. Recovery guidance remains on screen.'))}
   const course=event.target.closest('[data-course]');if(course)openLesson(course.dataset.course);
   if(event.target.closest('#lesson-close,#lesson-backdrop,[data-lesson-pause]'))closeLesson();
   if(event.target.closest('[data-lesson-submit]')&&activeLesson){

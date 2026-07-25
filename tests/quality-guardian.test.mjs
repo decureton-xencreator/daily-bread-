@@ -6,7 +6,7 @@ assert.deepEqual(auditRecoveryResult({passed:false,feedback:'Try again',canRetry
 assert.equal(auditRecoveryResult({passed:false,feedback:''}).passed,false);
 assert.equal(sanitizeControlTarget('Submit Answer #3'),'submit-answer-3');
 assert.equal(summarizeControlAudit([{labelled:true,actionable:true}]).passed,true);
-assert.equal(SURFACE_REGISTRY.length,16);
+assert.equal(SURFACE_REGISTRY.length,17);
 
 const element=(tag,attributes={},text='')=>({
   tagName:tag.toUpperCase(),dataset:attributes.dataset||{},disabled:Boolean(attributes.disabled),id:attributes.id||'',textContent:text,
@@ -54,7 +54,7 @@ for(const forbidden of ['event.target.value','event.key.length','location.href']
 
 const coverage=JSON.parse(fs.readFileSync('governance/XQG-1.1-SURFACE-COVERAGE.json','utf8'));
 assert.equal(coverage.scope.registeredSurfaces,SURFACE_REGISTRY.length);
-assert.equal(coverage.scope.commandDeckScenes,14);
+assert.equal(coverage.scope.commandDeckScenes,15);
 assert.equal(coverage.validation.localSuite,'PASS');
 assert.equal(coverage.validation.pdfVisualReview,'PASS');
 assert.match(coverage.validation.pdfSha256,/^[a-f0-9]{64}$/);

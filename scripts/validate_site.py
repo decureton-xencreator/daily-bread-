@@ -35,7 +35,7 @@ for p in ROOT.rglob('*.html'):
   if 'noopener' not in match.group(0).lower():issues.append(f'unsafe-external-link:{p.relative_to(ROOT)}')
 if 'prefers-reduced-motion' not in (ROOT/'assets/css/xdbs.css').read_text():issues.append('reduced-motion:missing')
 index=(ROOT/'index.html').read_text()
-for series in ['scene-today','scene-integration','scene-academy','scene-globe','scene-intelligence','scene-water-cooler','scene-markets','scene-xmi','scene-mission','scene-evolution','scene-radar','scene-timeline','scene-archive','scene-warden']:
+for series in ['scene-today','scene-integration','scene-academy','scene-globe','scene-intelligence','scene-water-cooler','scene-markets','scene-xmi','scene-mission','scene-evolution','scene-activation','scene-radar','scene-timeline','scene-archive','scene-warden']:
  if series not in index:issues.append(f'missing-ui-marker:{series}')
 for marker in ['XEN INTEGRATION PROCESS','Know what matters.','Xen Globe']:
  if marker not in index:issues.append(f'missing-ui-marker:{marker}')
