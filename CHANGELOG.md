@@ -85,3 +85,14 @@
 - Added Xenesis Arrival, Today Command, Academy Command, Globe, intelligence, XMI, Mission Control, build evolution, radar, timeline, command palette, personalization, archive, provenance and Warden diagnostics.
 - Added structured data contracts, local persistence, installable manifest, offline shell, publisher, validation, release, rollback and continuity records.
 - Preserved the truth boundary: external live feeds remain integration-ready until approved providers are connected and verified.
+# XPS 4.5.1 - 2026-07-25
+
+- Completed the XAVR 1.0 Complete Product Package: operating manual, design canon,
+  learner publication, approved voice/caption script, printable PDF, device-evidence
+  receipt, package manifest, release record, and automated completeness test.
+- Preserved the production XAVR 1.0.0 runtime and its privacy defaults without changing
+  microphone, recording, transcript, or scoring behavior.
+- Recorded the product-owner physical-device allow path without storing recording,
+  transcript, score, or sensitive learning data.
+- Kept denied-permission recovery, replay/deletion, Disable Voice, mobile accessibility,
+  and cross-browser behavior open until separately evidenced on real devices.

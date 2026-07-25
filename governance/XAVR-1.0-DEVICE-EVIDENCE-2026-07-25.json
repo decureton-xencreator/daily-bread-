@@ -1,0 +1,24 @@
+{
+  "schema": "xen/xavr-device-evidence/v1",
+  "product": "XAVR 1.0.0",
+  "release": "XPS 4.5.0",
+  "production": "https://decureton-xencreator.github.io/daily-bread-/#scene-academy",
+  "reported_at": "2026-07-25",
+  "reporter_role": "product owner and learner",
+  "evidence_class": "USER_REPORTED_PHYSICAL_DEVICE",
+  "privacy": "No recording, transcript, score, or sensitive learning content is stored in this receipt.",
+  "verified": {
+    "production_assessment_completed": true,
+    "real_microphone_device_used": true,
+    "assessment_returned_a_result": true
+  },
+  "not_separately_reported": [
+    "deny-permission recovery",
+    "replay and delete behavior",
+    "Disable Voice behavior",
+    "mobile keyboard and screen-reader pass",
+    "cross-browser behavior"
+  ],
+  "truth_boundary": "This receipt closes the prior no-microphone allow-path blocker using product-owner device evidence. It does not independently certify unreported recovery, deletion, accessibility, or cross-browser paths.",
+  "warden_result": "ALLOW_PATH_EVIDENCED_REMAINING_DEVICE_MATRIX_OPEN"
+}
