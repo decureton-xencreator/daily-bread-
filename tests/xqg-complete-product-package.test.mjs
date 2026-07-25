@@ -9,5 +9,6 @@ for(const [name,component] of Object.entries(manifest.components)){
   for(const artifact of component.artifacts)assert.ok(fs.existsSync(artifact),`${artifact} missing`);
 }
 assert.equal(manifest.warden.result,'PRODUCTION_VERIFIED');
-assert.equal(manifest.warden.production_commit,'a8a453bd233dba5aa0c6396b6d883ade976c63a0');
+assert.equal(manifest.version,'1.1.0');
+assert.equal(manifest.warden.production_commit,'a46981a373c3bd1f67eb70b68bbd88f9bf5351a7');
 console.log('XQG complete product package: PASS');

@@ -3,7 +3,7 @@
   "product": "Xen Quality Guardian",
   "version": "1.1.0",
   "release": "XPS 4.7.0",
-  "truthState": "VALIDATED",
+  "truthState": "PRODUCTION_VERIFIED",
   "scope": {
     "registeredSurfaces": 16,
     "commandDeckScenes": 14,
@@ -25,11 +25,11 @@
     "siteValidator": "PASS",
     "pdfVisualReview": "PASS",
     "pdfSha256": "2cb8355a9fd8b928f181d06ff39b0f71c58ff8eedc263775f6b6b10f98bf64ad",
-    "hostedCI": "PENDING",
-    "productionVerification": "PENDING"
+    "hostedCI": "PASS — Alpha One Press Play run 58",
+    "productionVerification": "PASS — release marker, runtime, cache, coverage receipt, and PDF hash"
   },
   "production": {
-    "commit": null,
-    "pullRequest": null
+    "commit": "a46981a373c3bd1f67eb70b68bbd88f9bf5351a7",
+    "pullRequest": 37
   }
 }
