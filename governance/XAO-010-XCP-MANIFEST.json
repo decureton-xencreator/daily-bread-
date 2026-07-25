@@ -12,9 +12,9 @@
     "voice_experience": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-VOICE-SCRIPT.md"],"exception":null},
     "accessibility_language": {"state":"VALIDATED","artifacts":["index.html","app/command-deck-app.js"],"exception":null},
     "privacy_safety_governance": {"state":"VALIDATED","artifacts":["app/evidence-federation.js","data/xri-evidence-federation.json"],"exception":null},
-    "validation_evidence": {"state":"LOCAL_VALIDATED","artifacts":["tests/evidence-federation.test.mjs","tests/activation-center.test.mjs"],"evidence":["Contract, collision, certification, source and privacy gates tested"],"exception":null},
-    "release_lifecycle": {"state":"RELEASE_CANDIDATE","artifacts":["releases/XPS-4.9.0.json"],"exception":null},
+    "validation_evidence": {"state":"PRODUCTION_VERIFIED","artifacts":["tests/evidence-federation.test.mjs","tests/activation-center.test.mjs"],"evidence":["Contract, collision, certification, source and privacy gates tested","PR #41 hosted Alpha One Press Play run 64 passed","Production release marker e5427fb01eb6d12bd3a325306e4ea51555dfb549 verified"],"exception":null},
+    "release_lifecycle": {"state":"PRODUCTION_VERIFIED","artifacts":["releases/XPS-4.9.0.json"],"exception":null},
     "maintenance_rollback": {"state":"VALIDATED","artifacts":["docs/XAO-010-EVIDENCE-FEDERATION-OPERATING-MANUAL.md","releases/XPS-4.9.0.json"],"exception":null}
   },
-  "warden": {"result":"RELEASE_CANDIDATE","approved_exceptions":[]}
+  "warden": {"result":"PRODUCTION_VERIFIED","approved_exceptions":[]}
 }
