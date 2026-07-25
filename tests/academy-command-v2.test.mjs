@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {
   LESSONS,normalizeAcademy,academyAlerts,startLesson,saveAcademyDraft,gradeAcademyResponse,
-  submitAcademyResponse,advanceLesson,previousLessonActivity,completeAcademyLesson
+  submitAcademyResponse,retryAcademyActivity,deferAcademyActivity,advanceLesson,previousLessonActivity,completeAcademyLesson
 } from '../app/academy-runtime.js';
 import {
   SPANISH_VOICE_ACTIVITIES,scoreVoiceAssessment,saveVoiceEvidence
@@ -30,9 +30,21 @@ assert.equal(academy.spanish.step,1);
 submitted=submitAcademyResponse(academy,'spanish','wrong',new Date(now.getTime()+4000));
 academy=submitted.academy;
 assert.equal(submitted.result.passed,false);
+assert.equal(submitted.result.canRetry,true);
+assert.equal(submitted.result.recovery,'correct-retry-or-defer');
 moved=advanceLesson(academy,'spanish',new Date(now.getTime()+5000));
 assert.equal(moved.advanced,false);
 assert.equal(moved.academy.spanish.step,1);
+const deferred=deferAcademyActivity(academy,'spanish',new Date(now.getTime()+5100));
+assert.equal(deferred.deferred,true);
+assert.equal(deferred.academy.spanish.step,2);
+assert.ok(deferred.academy.spanish.deferred.includes('meaning'));
+academy=previousLessonActivity(deferred.academy,'spanish',new Date(now.getTime()+5200));
+assert.equal(academy.spanish.step,1);
+academy=retryAcademyActivity(academy,'spanish',new Date(now.getTime()+5300));
+assert.equal(academy.spanish.responses.meaning,undefined);
+assert.equal(academy.spanish.results.meaning,undefined);
+assert.equal(academy.spanish.score,10);
 
 const responses=[
   'I want to learn Spanish',

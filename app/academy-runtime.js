@@ -129,7 +129,7 @@ export function normalizeAcademy(academy = {}) {
     const old=academy[id],base=typeof old==='number'?{progress:old}:(old||{});
     return[id,{
       status:'not-started',step:0,elapsedSeconds:0,completedLessons:0,lastStartedAt:null,lastActiveAt:null,lastCompletedAt:null,
-      attempts:0,score:0,xp:0,results:{},responses:{},activityStartedAt:null,...base
+      attempts:0,score:0,xp:0,results:{},responses:{},deferred:[],activityStartedAt:null,...base
     }];
   }));
 }
@@ -174,8 +174,27 @@ export function submitAcademyResponse(academy,courseId,response,now=new Date()){
   const results={...current.results,[activity.id]:{...result,attemptedAt:now.toISOString()}};
   const responses={...current.responses,[activity.id]:String(response)};
   const score=Object.values(results).reduce((sum,item)=>sum+(item.score||0),0);
-  next[courseId]={...current,attempts:current.attempts+1,score,results,responses,status:result.passed?'active':'needs-retry',lastActiveAt:now.toISOString()};
-  return{academy:next,result};
+  const deferred=(current.deferred||[]).filter(id=>id!==activity.id);
+  next[courseId]={...current,attempts:current.attempts+1,score,results,responses,deferred,status:result.passed?'active':'needs-retry',lastActiveAt:now.toISOString()};
+  return{academy:next,result:{...result,canRetry:true,canDefer:lesson.activities.length>1,recovery:result.passed?'continue':'correct-retry-or-defer'}};
+}
+
+export function retryAcademyActivity(academy,courseId,now=new Date()){
+  const next=normalizeAcademy(academy),current=next[courseId],activity=LESSONS[courseId].activities[current.step];
+  const results={...current.results};delete results[activity.id];
+  const responses={...current.responses};delete responses[activity.id];
+  const score=Object.values(results).reduce((sum,item)=>sum+(item.score||0),0);
+  next[courseId]={...current,results,responses,score,status:'active',lastActiveAt:now.toISOString(),activityStartedAt:now.toISOString()};
+  return next;
+}
+
+export function deferAcademyActivity(academy,courseId,now=new Date()){
+  const next=normalizeAcademy(academy),current=next[courseId],lesson=LESSONS[courseId],activity=lesson.activities[current.step];
+  const deferred=[...new Set([...(current.deferred||[]),activity.id])];
+  const nextStep=current.step<lesson.activities.length-1?current.step+1:lesson.activities.findIndex(item=>!current.results[item.id]?.passed&&item.id!==activity.id);
+  if(nextStep<0)return{academy:next,deferred:false};
+  next[courseId]={...current,deferred,step:nextStep,status:'active',lastActiveAt:now.toISOString(),activityStartedAt:now.toISOString()};
+  return{academy:next,deferred:true};
 }
 
 export function advanceLesson(academy,courseId,now=new Date()){
