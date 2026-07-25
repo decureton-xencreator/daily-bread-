@@ -1,5 +1,7 @@
 const KEY = 'xdbs-xer-local-telemetry-v1';
 const MAX_FINDINGS = 40;
+const RAGE_WINDOW_MS = 2000;
+const RAGE_THRESHOLD = 3;
 
 function load() {
   try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
@@ -17,6 +19,17 @@ export function recordInteraction(kind, target = 'unknown') {
   state.counts ||= {};
   const key = `${kind}:${target}`.slice(0, 100);
   state.counts[key] = (state.counts[key] || 0) + 1;
+  if(kind==='click'){
+    const now=Date.now();
+    state.recentClicks=(state.recentClicks||[]).filter(item=>now-item.at<=RAGE_WINDOW_MS);
+    state.recentClicks.push({target:key,at:now});
+    const repeats=state.recentClicks.filter(item=>item.target===key).length;
+    if(repeats===RAGE_THRESHOLD){
+      state.findings ||= [];
+      state.findings.unshift({code:'rage-click',context:key.slice(0,100),at:new Date(now).toISOString()});
+      state.findings=state.findings.slice(0,MAX_FINDINGS);
+    }
+  }
   persist(state);
 }
 

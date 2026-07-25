@@ -1,0 +1,13 @@
+{
+  "release": "XPS 4.6.0",
+  "component": "Xen Quality Guardian 1.0",
+  "date": "2026-07-25",
+  "status": "implemented-local",
+  "changes": [
+    "Explicit correct, hint, and defer recovery for every Academy activity",
+    "Deferred work remains evidence-gated before completion",
+    "Privacy-minimized rage-click and recovery-contract findings",
+    "Synthetic control and recovery regression coverage"
+  ],
+  "rollback": "Revert the XQG release commit; saved Academy state remains backward-compatible."
+}
