@@ -16,6 +16,16 @@
 - Preserved Academy, intelligence, Integration Process, Mission Control, Warden, archive and local persistence behavior.
 - Kept the immutable July 24 edition unchanged.
 
+# XPS 4.7.0 - 2026-07-25
+
+- Extended Xen Quality Guardian across all 14 Daily Bread scenes, global navigation,
+  and the Academy Voice runtime through one machine-readable surface registry.
+- Added automatic rescans for dynamically rendered controls, safe external links,
+  labelled media, minimum interactive controls, and named recovery paths.
+- Preserved local-only, content-free diagnostics and explicit read-only scene contracts.
+- Updated the XQG operating manual, design canon, publication, printable PDF, release
+  record, and surface-coverage evidence.
+
 ## XPS 3.3.0 — 2026-07-24
 
 - Promoted the Xen Integration Process into the Daily Bread command surface.

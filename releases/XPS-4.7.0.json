@@ -1,0 +1,13 @@
+{
+  "release": "XPS 4.7.0",
+  "component": "Xen Quality Guardian 1.1",
+  "date": "2026-07-25",
+  "status": "validated-release-candidate",
+  "changes": [
+    "Sixteen-surface Guardian registry covering all Command Deck scenes, navigation, and Voice",
+    "Automatic audit after dynamically rendered interface changes",
+    "Control, link, media, minimum-control, and recovery-path contracts",
+    "Privacy-minimized categorical findings with no entered content"
+  ],
+  "rollback": "Revert the XPS 4.7.0 release commit. XQG 1.0 recovery behavior and saved local state remain compatible."
+}

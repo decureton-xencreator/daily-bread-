@@ -14,3 +14,11 @@ Rejected treatments include hidden retry gestures, disabled progression with no
 explanation, decorative controls, forced answer disclosure, continuous recording,
 session replay by default, generic “something went wrong” messages, and awarding credit
 for deferred work.
+
+## Surface coverage
+
+Every public scene is declared in the Guardian registry, including intentionally
+read-only briefings. Interactive surfaces declare a minimum expected control count and
+a named recovery or degraded-state path. Dynamic interface changes trigger a new
+quality sweep. New controls inherit the same label, action, link-safety, media, privacy,
+and recovery requirements without relying on their color, visual prominence, or author.

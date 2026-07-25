@@ -1,7 +1,7 @@
 import{priorities,courses,intelligence,entertainment,risks,timeline,evolution}from'./data.js';
 import{ACADEMY_SCHEDULE,LESSONS,normalizeAcademy,academyAlerts,startLesson,saveAcademyDraft,submitAcademyResponse,retryAcademyActivity,deferAcademyActivity,advanceLesson,previousLessonActivity,completeAcademyLesson}from'./academy-runtime.js';
 import{recordInteraction,recordFinding,telemetrySummary,clearTelemetry,safeKeyClass}from'./local-telemetry.js';
-import{auditRecoveryResult}from'./quality-guardian.js';
+import{auditRecoveryResult,observeQuality}from'./quality-guardian.js';
 
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>[...root.querySelectorAll(selector)];
@@ -247,6 +247,14 @@ window.addEventListener('xen-voice-evidence',()=>{state=loadState();render();rec
 window.addEventListener('xen-voice-complete',()=>{state=loadState();render();notify('Required spoken activities passed. Warden can now evaluate lesson completion.')});
 window.addEventListener('error',event=>recordFinding('runtime-error',event.message));
 window.addEventListener('unhandledrejection',()=>recordFinding('unhandled-promise','Promise rejection withheld'));
+
+const reportedGuardianFindings=new Set();
+observeQuality(document,result=>{
+  result.findings.forEach(finding=>{
+    const key=`${finding.code}:${finding.context}`;
+    if(!reportedGuardianFindings.has(key)){reportedGuardianFindings.add(key);recordFinding(finding.code,finding.context)}
+  });
+});
 
 const hashIndex=scenes.findIndex(scene=>`#${scene.id}`===location.hash);
 render();tick();enforceSchedule();setScene(hashIndex>=0?hashIndex:0,false);setInterval(tick,30000);
