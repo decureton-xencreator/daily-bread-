@@ -3,18 +3,18 @@
   "item": "Xen Quality Guardian",
   "version": "1.0.0",
   "components": {
-    "product_definition": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md"],"evidence":["Purpose, scope and privacy boundary defined"],"exception":null},
-    "design_canon": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-DESIGN-CANON.md","assets/css/command-deck.css"],"evidence":["Recovery states and 44px controls specified"],"exception":null},
-    "operating_manual": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md"],"evidence":["Learner, administrator and troubleshooting flows"],"exception":null},
-    "tutorial_onboarding": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md","app/command-deck-app.js"],"evidence":["In-context coaching hint and recovery choices"],"exception":null},
-    "publication_suite": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-PUBLICATION.md"],"evidence":["Learner announcement and production route"],"exception":null},
-    "pdf_edition": {"state":"IMPLEMENTED_LOCAL","artifacts":["output/pdf/XQG-1.0-OPERATING-MANUAL.pdf"],"evidence":["Versioned printable PDF"],"exception":null},
+    "product_definition": {"state":"PRODUCTION_VERIFIED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md"],"evidence":["Purpose, scope and privacy boundary published at production commit a8a453bd233dba5aa0c6396b6d883ade976c63a0"],"exception":null},
+    "design_canon": {"state":"PRODUCTION_VERIFIED","artifacts":["docs/XQG-1.0-DESIGN-CANON.md","assets/css/command-deck.css"],"evidence":["Recovery states and 44px controls deployed"],"exception":null},
+    "operating_manual": {"state":"PRODUCTION_VERIFIED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md"],"evidence":["Production endpoint returned HTTP 200"],"exception":null},
+    "tutorial_onboarding": {"state":"PRODUCTION_VERIFIED","artifacts":["docs/XQG-1.0-OPERATING-MANUAL.md","app/command-deck-app.js"],"evidence":["In-context coaching hint and recovery choices deployed"],"exception":null},
+    "publication_suite": {"state":"PRODUCTION_VERIFIED","artifacts":["docs/XQG-1.0-PUBLICATION.md"],"evidence":["Learner announcement published"],"exception":null},
+    "pdf_edition": {"state":"PRODUCTION_VERIFIED","artifacts":["output/pdf/XQG-1.0-OPERATING-MANUAL.pdf"],"evidence":["Production PDF returned HTTP 200 and SHA-256 matched approved render"],"exception":null},
     "voice_experience": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-VOICE-SCRIPT.md"],"evidence":["Approved captions and non-microphone guidance"],"exception":null},
     "accessibility_language": {"state":"VALIDATED","artifacts":["docs/XQG-1.0-DESIGN-CANON.md","app/command-deck-app.js"],"evidence":["Keyboard controls, live status, expanded state and mobile sizing"],"exception":null},
     "privacy_safety_governance": {"state":"VALIDATED","artifacts":["app/local-telemetry.js","docs/XQG-1.0-OPERATING-MANUAL.md"],"evidence":["Local aggregate categories; raw content excluded"],"exception":null},
-    "functional_build": {"state":"VALIDATED","artifacts":["app/quality-guardian.js","app/academy-runtime.js","app/command-deck-app.js"],"evidence":["Retry, hint, defer, revisit, persistence and completion gate"],"exception":null},
-    "validation_evidence": {"state":"VALIDATED","artifacts":["tests/quality-guardian.test.mjs","tests/academy-command-v2.test.mjs"],"evidence":["Synthetic recovery, control, privacy and Academy regression tests"],"exception":null},
-    "release_lifecycle": {"state":"IMPLEMENTED_LOCAL","artifacts":["releases/XPS-4.6.0.json"],"evidence":["Version, change set and rollback path"],"exception":null}
+    "functional_build": {"state":"PRODUCTION_VERIFIED","artifacts":["app/quality-guardian.js","app/academy-runtime.js","app/command-deck-app.js"],"evidence":["Retry, hint, defer, revisit, persistence and completion gate deployed at a8a453bd233dba5aa0c6396b6d883ade976c63a0"],"exception":null},
+    "validation_evidence": {"state":"PRODUCTION_VERIFIED","artifacts":["tests/quality-guardian.test.mjs","tests/academy-command-v2.test.mjs"],"evidence":["Local suite, hosted Alpha One Press Play run 55, production marker and live asset checks passed"],"exception":null},
+    "release_lifecycle": {"state":"PRODUCTION_VERIFIED","artifacts":["releases/XPS-4.6.0.json"],"evidence":["PR 35 merged; production bound to a8a453bd233dba5aa0c6396b6d883ade976c63a0"],"exception":null}
   },
-  "warden": {"result":"IMPLEMENTED_LOCAL_AWAITING_PUBLICATION","approved_exceptions":[]}
+  "warden": {"result":"PRODUCTION_VERIFIED","approved_exceptions":[],"production_commit":"a8a453bd233dba5aa0c6396b6d883ade976c63a0","pull_request":35}
 }
