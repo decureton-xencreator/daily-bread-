@@ -1,3 +1,4 @@
+import{voiceGate}from'./voice-runtime.js';
 export const ACADEMY_SCHEDULE = {
   timezone: 'America/New_York',
   dailyMinimum: [
@@ -194,7 +195,8 @@ export function completeAcademyLesson(academy,courseId,now=new Date()){
   const next=normalizeAcademy(academy),lesson=LESSONS[courseId],current=next[courseId];
   const passed=lesson.activities.every(activity=>current.results[activity.id]?.passed);
   const score=current.score||0;
-  if(!passed||score<lesson.passingScore)return{academy:next,completed:false,score,required:lesson.passingScore};
+  const spoken=courseId!=='spanish'||voiceGate(next).passed;
+  if(!passed||!spoken||score<lesson.passingScore)return{academy:next,completed:false,score,required:lesson.passingScore,voiceGate:courseId==='spanish'?voiceGate(next):null};
   next[courseId]={...current,status:'completed',step:0,elapsedSeconds:0,completedLessons:current.completedLessons+1,progress:Math.min(100,(current.progress||0)+10),xp:(current.xp||0)+lesson.xp,lastActiveAt:now.toISOString(),lastCompletedAt:now.toISOString(),activityStartedAt:null};
   return{academy:next,completed:true,score,xp:lesson.xp};
 }

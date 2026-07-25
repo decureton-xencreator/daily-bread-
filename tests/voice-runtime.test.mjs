@@ -1,0 +1,14 @@
+import assert from'node:assert/strict';
+import{SPANISH_VOICE_ACTIVITIES,VOICE_PASSING_SCORE,VOICE_WEIGHTS,scoreVoiceAssessment,saveVoiceEvidence,voiceGate}from'../app/voice-runtime.js';
+assert.equal(Object.values(VOICE_WEIGHTS).reduce((a,b)=>a+b,0),100);
+assert.equal(VOICE_PASSING_SCORE,80);
+const perfect=scoreVoiceAssessment({target:'Quiero practicar hoy.',transcript:'Quiero practicar hoy',durationMs:2200,recognitionConfidence:.91});
+assert.equal(perfect.passed,true);assert.equal(perfect.wordFeedback.correct.length,3);assert.equal(perfect.pronunciation.phonemeLevel,false);
+const weak=scoreVoiceAssessment({target:'Quiero practicar hoy.',transcript:'practicar',durationMs:5000,recognitionConfidence:.4});
+assert.equal(weak.passed,false);assert.deepEqual(weak.wordFeedback.omitted.sort(),['hoy','quiero']);
+let academy={spanish:{}};for(const a of SPANISH_VOICE_ACTIVITIES)academy=saveVoiceEvidence(academy,a.id,perfect,{attemptedAt:'2026-07-25T20:00:00Z'});
+assert.equal(voiceGate(academy).passed,true);
+academy=saveVoiceEvidence(academy,SPANISH_VOICE_ACTIVITIES[0].id,weak,{attemptedAt:'2026-07-25T20:01:00Z'});
+assert.equal(academy.spanish.voice.best[SPANISH_VOICE_ACTIVITIES[0].id].passed,true);assert.equal(academy.spanish.voice.latest[SPANISH_VOICE_ACTIVITIES[0].id].passed,false);
+assert.equal(JSON.stringify(academy).includes('"blob"'),false);assert.equal(JSON.stringify(academy).includes('"audioData"'),false);
+console.log('Xen Academy voice scoring, evidence, best/latest and Warden gate: PASS');

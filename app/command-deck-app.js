@@ -142,7 +142,7 @@ function render(){
 
   const telemetry=telemetrySummary();
   $('#warden-runtime').innerHTML=`<article class="warden-panel">${[
-    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Guided product tutorial','LOCAL · REPLAYABLE'],['Academy lessons + grading','LOCAL · EVIDENCE-GATED'],['Academy Resume Anywhere','LOCAL · RESUMABLE'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / answer text in telemetry','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
+    ['Command Deck runtime','LIVE'],['Current edition alias','REPOSITORY-BACKED'],['Guided product tutorial','LOCAL · REPLAYABLE'],['Academy lessons + grading','LOCAL · EVIDENCE-GATED'],['Academy Resume Anywhere','LOCAL · RESUMABLE'],['Voice capture + replay','BROWSER-SUPPORTED · PERMISSION-GATED'],['Voice grading + evidence','LOCAL · EVIDENCE-GATED'],['Audio retention / transmission','OFF BY DEFAULT'],['Warden + XER + XEW sync','REPOSITORY-BACKED'],['Safe interaction telemetry',`${telemetry.interactionCount} LOCAL EVENTS`],['Raw keys / answer text in telemetry','NEVER CAPTURED'],['Calendar details','WITHHELD'],['Routes and biometrics','NOT CONNECTED']
   ].map(([label,status])=>`<div class="diagnostic-row"><span>${label}</span><b class="${status.includes('NOT')||status.includes('WITHHELD')?'warn':''}">${status}</b></div>`).join('')}</article><article class="warden-panel"><p class="eyebrow">PRIVACY BOUNDARY</p><p>Raw chat, itinerary, calendar details and biometrics are excluded from public source. Academy answers and grades remain local to this browser.</p><p class="eyebrow">SYSTEM</p><p>XDBS 3.0 · XPS 4.4 Full Academy · Edition 2.6.0</p><a class="text-link" href="reports/validation-report.json">Open validation evidence →</a></article>`;
   loadArchive();
 }
@@ -238,6 +238,8 @@ document.addEventListener('keydown',event=>{
   if((event.metaKey||event.ctrlKey)&&event.key.toLowerCase()==='k'){event.preventDefault();openIndex()}
 });
 
+window.addEventListener('xen-voice-evidence',()=>{state=loadState();render();recordInteraction('academy','voice-assessment')});
+window.addEventListener('xen-voice-complete',()=>{state=loadState();render();notify('Required spoken activities passed. Warden can now evaluate lesson completion.')});
 window.addEventListener('error',event=>recordFinding('runtime-error',event.message));
 window.addEventListener('unhandledrejection',()=>recordFinding('unhandled-promise','Promise rejection withheld'));
 

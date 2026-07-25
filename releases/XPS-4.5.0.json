@@ -1,0 +1,44 @@
+{
+  "schema": "xen.xps.release.v1",
+  "release": "XPS-4.5.0",
+  "date": "2026-07-25",
+  "title": "Xen Academy Voice Assessment Runtime",
+  "capabilities": [
+    "explicit-action microphone permission",
+    "MediaRecorder capture, stop, replay and deletion",
+    "browser-native Spanish transcription where supported",
+    "local evidence grading",
+    "provider-neutral capture/transcription/pronunciation/TTS adapter",
+    "slow and natural Spanish model playback",
+    "six required spoken activity modes",
+    "best and latest attempt persistence",
+    "Resume Anywhere local evidence",
+    "typed fallback",
+    "Warden completion gate"
+  ],
+  "scoring": {
+    "passingScore": 80,
+    "weights": {
+      "phraseCompletion": 25,
+      "wordAccuracy": 30,
+      "pronunciationSimilarity": 20,
+      "pacing": 10,
+      "fluency": 10,
+      "hesitation": 5
+    },
+    "recognitionConfidence": "reported separately",
+    "phonemeLevel": false
+  },
+  "privacy": {
+    "audioRetention": "ephemeral browser memory only; deleted on command or page exit",
+    "audioTransmission": "disabled",
+    "transcriptAndEvidence": "localStorage only",
+    "telemetry": "aggregate event names only",
+    "secrets": "none"
+  },
+  "truthState": {
+    "repository": "implemented",
+    "deployment": "pending merge and Pages verification",
+    "providerPronunciation": "unavailable; recognition-derived proxy visibly labeled"
+  }
+}
