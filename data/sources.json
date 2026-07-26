@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.7",
-  "publishedAt": "2026-07-26T05:07:00-04:00",
+  "publishedAt": "2026-07-26T04:59:00-04:00",
   "sources": [
     {
       "id": "production-contract",
@@ -16,11 +16,12 @@
       "id": "july-26-live-sources",
       "type": "timestamped-external-retrieval",
       "manifest": "releases/XDBS-2.7.0.json",
-      "retrievedAt": "2026-07-26T05:07:00-04:00"
+      "retrievedAt": "2026-07-26T04:59:00-04:00"
     }
   ],
   "externalLiveFeeds": [
     "weather",
+    "markets",
     "world-intelligence",
     "sports",
     "entertainment"
