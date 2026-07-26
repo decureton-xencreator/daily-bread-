@@ -2,7 +2,7 @@
   "$schema":"../schemas/edition.schema.json",
   "id":"xdbs-2026-07-26",
   "editionVersion":"2.7.0",
-  "publishedAt":"2026-07-26T05:07:00-04:00",
+  "publishedAt":"2026-07-26T04:59:00-04:00",
   "title":"Resume the work. Earn the proof.",
   "archivePath":"editions/2026/07/daily-bread-2026-07-26.html",
   "operatingContext":{"mode":"academy-first-evidence","locationState":"public-regional-weather-only","calendarState":"private-unavailable-to-publication","weatherState":"fresh-source-linked-2026-07-26","marketsState":"weekend-closed-no-live-quote"},
