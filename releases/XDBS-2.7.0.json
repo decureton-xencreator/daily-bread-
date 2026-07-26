@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "2.7",
+  "version": "2.7.0",
+  "date": "2026-07-26",
+  "edition": "editions/2026/07/daily-bread-2026-07-26.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-pending",
+  "architecture": "XDBS 3.0",
+  "experience": "XPS 4.9",
+  "releaseGates": {
+    "passed": 8,
+    "total": 9,
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment pending"
+  },
+  "freshSources": [
+    "https://beta.weather.gov/place/CT/Wilton/",
+    "https://apnews.com/article/e3d8a239509abb50757f8c8d42fb32d8",
+    "https://finance.yahoo.com/quote/SPY/",
+    "https://www.mlb.com/schedule/2026-07-26",
+    "https://www.peacocktv.com/blog/every-mlb-game-streaming-on-peacock-in-the-2026-season-full-schedule",
+    "https://www.apple.com/tv-pr/news/2026/02/apple-original-films-summer-comedy-the-dink-starring-jake-johnson-mary-steenburgen-and-ed-harris-premieres-globally-july-24/",
+    "https://tv.apple.com/us/movie/the-dink/umc.cmc.5tugaz9vt498ajn7q64ypaqxn"
+  ],
+  "capabilityChanges": [
+    "Inherited full local Academy assessment and Resume Anywhere runtime",
+    "Inherited permission-gated voice assessment scaffold without overstating provider grading",
+    "Inherited XER privacy-bounded aggregate interaction telemetry",
+    "Inherited Warden quality recovery and Alpha One evidence federation"
+  ],
+  "privacy": "No sensitive personal context, schedule details, itinerary, answers, raw printable keystrokes, scores, biometrics, credentials or notes are published.",
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-26.html",
+    "verified": false
+  },
+  "continuation": "Verify Pages deployment, then preserve the Academy-first Sunday accountability loop and advance only on passing evidence."
+}
