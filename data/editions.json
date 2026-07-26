@@ -1,16 +1,44 @@
 {
-  "schema_version": "2.6",
+  "schema_version": "2.7",
   "publisher": "XDBS — Xen Daily Bread Studio",
   "current": "index.html",
-  "updated_at": "2026-07-24T05:01:00-04:00",
+  "updated_at": "2026-07-26T05:07:00-04:00",
   "editions": [
+    {
+      "date": "2026-07-26",
+      "title": "Resume the work. Earn the proof.",
+      "summary": "A Sunday Command Deck joining Academy-first accountability, verified weather, weekend market truth, New York sports, active entertainment links, evidence federation and Warden diagnostics.",
+      "path": "editions/2026/07/daily-bread-2026-07-26.html",
+      "mode": "academy-first-evidence",
+      "tags": [
+        "XDBS 3.0",
+        "Release 2.7",
+        "XPS 4.9",
+        "Full Academy",
+        "Voice scaffold",
+        "Evidence federation",
+        "Warden"
+      ],
+      "status": "published",
+      "version": "2.7.0"
+    },
     {
       "date": "2026-07-24",
       "title": "Measure the truth. Move the mission.",
       "summary": "Fresh shipping, rates, weather, markets, AI-adoption and Yankees intelligence translated into Academy action and one evidence-backed Alpha One criterion.",
       "path": "editions/2026/07/daily-bread-2026-07-24.html",
       "mode": "evidence-led-execution",
-      "tags": ["XDBS 3.0", "Release 2.6", "XPS 3.2", "Academy Command", "Alpha One", "XET", "XEE", "XWR", "Warden"],
+      "tags": [
+        "XDBS 3.0",
+        "Release 2.6",
+        "XPS 3.2",
+        "Academy Command",
+        "Alpha One",
+        "XET",
+        "XEE",
+        "XWR",
+        "Warden"
+      ],
       "status": "published",
       "version": "2.6.0"
     },
@@ -20,7 +48,16 @@
       "summary": "Fresh energy, rates, weather, AI-infrastructure and New York sports intelligence translated into Academy application and one governed proof loop.",
       "path": "editions/2026/07/daily-bread-2026-07-23.html",
       "mode": "proof",
-      "tags": ["XDBS 3.0", "Release 2.5", "XPS 3.2", "Academy Command", "Oil", "AI infrastructure", "Alpha One", "Warden"],
+      "tags": [
+        "XDBS 3.0",
+        "Release 2.5",
+        "XPS 3.2",
+        "Academy Command",
+        "Oil",
+        "AI infrastructure",
+        "Alpha One",
+        "Warden"
+      ],
       "status": "published",
       "version": "2.5.0"
     },
@@ -30,7 +67,15 @@
       "summary": "Fresh geopolitical, weather, market, AI-platform and New York sports intelligence joined to Academy continuity and governed Xen execution.",
       "path": "editions/2026/07/daily-bread-2026-07-22.html",
       "mode": "governed-execution",
-      "tags": ["XDBS 3.0", "Release 2.4", "Academy Command", "Middle East", "AI distribution", "Alpha One", "Warden"],
+      "tags": [
+        "XDBS 3.0",
+        "Release 2.4",
+        "Academy Command",
+        "Middle East",
+        "AI distribution",
+        "Alpha One",
+        "Warden"
+      ],
       "status": "published",
       "version": "2.4.0"
     },
@@ -40,7 +85,15 @@
       "summary": "Fresh storm, geopolitical, market, technology and New York sports intelligence translated into Academy continuity and one evidence-closing mission.",
       "path": "editions/2026/07/daily-bread-2026-07-21.html",
       "mode": "evidence",
-      "tags": ["XDBS 2.3", "Academy Command", "U.S.–Iran", "Storms", "Cybersecurity", "Warden", "Mission Control"],
+      "tags": [
+        "XDBS 2.3",
+        "Academy Command",
+        "U.S.–Iran",
+        "Storms",
+        "Cybersecurity",
+        "Warden",
+        "Mission Control"
+      ],
       "status": "published",
       "version": "2.3.0"
     },
@@ -50,7 +103,14 @@
       "summary": "Fresh world, weather, market and sports intelligence translated into an Academy prime directive, one evidence mission and a recovery posture.",
       "path": "editions/2026/07/daily-bread-2026-07-20.html",
       "mode": "evidence",
-      "tags": ["XDBS 2.2", "Academy Command", "Hormuz", "World Cup", "Warden", "Mission Control"],
+      "tags": [
+        "XDBS 2.2",
+        "Academy Command",
+        "Hormuz",
+        "World Cup",
+        "Warden",
+        "Mission Control"
+      ],
       "status": "published",
       "version": "2.2.0"
     },
