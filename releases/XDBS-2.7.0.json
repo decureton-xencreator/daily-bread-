@@ -4,11 +4,11 @@
   "date": "2026-07-26",
   "edition": "editions/2026/07/daily-bread-2026-07-26.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-pending",
+  "status": "deployed-verified",
   "architecture": "XDBS 3.0",
   "experience": "XPS 4.9",
   "releaseGates": {
-    "passed": 8,
+    "passed": 9,
     "total": 9,
     "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment pending"
   },
@@ -31,7 +31,11 @@
   "deployment": {
     "target": "https://decureton-xencreator.github.io/daily-bread-/",
     "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-26.html",
-    "verified": false
+    "verified": true,
+    "verifiedAt": "2026-07-26T09:09:00Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30195897874",
+    "releaseCommit": "2f06b367c6468a1b980e1b7de3bea4a582939f2b",
+    "evidence": "Pages workflow 30195897874 completed successfully; production root and immutable July 26 route returned HTTP 200."
   },
-  "continuation": "Verify Pages deployment, then preserve the Academy-first Sunday accountability loop and advance only on passing evidence."
+  "continuation": "Preserve Academy-first accountability and advance the current Alpha One activation gate only on passing evidence."
 }
