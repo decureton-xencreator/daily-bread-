@@ -4,11 +4,11 @@
   "date": "2026-07-28",
   "edition": "editions/2026/07/daily-bread-2026-07-28.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-pending",
+  "status": "deployed-verified",
   "architecture": "XDBS 3.0",
   "experience": "XPS 4.9",
   "releaseGates": {
-    "passed": 8,
+    "passed": 9,
     "total": 9,
     "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment pending"
   },
@@ -31,7 +31,11 @@
   "deployment": {
     "target": "https://decureton-xencreator.github.io/daily-bread-/",
     "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-28.html",
-    "verified": false
+    "verified": true,
+    "verifiedAt": "2026-07-28T09:05:00Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30345206187",
+    "releaseCommit": "834e8293f83aa0f040c43ac2341c98a9d656fba2",
+    "evidence": "Pages workflow 30345206187 completed successfully; production root and immutable July 28 edition returned HTTP 200 with July 28, Flood Watch, XCB-009 and release 2.8.0 content."
   },
-  "continuation": "Verify deployment, then use XCB-009 admission to advance one Alpha One evidence gate without weakening Academy accountability."
+  "continuation": "Preserve hazard-aware Academy accountability and advance the next XCB-009-admitted evidence gate only on passing evidence."
 }
