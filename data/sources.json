@@ -1,6 +1,6 @@
 {
-  "schemaVersion": "2.7",
-  "publishedAt": "2026-07-26T04:59:00-04:00",
+  "schemaVersion": "2.8",
+  "publishedAt": "2026-07-28T05:01:00-04:00",
   "sources": [
     {
       "id": "production-contract",
@@ -10,13 +10,13 @@
     {
       "id": "public-runtime-lineage",
       "type": "repository-backed",
-      "reference": "daily-bread-@main"
+      "reference": "daily-bread-@5a12ac8f629f3342c1d996c2aa2c3c8a75d5f7e9"
     },
     {
-      "id": "july-26-live-sources",
+      "id": "july-28-live-sources",
       "type": "timestamped-external-retrieval",
-      "manifest": "releases/XDBS-2.7.0.json",
-      "retrievedAt": "2026-07-26T04:59:00-04:00"
+      "manifest": "releases/XDBS-2.8.0.json",
+      "retrievedAt": "2026-07-28T05:01:00-04:00"
     }
   ],
   "externalLiveFeeds": [
@@ -26,5 +26,5 @@
     "sports",
     "entertainment"
   ],
-  "privacyBoundary": "Private repository identifiers, connected-context metadata, schedules, answers and personal details are excluded from public provenance."
+  "privacyBoundary": "Private repository identifiers beyond public lineage, connected-context metadata, schedules, answers and personal details are excluded from public provenance."
 }
