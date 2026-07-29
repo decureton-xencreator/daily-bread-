@@ -1,0 +1,28 @@
+{
+  "schema": "xen/release/v1",
+  "release": "XPS 4.10.0",
+  "package": "Xen Living Earth Synchronization",
+  "state": "REPOSITORY_BACKED",
+  "runtime": "UTC-linked Earth orientation, axial tilt, seasonal solar declination, day/night field, visible rotation and requested live regional weather",
+  "truth": {
+    "earthOrientation": "CALCULATED_LOCALLY_FROM_UTC",
+    "axis": "23.4393_DEGREES",
+    "season": "CALCULATED_FROM_SOLAR_DECLINATION",
+    "weather": "LIVE_OPEN_METEO_OR_EXPLICIT_UNAVAILABLE",
+    "motion": "VISIBLE_VISUALIZATION_TIME_LOCKED_BASELINE",
+    "reducedMotion": "STATIC_CURRENT_EARTH_STATE"
+  },
+  "wardenXer": {
+    "deviceGeolocation": "NOT_REQUESTED",
+    "weatherCache": "SESSION_ONLY_10_MINUTES",
+    "fallback": "TIME_LINKED_NOT_SILENTLY_STATIC"
+  },
+  "validation": {
+    "livingEarth": "PASS",
+    "canonicalSyncChecks": 18,
+    "commandDeckScenes": 14,
+    "governance": "PASS",
+    "deployment": "PENDING"
+  },
+  "rollback": "Revert Living Earth runtime, Command Deck globe markup and styles, service-worker cache and this release record together."
+}
