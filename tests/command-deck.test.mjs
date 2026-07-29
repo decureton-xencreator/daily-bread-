@@ -3,7 +3,7 @@ import{readFileSync}from'node:fs';
 const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const runtime=readFileSync(new URL('../app/command-deck-app.js',import.meta.url),'utf8');
 const css=readFileSync(new URL('../assets/css/command-deck.css',import.meta.url),'utf8');
-for(const marker of['deck-progress','deck-count','deck-back','deck-index-button','deck-next','scene-index-list','assets/images/xen-globe.webp','academy-alert','lesson-drawer','tutorial-panel','tutorial-launch','tutorial-replay'])assert.match(html,new RegExp(marker));
+for(const marker of['deck-progress','deck-count','deck-back','deck-index-button','deck-next','scene-index-list','assets/images/earth-blue-marble-nasa.jpg','academy-alert','lesson-drawer','tutorial-panel','tutorial-launch','tutorial-replay'])assert.match(html,new RegExp(marker));
 for(const behavior of['ArrowRight','ArrowLeft','data-scene-index','history.replaceState','localStorage','world-clocks','renderIntelligence','openLesson','submitAcademyResponse','saveAcademyDraft','completeAcademyLesson','academy-answer','recordInteraction','Notification','openTutorial','renderTutorial','tutorialSeen'])assert.match(runtime,new RegExp(behavior));
 for(const contract of['\\.scene\\.active','\\.deck-controls','\\.globe-visual','\\.academy-alert','\\.lesson-drawer','\\.academy-work','\\.academy-feedback','\\.typing-target','\\.tutorial-panel','spatial integrity contract','overflow-wrap:anywhere','prefers-reduced-motion','@media\\(max-width:760px\\)'])assert.match(css,new RegExp(contract));
 assert.doesNotMatch(html,/assets\/css\/(?:xdbs|alive)\.css/);

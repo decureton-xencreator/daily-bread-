@@ -1,0 +1,25 @@
+{
+  "schema": "xen/release/v1",
+  "release": "XPS 4.10.1",
+  "package": "Living Earth Daylight Material",
+  "state": "REPOSITORY_BACKED",
+  "runtime": "NASA true-color Blue Marble daylight base with calculated night-side terminator",
+  "source": {
+    "authority": "NASA Science / Visible Earth",
+    "page": "https://science.nasa.gov/resource/blue-marble/",
+    "credit": "NASA Goddard Space Flight Center; MODIS Blue Marble"
+  },
+  "truth": {
+    "daylightColor": "TRUE_COLOR_SATELLITE_COMPOSITE",
+    "nightSide": "CALCULATED_TERMINATOR_OVERLAY",
+    "liveClouds": "NOT_CLAIMED",
+    "cityLights": "NOT_YET_SEPARATE_LAYER"
+  },
+  "validation": {
+    "asset": "PASS · SHA256 8b91ac0233ff11b2ad2693a82d7824fec21dcce89e75cca79381f0bb77186347",
+    "livingEarth": "PASS",
+    "canonicalSyncChecks": 18,
+    "deployment": "PENDING"
+  },
+  "rollback": "Revert Blue Marble asset, Living Earth material URL, Command Deck image references, styles, cache and this release record together."
+}

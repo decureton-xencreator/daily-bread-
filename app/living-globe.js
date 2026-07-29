@@ -74,7 +74,7 @@ function boot(){
   if(typeof window.Globe!=='function'){fallback();selectPoint(POINTS[0]);return}
   try{
     globe=window.Globe()(mount).backgroundColor('rgba(0,0,0,0)')
-      .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-night.jpg')
+      .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-blue-marble.jpg')
       .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-topology.png')
       .showAtmosphere(true).atmosphereColor('#62cfff').atmosphereAltitude(.17)
       .pointsData(POINTS).pointLat('lat').pointLng('lng').pointAltitude(.012).pointRadius(.25).pointColor(()=> '#8be9ff')

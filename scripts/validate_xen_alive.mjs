@@ -7,7 +7,7 @@ const css = fs.readFileSync('assets/css/command-deck.css', 'utf8');
 
 assert.match(index, /assets\/css\/command-deck\.css/);
 assert.match(index, /app\/command-deck-app\.js/);
-assert.match(index, /assets\/images\/xen-globe\.webp/);
+assert.match(index, /assets\/images\/earth-blue-marble-nasa\.jpg/);
 assert.doesNotMatch(index, /assets\/css\/alive\.css|app\/alive\.js|assets\/css\/xdbs\.css|app\/app\.js/);
 
 for (const scene of ['today', 'integration', 'academy', 'globe', 'intelligence', 'water-cooler', 'markets', 'xmi', 'mission', 'evolution', 'radar', 'timeline', 'archive', 'warden']) {
