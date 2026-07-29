@@ -86,9 +86,10 @@ function activityControl(activity,draft){
 function renderLesson(){
   const lesson=LESSONS[activeLesson],record=state.academy[activeLesson],activity=lesson.activities[record.step],result=record.results[activity.id],draft=record.responses[activity.id]||'';
   const passed=result?.passed;
+  const correctionReady=!result&&record.attempts>0&&draft?`<div class="academy-feedback pending" role="status"><b>CORRECTION READY</b><span>Your revised answer is saved. Grade it again to replace the prior attempt.</span></div>`:'';
   $('#lesson-title').textContent=lesson.title;
   const recovery=result&&!passed?`<div class="academy-recovery" aria-label="Answer recovery options"><button class="primary" type="button" data-lesson-retry>Correct and retry</button><button class="secondary" type="button" data-lesson-hint aria-expanded="false">Show coaching hint</button><button class="secondary" type="button" data-lesson-defer>Continue · revisit before completion</button></div><p class="academy-coach-hint" data-coach-hint hidden>${escapeHTML(activity.hint||activity.explanation||'Review the lesson foundation, change your answer, and try again. Your previous attempt remains in local progress evidence.')}</p>`:'';
-  $('#lesson-runtime').innerHTML=`<section class="lesson-status"><span>${escapeHTML(lesson.mission)}</span><b>ACTIVITY ${record.step+1} / ${lesson.activities.length}</b><strong>${record.score} / 100 · ${lesson.passingScore}% TO PASS</strong></section><div class="lesson-progress"><i style="width:${((record.step+(passed?1:0))/lesson.activities.length)*100}%"></i></div><article class="lesson-step"><p class="eyebrow">${escapeHTML(activity.title)}</p><h3>${escapeHTML(activity.prompt)}</h3><div class="academy-work">${activityControl(activity,draft)}</div>${result?`<div class="academy-feedback ${passed?'pass':'retry'}" role="status"><b>${passed?'PASS':'LET’S FIX IT'}</b><span>${escapeHTML(result.feedback)}</span></div>${recovery}`:''}</article><div class="lesson-actions">${record.step?'<button class="secondary" type="button" data-lesson-back>Previous</button>':''}${passed&&record.step<lesson.activities.length-1?'<button class="primary" type="button" data-lesson-next>Continue to next activity</button>':''}${passed&&record.step===lesson.activities.length-1?'<button class="primary" type="button" data-lesson-finish>Complete lesson · save score</button>':''}<button class="secondary" type="button" data-lesson-pause>Pause · save checkpoint</button></div><p class="privacy">Your answers, score and exact position are stored only in this browser for grading and Resume Anywhere. XER telemetry receives recovery categories and aggregate counts—never answer text or raw printable keystrokes.</p>`;
+  $('#lesson-runtime').innerHTML=`<section class="lesson-status"><span>${escapeHTML(lesson.mission)}</span><b>ACTIVITY ${record.step+1} / ${lesson.activities.length}</b><strong>${record.score} / 100 · ${lesson.passingScore}% TO PASS</strong></section><div class="lesson-progress"><i style="width:${((record.step+(passed?1:0))/lesson.activities.length)*100}%"></i></div><article class="lesson-step"><p class="eyebrow">${escapeHTML(activity.title)}</p><h3>${escapeHTML(activity.prompt)}</h3><div class="academy-work">${activityControl(activity,draft)}</div>${result?`<div class="academy-feedback ${passed?'pass':'retry'}" role="status"><b>${passed?'PASS':'LET’S FIX IT'}</b><span>${escapeHTML(result.feedback)}</span></div>${recovery}`:correctionReady}</article><div class="lesson-actions">${record.step?'<button class="secondary" type="button" data-lesson-back>Previous</button>':''}${passed&&record.step<lesson.activities.length-1?'<button class="primary" type="button" data-lesson-next>Continue to next activity</button>':''}${passed&&record.step===lesson.activities.length-1?'<button class="primary" type="button" data-lesson-finish>Complete lesson · save score</button>':''}<button class="secondary" type="button" data-lesson-pause>Pause · save checkpoint</button></div><p class="privacy">Your answers, score and exact position are stored only in this browser for grading and Resume Anywhere. XER telemetry receives recovery categories and aggregate counts—never answer text or raw printable keystrokes.</p>`;
   if(!passed){const answer=$('#academy-answer');if(answer)answer.focus({preventScroll:true})}
 }
 
@@ -238,7 +239,15 @@ document.addEventListener('click',event=>{
 });
 document.addEventListener('input',event=>{
   if(event.target.id==='mission-notes'){state.notes=event.target.value;saveState()}
-  if(event.target.id==='academy-answer'&&activeLesson){state.academy=saveAcademyDraft(state.academy,activeLesson,event.target.value);saveState()}
+  if(event.target.id==='academy-answer'&&activeLesson){
+    const activity=LESSONS[activeLesson].activities[state.academy[activeLesson].step],hadResult=Boolean(state.academy[activeLesson].results[activity.id]);
+    const selection=[event.target.selectionStart,event.target.selectionEnd];
+    state.academy=saveAcademyDraft(state.academy,activeLesson,event.target.value);saveState();
+    if(hadResult&&!state.academy[activeLesson].results[activity.id]){
+      recordInteraction('academy','graded-answer-edited');renderLesson();
+      const answer=$('#academy-answer');answer?.focus({preventScroll:true});answer?.setSelectionRange(...selection);
+    }
+  }
 });
 document.addEventListener('keydown',event=>{
   const keyClass=safeKeyClass(event);if(keyClass)recordInteraction('key',keyClass);

@@ -42,9 +42,27 @@ assert.ok(deferred.academy.spanish.deferred.includes('meaning'));
 academy=previousLessonActivity(deferred.academy,'spanish',new Date(now.getTime()+5200));
 assert.equal(academy.spanish.step,1);
 academy=retryAcademyActivity(academy,'spanish',new Date(now.getTime()+5300));
-assert.equal(academy.spanish.responses.meaning,undefined);
+assert.equal(academy.spanish.responses.meaning,'wrong');
 assert.equal(academy.spanish.results.meaning,undefined);
 assert.equal(academy.spanish.score,10);
+
+// A corrected draft invalidates stale failure evidence, preserves attempts and
+// requires a clean explicit regrade instead of leaving the old verdict latched.
+academy.spanish.step=3;
+submitted=submitAcademyResponse(academy,'spanish','I want confidence',new Date(now.getTime()+5400));
+academy=submitted.academy;
+assert.equal(submitted.result.passed,false);
+const attemptsBeforeCorrection=academy.spanish.attempts;
+academy=saveAcademyDraft(academy,'spanish','I want to talk with confidence',new Date(now.getTime()+5500));
+assert.equal(academy.spanish.results['translate-two'],undefined);
+assert.equal(academy.spanish.responses['translate-two'],'I want to talk with confidence');
+assert.equal(academy.spanish.status,'active');
+assert.equal(academy.spanish.attempts,attemptsBeforeCorrection);
+submitted=submitAcademyResponse(academy,'spanish',academy.spanish.responses['translate-two'],new Date(now.getTime()+5600));
+academy=submitted.academy;
+assert.equal(submitted.result.passed,true);
+assert.equal(academy.spanish.results['translate-two'].passed,true);
+academy.spanish.step=1;
 
 const responses=[
   'I want to learn Spanish',

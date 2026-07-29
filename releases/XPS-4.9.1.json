@@ -1,0 +1,31 @@
+{
+  "schema": "xen/release/v1",
+  "release": "XPS 4.9.1",
+  "package": "Academy Correction Coherence",
+  "state": "REPOSITORY_BACKED",
+  "runtime": "Corrected drafts invalidate stale verdicts, preserve learner work and require an explicit clean regrade",
+  "canonicalInheritance": {
+    "repository": "decureton-xencreator/xen-operating-system",
+    "commit": "a024b7b31faeae53a907f5908ab319772ee6edad",
+    "capabilities": [
+      "transactional Press Play persistence",
+      "atomic admission receipts",
+      "canonical CI persistence gates"
+    ]
+  },
+  "wardenXer": {
+    "answerText": "LOCAL_ONLY",
+    "telemetry": "CATEGORY_ONLY",
+    "staleVerdictPolicy": "FAIL_CLOSED_AND_REGRADE",
+    "scorePolicy": "RECOMPUTE_FROM_CURRENT_RESULTS"
+  },
+  "validation": {
+    "academyCorrectionRegression": "PASS",
+    "academyAssertions": 9,
+    "canonicalSyncChecks": 18,
+    "governanceRuntimeTests": 43,
+    "governance": "PASS",
+    "deployment": "PENDING"
+  },
+  "rollback": "Revert Academy runtime, Command Deck runtime, stylesheet, cache version and this release record together."
+}

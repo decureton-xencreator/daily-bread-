@@ -127,10 +127,22 @@ export function gradeAcademyResponse(activity,response,elapsedSeconds=0){
 export function normalizeAcademy(academy = {}) {
   return Object.fromEntries(Object.keys(LESSONS).map(id => {
     const old=academy[id],base=typeof old==='number'?{progress:old}:(old||{});
-    return[id,{
+    const record={
       status:'not-started',step:0,elapsedSeconds:0,completedLessons:0,lastStartedAt:null,lastActiveAt:null,lastCompletedAt:null,
       attempts:0,score:0,xp:0,results:{},responses:{},deferred:[],activityStartedAt:null,...base
-    }];
+    };
+    // Repair legacy state where a corrected draft was saved after a failed grade.
+    // The learner must explicitly regrade; stale failure evidence must not remain latched.
+    const activity=LESSONS[id].activities[record.step];
+    const staleFailure=record.results?.[activity?.id];
+    const draft=record.responses?.[activity?.id];
+    if(staleFailure&&!staleFailure.passed&&String(draft??'').trim()&&gradeAcademyResponse(activity,draft,record.elapsedSeconds).passed){
+      const results={...record.results};delete results[activity.id];
+      record.results=results;
+      record.score=Object.values(results).reduce((sum,item)=>sum+(item.score||0),0);
+      record.status='active';
+    }
+    return[id,record];
   }));
 }
 
@@ -162,8 +174,12 @@ export function startLesson(academy,courseId,now=new Date()){
 
 export function saveAcademyDraft(academy,courseId,response,now=new Date()){
   const next=normalizeAcademy(academy),current=next[courseId],activity=LESSONS[courseId].activities[current.step];
-  const firstTypingKey=activity.type==='typing'&&!current.responses[activity.id]&&String(response).length>0;
-  next[courseId]={...current,responses:{...current.responses,[activity.id]:String(response)},lastActiveAt:now.toISOString(),activityStartedAt:firstTypingKey?now.toISOString():current.activityStartedAt};
+  const value=String(response),previous=String(current.responses[activity.id]??'');
+  const firstTypingKey=activity.type==='typing'&&!previous&&value.length>0;
+  const results={...current.results};
+  if(previous!==value&&results[activity.id])delete results[activity.id];
+  const score=Object.values(results).reduce((sum,item)=>sum+(item.score||0),0);
+  next[courseId]={...current,responses:{...current.responses,[activity.id]:value},results,score,status:previous!==value&&current.results[activity.id]?'active':current.status,lastActiveAt:now.toISOString(),activityStartedAt:firstTypingKey?now.toISOString():current.activityStartedAt};
   return next;
 }
 
@@ -182,9 +198,8 @@ export function submitAcademyResponse(academy,courseId,response,now=new Date()){
 export function retryAcademyActivity(academy,courseId,now=new Date()){
   const next=normalizeAcademy(academy),current=next[courseId],activity=LESSONS[courseId].activities[current.step];
   const results={...current.results};delete results[activity.id];
-  const responses={...current.responses};delete responses[activity.id];
   const score=Object.values(results).reduce((sum,item)=>sum+(item.score||0),0);
-  next[courseId]={...current,results,responses,score,status:'active',lastActiveAt:now.toISOString(),activityStartedAt:now.toISOString()};
+  next[courseId]={...current,results,score,status:'active',lastActiveAt:now.toISOString(),activityStartedAt:now.toISOString()};
   return next;
 }
 
