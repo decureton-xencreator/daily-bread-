@@ -1,4 +1,19 @@
-# Warden Report — XDBS 3.0 / XPS 3.2 / Release 2.6.0
+# Warden Report — XDBS 3.0 / XPS 4.9 / Release 2.9.0
+
+## July 29, 2026 Daily Bread
+
+**Decision:** PASS WITH DEPLOYMENT VERIFICATION PENDING
+
+**Deployment:** VERIFYING — release content, immutable archive, manifests, provenance, privacy and validation are complete; GitHub Pages workflow completion and public HTTP content matching remain required.
+
+- Academy Command remains the Prime Directive with full local grading and Resume Anywhere.
+- Flood Advisory and Flood Watch posture is sourced from NWS and timestamped.
+- Markets are explicitly labeled indicative and pre-open.
+- World intelligence, sports, Microsoft technology intelligence, Apple TV and XMI actions use direct source links.
+- Canonical XRE/XRI resilience changes are classified repository-backed; live activation is not claimed.
+- Alpha 1 remains certified; Alpha 2 is the current evidence continuation.
+- Personal schedules, precise movement, answers, printable keystrokes, scores, biometrics, credentials and notes are excluded.
+- Warden/XER gates: **8/9 passed**; deployment verification is the remaining gate.
 
 ## XPS 4.4 Full Academy Runtime — 2026-07-25
 

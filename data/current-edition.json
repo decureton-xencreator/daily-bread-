@@ -1,16 +1,16 @@
 {
   "$schema": "../schemas/edition.schema.json",
-  "id": "xdbs-2026-07-28",
-  "editionVersion": "2.8.0",
-  "publishedAt": "2026-07-28T05:01:00-04:00",
-  "title": "Hold the standard. Move through weather.",
-  "archivePath": "editions/2026/07/daily-bread-2026-07-28.html",
+  "id": "xdbs-2026-07-29",
+  "editionVersion": "2.9.0",
+  "publishedAt": "2026-07-29T05:00:00-04:00",
+  "title": "Protect the day. Advance with proof.",
+  "archivePath": "editions/2026/07/daily-bread-2026-07-29.html",
   "operatingContext": {
-    "mode": "hazard-aware-academy-first",
+    "mode": "flood-hazard-academy-alpha2",
     "locationState": "public-regional-weather-only",
     "calendarState": "private-unavailable-to-publication",
-    "weatherState": "live-flood-watch-2026-07-28",
-    "marketsState": "indicative-preopen-2026-07-28T08:47Z"
+    "weatherState": "live-flood-advisory-watch-2026-07-29",
+    "marketsState": "indicative-preopen-2026-07-29T08:46Z"
   },
   "primeDirective": "Learn. Measure. Advance.",
   "academyDirective": "Resume the saved lesson. Complete twelve minutes of Typing and eight minutes of Spanish before entertainment.",
@@ -25,9 +25,9 @@
     "Resume Anywhere",
     "XER privacy-bounded telemetry",
     "Warden fail-closed quality",
-    "XCB-009 universal Warden/XER admission",
+    "XRE/XRI resilience and conflict-semantics hardening",
     "Voice assessment permission scaffold",
-    "Alpha One Activation Center",
+    "Alpha One certification preserved; Alpha 2 evidence continuation",
     "Evidence federation"
   ]
 }

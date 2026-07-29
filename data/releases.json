@@ -1,7 +1,14 @@
 {
-  "schemaVersion": "2.8",
-  "current": "2.8.0",
+  "schemaVersion": "2.9",
+  "current": "2.9.0",
   "releases": [
+    {
+      "version": "2.9.0",
+      "date": "2026-07-29",
+      "status": "repository-published-deployment-verifying",
+      "edition": "editions/2026/07/daily-bread-2026-07-29.html",
+      "manifest": "releases/XDBS-2.9.0.json"
+    },
     {
       "version": "2.8.0",
       "date": "2026-07-28",

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "2.9",
+  "version": "2.9.0",
+  "date": "2026-07-29",
+  "edition": "editions/2026/07/daily-bread-2026-07-29.html",
+  "currentAlias": "index.html",
+  "status": "repository-published-deployment-verifying",
+  "architecture": "XDBS 3.0",
+  "experience": "XPS 4.9",
+  "releaseGates": {
+    "passed": 8,
+    "total": 9,
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment pending"
+  },
+  "freshSources": [
+    "https://forecast.weather.gov/MapClick.php?FcstType=text&lat=41.4021&lg=en&lon=-73.4715",
+    "https://apnews.com/article/e31d249ba6443decdd3e63cd00f0fb84",
+    "https://www.theguardian.com/business/live/2026/jul/29/oil-jumps-iran-surprise-attack-chip-stocks-slump-ai-sell-off-economy-latest-news",
+    "https://finance.yahoo.com/quote/SPY/",
+    "https://www.mlb.com/schedule?sf103630412=1",
+    "https://news.microsoft.com/july-2026-security-news/",
+    "https://www.apple.com/tv-pr/originals/the-dink/",
+    "https://tv.apple.com/us/movie/the-dink/umc.cmc.5tugaz9vt498ajn7q64ypaqxn",
+    "https://music.apple.com/us/search?term=Here%20Comes%20the%20Rain%20Again%20Eurythmics"
+  ],
+  "capabilityChanges": [
+    "Inherited repository-backed XRE/XRI resilience and conflict-semantics hardening without claiming live activation",
+    "Preserved full local Academy assessment and Resume Anywhere",
+    "Preserved permission-gated voice scaffold without overstating pronunciation grading",
+    "Preserved Warden/XER fail-closed evidence admission and Alpha 1 certification while continuing Alpha 2"
+  ],
+  "privacy": "No sensitive personal context, schedule details, itinerary, answers, raw printable keystrokes, scores, biometrics, credentials or notes are published.",
+  "deployment": {
+    "target": "https://decureton-xencreator.github.io/daily-bread-/",
+    "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-29.html",
+    "verified": false,
+    "verifiedAt": null,
+    "workflowRun": null,
+    "releaseCommit": null,
+    "evidence": "Pending Pages workflow completion and HTTP content verification."
+  },
+  "continuation": "Preserve Academy accountability and advance one current Alpha 2 evidence gate only through Warden/XER-admitted proof."
+}

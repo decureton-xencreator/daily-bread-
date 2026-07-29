@@ -106,3 +106,12 @@
   transcript, score, or sensitive learning data.
 - Kept denied-permission recovery, replay/deletion, Disable Voice, mobile accessibility,
   and cross-browser behavior open until separately evidenced on real devices.
+# XDBS 2.9.0 — 2026-07-29
+
+- Published the immutable July 29 Daily Bread and updated the current-edition alias.
+- Added fresh NWS flood hazards, timestamped markets, AP world intelligence, official MLB schedules, Microsoft agentic-security context and active Apple TV/XMI links.
+- Preserved Academy Command as the Prime Directive with Resume Anywhere and local-only assessment state.
+- Inherited canonical XRE/XRI resilience and conflict-semantics hardening as repository-backed evolution without overstating live activation.
+- Continued Alpha 2 while preserving certified Alpha 1 state.
+- Improved mobile action, node and card wording spacing in the dated publication.
+- Updated archive, source, release, continuity, provenance and Warden records.
