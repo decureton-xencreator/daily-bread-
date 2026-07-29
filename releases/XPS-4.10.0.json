@@ -2,7 +2,7 @@
   "schema": "xen/release/v1",
   "release": "XPS 4.10.0",
   "package": "Xen Living Earth Synchronization",
-  "state": "REPOSITORY_BACKED",
+  "state": "PRODUCTION_VERIFIED",
   "runtime": "UTC-linked Earth orientation, axial tilt, seasonal solar declination, day/night field, visible rotation and requested live regional weather",
   "truth": {
     "earthOrientation": "CALCULATED_LOCALLY_FROM_UTC",
@@ -22,7 +22,11 @@
     "canonicalSyncChecks": 18,
     "commandDeckScenes": 14,
     "governance": "PASS",
-    "deployment": "PENDING"
+    "deployment": "PASS",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30498089495",
+    "productionCommit": "5172d1490d78e3e79442404e72cdeb3dc76b1ef2",
+    "verifiedAt": "2026-07-29T23:02:00Z",
+    "browserEvidence": "UTC telemetry advanced each second; rotating fallback was active without WebGL; live regional weather loaded; failure state did not remain stuck on CONNECTING."
   },
   "rollback": "Revert Living Earth runtime, Command Deck globe markup and styles, service-worker cache and this release record together."
 }
