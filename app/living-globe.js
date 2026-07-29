@@ -71,18 +71,22 @@ async function selectPoint(point){
 }
 function boot(){
   if(!mount||!shell)return;
-  if(typeof window.Globe!=='function'){fallback();return}
-  globe=window.Globe()(mount).backgroundColor('rgba(0,0,0,0)')
-    .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-night.jpg')
-    .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-topology.png')
-    .showAtmosphere(true).atmosphereColor('#62cfff').atmosphereAltitude(.17)
-    .pointsData(POINTS).pointLat('lat').pointLng('lng').pointAltitude(.012).pointRadius(.25).pointColor(()=> '#8be9ff')
-    .pointLabel(p=>`<b>${p.name}</b><br>${p.relationship}<br>${p.country} · ${localTime(p)}<br>Touch for live weather`).onPointClick(selectPoint);
-  const resize=()=>globe.width(shell.clientWidth).height(shell.clientHeight);new ResizeObserver(resize).observe(shell);resize();
-  const earth=applyEarthTelemetry();globe.pointOfView({lat:earth.declination,lng:-earth.earthRotation,altitude:1.82},0);
-  const controls=globe.controls();controls.autoRotate=!reduced;controls.autoRotateSpeed=.32;controls.enableDamping=true;controls.dampingFactor=.08;
-  shell.classList.add('globe-ready');earthStatus(reduced?`EARTH SYNC · UTC LOCKED · ${earth.season} · MOTION REDUCED`:`EARTH SYNC · UTC LOCKED · ${earth.season} · ROTATING`);
-  selectPoint(POINTS[0]);
+  if(typeof window.Globe!=='function'){fallback();selectPoint(POINTS[0]);return}
+  try{
+    globe=window.Globe()(mount).backgroundColor('rgba(0,0,0,0)')
+      .globeImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-night.jpg')
+      .bumpImageUrl('https://cdn.jsdelivr.net/npm/three-globe@2.45.0/example/img/earth-topology.png')
+      .showAtmosphere(true).atmosphereColor('#62cfff').atmosphereAltitude(.17)
+      .pointsData(POINTS).pointLat('lat').pointLng('lng').pointAltitude(.012).pointRadius(.25).pointColor(()=> '#8be9ff')
+      .pointLabel(p=>`<b>${p.name}</b><br>${p.relationship}<br>${p.country} · ${localTime(p)}<br>Touch for live weather`).onPointClick(selectPoint);
+    const resize=()=>globe.width(shell.clientWidth).height(shell.clientHeight);new ResizeObserver(resize).observe(shell);resize();
+    const earth=applyEarthTelemetry();globe.pointOfView({lat:earth.declination,lng:-earth.earthRotation,altitude:1.82},0);
+    const controls=globe.controls();controls.autoRotate=!reduced;controls.autoRotateSpeed=.32;controls.enableDamping=true;controls.dampingFactor=.08;
+    shell.classList.add('globe-ready');earthStatus(reduced?`EARTH SYNC · UTC LOCKED · ${earth.season} · MOTION REDUCED`:`EARTH SYNC · UTC LOCKED · ${earth.season} · ROTATING`);
+    selectPoint(POINTS[0]);
+  }catch{
+    globe=null;mount.replaceChildren();fallback();selectPoint(POINTS[0]);
+  }
 }
 document.addEventListener('click',e=>{const b=e.target.closest('[data-region]');if(b&&globe&&VIEWS[b.dataset.region])globe.pointOfView(VIEWS[b.dataset.region],900)});
 applyEarthTelemetry();setInterval(()=>applyEarthTelemetry(),1000);
