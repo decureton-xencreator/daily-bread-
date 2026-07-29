@@ -2,7 +2,7 @@
   "schema": "xen/release/v1",
   "release": "XPS 4.9.1",
   "package": "Academy Correction Coherence",
-  "state": "REPOSITORY_BACKED",
+  "state": "PRODUCTION_VERIFIED",
   "runtime": "Corrected drafts invalidate stale verdicts, preserve learner work and require an explicit clean regrade",
   "canonicalInheritance": {
     "repository": "decureton-xencreator/xen-operating-system",
@@ -25,7 +25,11 @@
     "canonicalSyncChecks": 18,
     "governanceRuntimeTests": 43,
     "governance": "PASS",
-    "deployment": "PENDING"
+    "deployment": "PASS",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30493693765",
+    "productionCommit": "ae5cc4bf0f33982b12e5b3b3f180b8d2232a7a23",
+    "verifiedAt": "2026-07-29T21:49:00Z",
+    "evidence": "Pages workflow passed; production root loaded XPS 4.9.1 assets and live Academy runtime contained correction recovery, stale-result invalidation and regrade markers."
   },
   "rollback": "Revert Academy runtime, Command Deck runtime, stylesheet, cache version and this release record together."
 }
