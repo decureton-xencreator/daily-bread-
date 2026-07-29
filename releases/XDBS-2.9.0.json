@@ -4,13 +4,13 @@
   "date": "2026-07-29",
   "edition": "editions/2026/07/daily-bread-2026-07-29.html",
   "currentAlias": "index.html",
-  "status": "repository-published-deployment-verifying",
+  "status": "deployed-verified",
   "architecture": "XDBS 3.0",
   "experience": "XPS 4.9",
   "releaseGates": {
-    "passed": 8,
+    "passed": 9,
     "total": 9,
-    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit; deployment pending"
+    "calculation": "content + archive + manifests + provenance + accessibility structure + privacy + validation + commit + deployment verification"
   },
   "freshSources": [
     "https://forecast.weather.gov/MapClick.php?FcstType=text&lat=41.4021&lg=en&lon=-73.4715",
@@ -33,11 +33,11 @@
   "deployment": {
     "target": "https://decureton-xencreator.github.io/daily-bread-/",
     "edition": "https://decureton-xencreator.github.io/daily-bread-/editions/2026/07/daily-bread-2026-07-29.html",
-    "verified": false,
-    "verifiedAt": null,
-    "workflowRun": null,
-    "releaseCommit": null,
-    "evidence": "Pending Pages workflow completion and HTTP content verification."
+    "verified": true,
+    "verifiedAt": "2026-07-29T09:11:29Z",
+    "workflowRun": "https://github.com/decureton-xencreator/daily-bread-/actions/runs/30438576651",
+    "releaseCommit": "530e46e4c4becebbf42848c4b55ca3b9f6ae1b95",
+    "evidence": "Pages workflow 30438576651 completed successfully; production root and immutable July 29 edition returned HTTP 200 with matching July 29, Flood Advisory, Academy, The Dink, Alpha 2 and release 2.9.0 content."
   },
   "continuation": "Preserve Academy accountability and advance one current Alpha 2 evidence gate only through Warden/XER-admitted proof."
 }

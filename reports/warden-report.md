@@ -2,9 +2,9 @@
 
 ## July 29, 2026 Daily Bread
 
-**Decision:** PASS WITH DEPLOYMENT VERIFICATION PENDING
+**Decision:** PASS
 
-**Deployment:** VERIFYING — release content, immutable archive, manifests, provenance, privacy and validation are complete; GitHub Pages workflow completion and public HTTP content matching remain required.
+**Deployment:** VERIFIED — [workflow run 30438576651](https://github.com/decureton-xencreator/daily-bread-/actions/runs/30438576651) completed successfully; the production root and immutable July 29 edition returned HTTP 200 with matching release content.
 
 - Academy Command remains the Prime Directive with full local grading and Resume Anywhere.
 - Flood Advisory and Flood Watch posture is sourced from NWS and timestamped.
@@ -13,7 +13,7 @@
 - Canonical XRE/XRI resilience changes are classified repository-backed; live activation is not claimed.
 - Alpha 1 remains certified; Alpha 2 is the current evidence continuation.
 - Personal schedules, precise movement, answers, printable keystrokes, scores, biometrics, credentials and notes are excluded.
-- Warden/XER gates: **8/9 passed**; deployment verification is the remaining gate.
+- Warden/XER gates: **9/9 passed**.
 
 ## XPS 4.4 Full Academy Runtime — 2026-07-25
 
